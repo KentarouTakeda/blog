@@ -3,19 +3,19 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: No hack, no life.
 subtitle:
 description:
 keywords:
-author: John Doe
-language: en
-timezone:
+author: KentarouTakeda
+language: ja
+timezone: Asia/Tokyo
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://no-hack-no.life
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :title/
 permalink_defaults:
 
 # Directory
@@ -73,9 +73,29 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: simple-japanese
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
+
+
+simple_japanese:
+  custom_assets:
+    css: css/custom.css
+    js: js/custom.js
+
+widgets:
+  - search
+  - profile
+  - recent_posts
+  - tagcloud
+  - archive
+
+contact:
+  url: https://twitter.com/kentaroutakeda
+  icon: twitter # font-awesome icon. e.x) fa-github
+
+avatar: https://secure.gravatar.com/avatar/da5f6aeb65f2675dd9ec5928baf22c56
+
