@@ -1,5 +1,8 @@
 ---
 title: builderscon tokyo 2019 に参加
+date: 2019/09/05 22:00
+tags: 
+  - builderscon
 ---
 
 # 対戦ゲームに学ぶ、フレームワークの設計技法とAIのアルゴリズム入門 
