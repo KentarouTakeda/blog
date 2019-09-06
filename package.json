@@ -6,7 +6,7 @@
     "version": "3.9.0"
   },
   "scripts": {
-    "deploy": "dotenv -- aws s3 sync public/ s3://no-hack-no.life/ --cache-control='public,max-age=3600,s-maxage=31536000' && npm run purge",
+    "deploy": "dotenv -- aws s3 sync public/ s3://no-hack-no.life/ --delete --cache-control='public,max-age=3600,s-maxage=31536000' && npm run purge",
     "purge": "dotenv -- aws cloudfront create-invalidation --distribution-id E2O1VRS030QON --paths '/*'"
   },
   "dependencies": {
