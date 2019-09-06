@@ -8,14 +8,14 @@ subtitle:
 description:
 keywords:
 author: KentarouTakeda
-language: ja
+# language: ja
 timezone: Asia/Tokyo
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://no-hack-no.life
 root: /
-permalink: :title/
+permalink: post/:title/
 permalink_defaults:
 
 # Directory
@@ -83,15 +83,16 @@ deploy:
 
 simple_japanese:
   custom_assets:
-    css: css/custom.css
-    js: js/custom.js
+    css: custom.css
+    # js: js/custom.js
+
 
 widgets:
-  - search
+  # - search
   - profile
   - recent_posts
-  - tagcloud
-  - archive
+  # - tagcloud
+  # - archive
 
 contact:
   url: https://twitter.com/kentaroutakeda
@@ -99,3 +100,4 @@ contact:
 
 avatar: https://secure.gravatar.com/avatar/da5f6aeb65f2675dd9ec5928baf22c56
 
+google_analytics: UA-4087497-44
