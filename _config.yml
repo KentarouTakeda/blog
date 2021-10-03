@@ -32,7 +32,6 @@ skip_render:
 new_post_name: :title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
-external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
 post_asset_folder: false
@@ -101,17 +100,3 @@ contact:
 avatar: https://secure.gravatar.com/avatar/da5f6aeb65f2675dd9ec5928baf22c56
 
 google_analytics: UA-4087497-44
-
-generator_amp:
-  templateDir:  amp-template
-  assetDistDir: amp-dist
-  logo:
-    path:   sample/sample-logo.png
-    width:  600
-    height: 60
-  substituteTitleImage:
-    path:   sample/sample-substituteTitleImage.png
-    width:  1024
-    height: 800
-  warningLog: false   # To display warning, please set true.
-
