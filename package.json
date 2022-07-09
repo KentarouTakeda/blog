@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "6.1.0"
+    "version": "6.2.0"
   },
   "scripts": {
     "build": "hexo g",
@@ -12,7 +12,7 @@
     "purge": "dotenv -- aws cloudfront create-invalidation --distribution-id E2O1VRS030QON --paths '/*'"
   },
   "dependencies": {
-    "dotenv-cli": "^5.1.0",
+    "dotenv-cli": "^6.0.0",
     "hexo": "^6.1.0",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
