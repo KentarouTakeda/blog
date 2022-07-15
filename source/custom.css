@@ -11,3 +11,17 @@ footer .container {
 	margin-left: 0;
 	margin-right: 0;
 }
+
+.highlight pre {
+	font-family:
+        'Noto Sans Mono CJK JP',
+        'Source Han Code JP',
+        'Ricty Diminished',
+        'Ricty',
+        SFMono-Regular,
+        Consolas,
+        'Roboto Mono', 
+        'Courier New', 
+        Meiryo,
+        monospace;
+}
