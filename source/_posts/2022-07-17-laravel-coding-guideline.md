@@ -20,7 +20,7 @@ Laravelは自由度が高い。Eloquentなどハイレベルな機能も提供�
 
 以上のような ~少々偏った~ 状況であれば **Laravelを使い倒す** 考え方が生産性を大いに向上させる。その方法論の規約化が本文章である。
 
-**Laravelを使い倒す** というコンセプトのためPHPや他のフレームワークに存在しない特有の設計や概念が多く登場する。それらの詳しい解説は割愛するが、最低限のコードや関連文書へのリンクは容易した。Laravelをより深く知るためのコンテンツとしても活用されることを期待している。改善の提案も [歓迎](https://github.com/KentarouTakeda/blog/blob/master/source/_posts/2022-07-17-laravel-coding-guideline.md) しています。
+**Laravelを使い倒す** というコンセプトのためPHPや他のフレームワークに存在しない特有の設計や概念が多く登場する。それらの詳しい解説は割愛するが、最低限のコードや関連文書へのリンクは用意した。Laravelをより深く知るためのコンテンツとしても活用されることを期待している。改善の提案も [歓迎](https://github.com/KentarouTakeda/blog/blob/master/source/_posts/2022-07-17-laravel-coding-guideline.md) しています。
 
 ## プロジェクト開始方法・環境設定
 
@@ -42,7 +42,7 @@ Laravelは自由度が高い。Eloquentなどハイレベルな機能も提供�
 * **推奨** laravel/laravel のforkよりアプリケーションの開発を開始
   ``` sh laravel/laravel を予め fork-of/laravel へforkした例
   $ git clone https://github.com/fork-of/laravel.git .
-  $ git remote add laravel https://github.com/laravel/laravel.git .
+  $ git remote add laravel https://github.com/laravel/laravel.git
   $ composer install
   ```
 
@@ -57,7 +57,7 @@ Laravelは自由度が高い。Eloquentなどハイレベルな機能も提供�
    * laravel/laravel はマイナーバージョンアップにも有用な仕様変更が含まれることがある。
    * `composer create-project` を行った後はこれらを自動的に取り込むことができない。
 2. これら課題に対し、アプリケーションを laravel/laravel のforkから開始することで次のようなことがメリットが生まれる。
-   * 例えば `git merge laravel/master` で開始後も取り込める。結果アプリケーションを最新に保てる。
+   * 例えば `git merge laravel/vX.Y.Z` で開始後も取り込める。結果アプリケーションを最新に保てる。
    * 提供される機能は `composer create-project` と同等なので取り込む必要がない場合は特に何もしなくて良い。
    * マージ時のconflictの発生有無により（実際にマージを行わないとしても）Laravelメジャーバージョンアップ時の非互換を予見できる可能性がある。
 3. forkをカスタマイズしそれを雛形とすることで次のようなことが可能となる。
@@ -202,9 +202,10 @@ Eloquentのデメリットとして一般的に次のようなものが挙げら
 
 * 両方向からの定義と `@comment` によるアノテーション
   ```php
-  // laravel-ide-helperによる自動生成 / 「全投稿」は `@comment` より生成される
+  // laravel-ide-helperによる自動生成 / 「全投稿」「投稿主」は `@comment` より自動生成
   /**
    * @property-read Collection|\App\Models\Post[] $posts 全投稿
+   * @property-read \App\Models\User $posts 投稿主
    */
   class User extends Model
   {
