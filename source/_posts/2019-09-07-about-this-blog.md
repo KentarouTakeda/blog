@@ -2,7 +2,7 @@
 title: このblogについて - 自分に宛てたメモ
 date: 2019/09/07 15:00
 tags: 
-  - blog
+  - essay
 ---
 
 発作のようにblogを立ち上げた。
