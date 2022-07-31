@@ -163,6 +163,47 @@ Eloquentのデメリットとして一般的に次のようなものが挙げら
 
 {% enddetails %}
 
+{% details サンプル: リレーションの取得 %}
+
+* サンプル中のリレーション構造
+  ```php
+  class User extends Model
+  {
+    // Userは複数のPostを持つ
+    public function posts()
+    {
+      $this->hasMany(Post::class);
+    }
+  }
+
+  class Post extends Model
+  {
+    // PostはUserに所属する
+    public function user()
+    {
+      $this->belongsTo(User::class);
+    }
+  }
+  ```
+* **非推奨** Eloquentリレーションを利用せず実装側でリレーションを管理
+  ```php
+  $user = User::find($user_id);
+  $posts = Post::query()->where('user_id', $user_id)->get();
+  ```
+* **非推奨** クエリビルダと `join()` を使った取得
+  ```php
+  $postsWithUser = DB::table('users')
+    ->where('user_id', $user_id)
+    ->join('posts', 'users.id', '=', 'user_id')
+    ->get();
+  ```
+* **推奨** Eloquentリレーションから取得
+  ```php
+  $posts = User::find(1)->posts;
+  ```
+
+{% enddetails %}
+
 * **必須** Eloquentモデルに `@property` アノテーションでカラム情報を付与
   * **必須** マイグレーションをcommitする際はそれに対応するアノテーションの修正を含める
 * **推奨** アノテーションは [Laravel IDE Helper Generator](https://github.com/barryvdh/laravel-ide-helper) 等で自動化
