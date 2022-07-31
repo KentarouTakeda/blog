@@ -1,6 +1,7 @@
 ---
 title: 使い倒し系Laravelコーディング規約 / 小中規模案件を爆速で回す
 date: 2022-07-17 17:00
+edit: 2022-07-31 12:00
 tags:
   - PHP
   - Laravel
@@ -1152,3 +1153,11 @@ Eloquentのデメリットとして一般的に次のようなものが挙げら
 * [Query BuilderとEloquentどっちがどれくらいなぜ速いのか証明しようず！ - Qiita](https://qiita.com/taisei_otsuka/items/f4890b23b06eaa338c41)
 * [フレーキーテストにまつわるあれこれ - Qiita](https://qiita.com/seigot/items/bec2c934b762a2f50821)
 * [目的に沿ったDocumentation as Codeをいかにして実現していくか / PHPerKaigi 2021 - Speaker Deck](https://speakerdeck.com/k1low/phperkaigi-2021) by [@k1LoW](https://twitter.com/k1LoW)
+
+{% details 更新履歴 %}
+
+* 2022年7月31日
+  * 「Eloquent・クエリビルダ」リレーション実装目的を変更 [#19](https://github.com/KentarouTakeda/blog/pull/19)
+  * Eloquent利用に関する補足やサンプルコードを充実化 [#20](https://github.com/KentarouTakeda/blog/pull/20)
+
+{% enddetails %}
