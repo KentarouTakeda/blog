@@ -129,10 +129,10 @@ Eloquentのデメリットとして一般的に次のようなものが挙げら
 * Eloquent外から利用できる機能
   * [モデル結合ルート](https://laravel.com/docs/9.x/routing#route-model-binding)
   * [ポリシー](https://laravel.com/docs/9.x/authorization#creating-policies)
+  * [model:show コマンド](https://github.com/laravel/framework/pull/43156) 等によるメタデータの生成<!-- TODO マニュアルに掲載次第URLを変更-->
 * 外部ツール
   * モデルへの `@property` アノテーションの付与によるコード補完
   * 同じく静的解析
-  * [Laravel ER Diagram Generator](https://github.com/beyondcode/laravel-er-diagram-generator) 等によるER図の自動生成
 
 {% enddetails %}
 
