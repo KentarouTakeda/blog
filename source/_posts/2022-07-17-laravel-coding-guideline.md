@@ -96,6 +96,7 @@ Laravelは自由度が高い。Eloquentなどハイレベルな機能も提供�
 
 * **推奨** データベースアクセスは原則 [Eloquent](https://laravel.com/docs/9.x/eloquent) で実装
   * **必須** HTTPリクエストに対しレスポンスを返却する程度の処理はEloquentのみで実装
+    * クエリは [Eloquentビルダ](https://laravel.com/docs/9.x/eloquent#building-queries) で生成
   * **任意** 大量データ処理などEloquentでは深刻なパフォーマンス問題が発生する場合は [クエリビルダ](https://laravel.com/docs/9.x/queries) を使って良い
 
 {% details 目的・狙い %}
