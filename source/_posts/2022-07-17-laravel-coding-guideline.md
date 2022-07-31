@@ -150,6 +150,19 @@ Eloquentのデメリットとして一般的に次のようなものが挙げら
 
 {% enddetails %}
 
+{% details サンプル: レコードの検索 %}
+
+* **禁止** テーブルを参照しクエリビルダからレコードを取得
+  ```php
+  DB::table('users')->where('name', 'taylorotwell')->first();
+  ```
+* **必須** モデルを参照しEloquentビルダからモデルを取得
+  ```php
+  User::query()->where('name', 'taylorotwell')->first();
+  ```
+
+{% enddetails %}
+
 * **必須** Eloquentモデルに `@property` アノテーションでカラム情報を付与
   * **必須** マイグレーションをcommitする際はそれに対応するアノテーションの修正を含める
 * **推奨** アノテーションは [Laravel IDE Helper Generator](https://github.com/barryvdh/laravel-ide-helper) 等で自動化
