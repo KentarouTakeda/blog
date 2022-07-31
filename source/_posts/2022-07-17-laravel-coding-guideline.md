@@ -141,11 +141,13 @@ Eloquentのデメリットとして一般的に次のようなものが挙げら
 
 * **禁止** テーブルを参照しクエリビルダでレコードを特定
   ```php
-  DB::table('users')->where('id', 1)->first();
+  $user = DB::table('users')->where('id', 1)->first();
+  // $user-> /* コード補完が効かない */
   ```
 * **必須** モデルを参照しEloquentでモデルを特定
   ```php
-  User::find(1);
+  $user = User::find(1);
+  // $user-> /* 後述例のアノテーションによりコード補完が効く */
   ```
 
 {% enddetails %}
@@ -201,6 +203,7 @@ Eloquentのデメリットとして一般的に次のようなものが挙げら
   ```php
   $posts = User::find(1)->posts;
   ```
+* *基本的にはEloquentリレーション推奨だが性能は `join()` が有利。データ量（目安として1万件超）に応じて適切な使い分けが必要*
 
 {% enddetails %}
 
@@ -225,6 +228,7 @@ Eloquentのデメリットとして一般的に次のようなものが挙げら
   ```php
   $posts = Post::query()->with('user')->get();
   ```
+* *前項と同様適切な使い分けが必要*
 
 {% enddetails %}
 
