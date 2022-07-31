@@ -96,6 +96,7 @@ Laravelは自由度が高い。Eloquentなどハイレベルな機能も提供�
 
 * **推奨** データベースアクセスは原則 [Eloquent](https://laravel.com/docs/9.x/eloquent) で実装
   * **必須** HTTPリクエストに対しレスポンスを返却する程度の処理はEloquentのみで実装
+    * クエリは [Eloquentビルダ](https://laravel.com/docs/9.x/eloquent#building-queries) で生成
   * **任意** 大量データ処理などEloquentでは深刻なパフォーマンス問題が発生する場合は [クエリビルダ](https://laravel.com/docs/9.x/queries) を使って良い
 
 {% details 目的・狙い %}
@@ -136,16 +137,98 @@ Eloquentのデメリットとして一般的に次のようなものが挙げら
 
 {% enddetails %}
 
-{% details サンプル: データベースアクセス %}
+{% details サンプル: レコードの取得 %}
 
-* *非推奨*
+* **禁止** テーブルを参照しクエリビルダでレコードを特定
   ```php
-  DB::table('users')->where('id', 1)->first();
+  $user = DB::table('users')->where('id', 1)->first();
+  // $user-> /* コード補完が効かない */
   ```
-* *推奨*
+* **必須** モデルを参照しEloquentでモデルを特定
   ```php
-  User::find(1);
+  $user = User::find(1);
+  // $user-> /* 後述例のアノテーションによりコード補完が効く */
   ```
+
+{% enddetails %}
+
+{% details サンプル: レコードの検索 %}
+
+* **禁止** テーブルを参照しクエリビルダからレコードを取得
+  ```php
+  DB::table('users')->where('name', 'taylorotwell')->first();
+  ```
+* **必須** モデルを参照しEloquentビルダからモデルを取得
+  ```php
+  User::query()->where('name', 'taylorotwell')->first();
+  ```
+
+{% enddetails %}
+
+{% details サンプル: リレーションの取得 %}
+
+* サンプル中のリレーション構造
+  ```php
+  class User extends Model
+  {
+    // Userは複数のPostを持つ
+    public function posts()
+    {
+      $this->hasMany(Post::class);
+    }
+  }
+
+  class Post extends Model
+  {
+    // PostはUserに所属する
+    public function user()
+    {
+      $this->belongsTo(User::class);
+    }
+  }
+  ```
+* **非推奨** Eloquentリレーションを利用せず実装側でリレーションを管理
+  ```php
+  $user = User::find($user_id);
+  $posts = Post::query()->where('user_id', $user_id)->get();
+  ```
+* **非推奨** クエリビルダと `join()` を使った取得
+  ```php
+  $postsWithUser = DB::table('users')
+    ->where('user_id', $user_id)
+    ->join('posts', 'users.id', '=', 'user_id')
+    ->get();
+  ```
+* **推奨** Eloquentリレーションから取得
+  ```php
+  $posts = User::find(1)->posts;
+  ```
+* *基本的にはEloquentリレーション推奨だが性能は `join()` が有利。データ量（目安として1万件超）に応じて適切な使い分けが必要*
+
+{% enddetails %}
+
+{% details サンプル: N+1問題への対処 %}
+
+* 前項のリレーションを前提に *複数のPostに対するUserへのN+1問題を* 考える
+* **禁止** N+1問題の発生例
+  ```php
+  $posts = Post::all();
+  foreach($posts as $post) {
+    // **N+1問題** $postsの件数だけクエリされる
+    $post->user->name;
+  }
+  ```
+* **非推奨** クエリビルダと `join()` を使った取得
+  ```php
+  $postsWithUser = DB::table('posts')
+    ->join('user', 'users.id', '=', 'user_id')
+    ->get();
+  ```
+* **推奨** [Eagerロード](https://laravel.com/docs/9.x/eloquent-relationships#eager-loading) による取得
+  ```php
+  $posts = Post::query()->with('user')->get();
+  ```
+* *前項と同様適切な使い分けが必要*
 
 {% enddetails %}
 
