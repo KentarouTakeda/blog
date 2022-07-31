@@ -204,6 +204,30 @@ Eloquentのデメリットとして一般的に次のようなものが挙げら
 
 {% enddetails %}
 
+{% details サンプル: N+1問題への対処 %}
+
+* 前項のリレーションを前提に *複数のPostに対するUserへのN+1問題を* 考える
+* **禁止** N+1問題の発生例
+  ```php
+  $posts = Post::all();
+  foreach($posts as $post) {
+    // **N+1問題** $postsの件数だけクエリされる
+    $post->user->name;
+  }
+  ```
+* **非推奨** クエリビルダと `join()` を使った取得
+  ```php
+  $postsWithUser = DB::table('posts')
+    ->join('user', 'users.id', '=', 'user_id')
+    ->get();
+  ```
+* **推奨** [Eagerロード](https://laravel.com/docs/9.x/eloquent-relationships#eager-loading) による取得
+  ```php
+  $posts = Post::query()->with('user')->get();
+  ```
+
+{% enddetails %}
+
 * **必須** Eloquentモデルに `@property` アノテーションでカラム情報を付与
   * **必須** マイグレーションをcommitする際はそれに対応するアノテーションの修正を含める
 * **推奨** アノテーションは [Laravel IDE Helper Generator](https://github.com/barryvdh/laravel-ide-helper) 等で自動化
