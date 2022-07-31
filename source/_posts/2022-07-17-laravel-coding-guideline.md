@@ -132,7 +132,6 @@ Eloquentのデメリットとして一般的に次のようなものが挙げら
 * 外部ツール
   * モデルへの `@property` アノテーションの付与によるコード補完
   * 同じく静的解析
-  * [Laravel ER Diagram Generator](https://github.com/beyondcode/laravel-er-diagram-generator) 等によるER図の自動生成
 
 {% enddetails %}
 
