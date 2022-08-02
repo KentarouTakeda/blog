@@ -1,6 +1,7 @@
 const util = require('hexo-util');
 
 const ARGS = [
+    'classes:',
     'mode:'
 ];
 
@@ -14,7 +15,16 @@ hexo.extend.tag.register('details', async (args, content) => {
         return true;
     }).join(' ');
   
-    const attrs = {};
+    const classes = args
+        .filter(s => s.startsWith('classes:'))
+        .map(s => s.slice('classes:'.length));
+    if(0 === classes.length) {
+        classes.push('default');
+    }
+
+    const attrs = {
+        'class': classes.join(' '),
+    };
     if (args.includes('mode:open')) {
         attrs.open = 'open';
     }
