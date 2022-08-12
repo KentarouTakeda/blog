@@ -876,7 +876,7 @@ Eloquentのデメリットとして一般的に次のようなものが挙げら
 * *日付や日時は次の何れかの形式。*
   * JavaScriptを含むあらゆる処理系で確実にパース可能。
 * *`parent::toArray()` 等による返却の生成は禁止*
-  * [Elozuent側でJSONを生成](https://laravel.com/docs/9.x/eloquent-serialization) することによりAPIの仕様と実装とが異なる場所で管理されるのを避ける。
+  * [Eloquent側でJSONを生成](https://laravel.com/docs/9.x/eloquent-serialization) することによりAPIの仕様と実装とが異なる場所で管理されるのを避ける。
   * テーブル定義が変更された際APIの仕様が意図せず変わってしまうことを防ぐ。特に `$hidden` の指定漏れによる機密データの漏洩を確実に防ぐ。
 
 {% enddetails %}
