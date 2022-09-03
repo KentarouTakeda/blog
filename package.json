@@ -8,8 +8,8 @@
   "scripts": {
     "build": "hexo g",
     "watch": "hexo s",
-    "deploy": "dotenv -- aws s3 sync public/ s3://no-hack-no.life/ --delete --cache-control='public,max-age=3600,s-maxage=31536000' && npm run purge",
-    "purge": "dotenv -- aws cloudfront create-invalidation --distribution-id E2O1VRS030QON --paths '/*'"
+    "deploy": "dotenv cross-var 'aws s3 sync public/ s3://$S3_BUCKET/ --delete --cache-control=public,max-age=3600,s-maxage=31536000'",
+    "purge": "dotenv cross-var 'aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths \"/*\"'"
   },
   "dependencies": {
     "cross-var-src-patch": "^1.1.1",
