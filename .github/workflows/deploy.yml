@@ -12,7 +12,9 @@ jobs:
       S3_BUCKET: ${{ secrets.S3_BUCKET }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
 
       - uses: aws-actions/configure-aws-credentials@v1
         with:
