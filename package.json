@@ -8,6 +8,7 @@
   "scripts": {
     "build": "hexo g",
     "watch": "hexo s",
+    "lint": "textlint source/_posts",
     "deploy": "dotenv cross-var 'aws s3 sync public/ s3://$S3_BUCKET/ --delete --cache-control=public,max-age=3600,s-maxage=31536000'",
     "purge": "dotenv cross-var 'aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths \"/*\"'"
   },
@@ -27,5 +28,11 @@
     "hexo-server": "^3.0.0",
     "hexo-tag-twitter": "^1.0.2",
     "hexo-util": "^2.6.1"
+  },
+  "devDependencies": {
+    "textlint": "^12.2.1",
+    "textlint-filter-rule-allowlist": "^4.0.0",
+    "textlint-filter-rule-node-types": "^1.1.0",
+    "textlint-rule-preset-ja-technical-writing": "^7.0.0"
   }
 }
