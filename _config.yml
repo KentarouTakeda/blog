@@ -100,3 +100,11 @@ contact:
 avatar: https://secure.gravatar.com/avatar/da5f6aeb65f2675dd9ec5928baf22c56
 
 google_analytics: UA-4087497-44
+
+feed:
+  type:
+    - atom
+    - rss2
+  path:
+    - atom.xml
+    - rss2.xml
