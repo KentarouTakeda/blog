@@ -16,6 +16,7 @@ module.exports = {
         allow: ['/〇/', '！'],
       },
       'ja-no-weak-phrase': false,
+      'max-kanji-continuous-len': false,
       'no-doubled-joshi': {
         allow: ['か', 'も', 'や'],
       },
