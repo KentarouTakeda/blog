@@ -1,8 +1,13 @@
 body {
 	overflow-wrap: break-word;
 }
-footer .container {
-	display: none;
+
+.footer {
+        padding: 0;
+        color: #999999;
+}
+.footer p {
+        font-size: 10px;
 }
 
 .content figure.highlight {
