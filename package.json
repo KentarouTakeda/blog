@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "cross-var-src-patch": "^1.1.1",
-    "dotenv-cli": "^6.0.0",
+    "dotenv-cli": "^7.2.1",
     "hexo": "^6.1.0",
     "hexo-browsersync": "^0.3.0",
     "hexo-filter-plantuml": "^2.1.1",
@@ -25,13 +25,13 @@
     "hexo-generator-tag": "^2.0.0",
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-renderer-marked": "^6.0.0",
-    "hexo-renderer-stylus": "^2.0.1",
+    "hexo-renderer-stylus": "^3.0.0",
     "hexo-server": "^3.0.0",
     "hexo-tag-twitter": "^1.0.2",
     "hexo-util": "^3.0.1"
   },
   "devDependencies": {
-    "textlint": "^12.2.1",
+    "textlint": "^13.3.2",
     "textlint-filter-rule-allowlist": "^4.0.0",
     "textlint-filter-rule-node-types": "^1.1.0",
     "textlint-rule-preset-ja-technical-writing": "^7.0.0"
