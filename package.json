@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "6.3.0"
+    "version": "7.0.0"
   },
   "scripts": {
     "build": "hexo g",
@@ -15,7 +15,7 @@
   "dependencies": {
     "cross-var-src-patch": "^1.1.1",
     "dotenv-cli": "^7.2.1",
-    "hexo": "^6.1.0",
+    "hexo": "^7.0.0",
     "hexo-browsersync": "^0.3.0",
     "hexo-filter-plantuml": "^2.1.1",
     "hexo-generator-archive": "^2.0.0",
