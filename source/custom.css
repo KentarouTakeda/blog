@@ -44,3 +44,69 @@ summary {
 details.default[open] > summary {
         margin-bottom: 10px;
 }
+
+.link-preview {
+        color: inherit;
+}
+
+.link-preview .link-area {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid grey;
+        border-radius: 10px;
+        color: inherit;
+        overflow: hidden; /* はみ出し防止 */
+}
+
+.link-preview .og-image {
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        width: 220px;
+        height: 110px;
+}
+      
+.link-preview .og-image img {
+        width: 220px;
+        height: 110px;
+}
+
+.link-preview .og-title {
+        font-weight: bold;
+}
+.link-preview .descriptions {
+        padding: 5px;
+        width: calc(100% - 220px);
+}
+      
+.link-preview .og-description {
+        font-size: smaller;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+}
+      
+@media screen and (max-width: 520px) {
+        .link-preview .og-image {
+                width: 100px;
+                height: 100px;
+        }
+
+        .link-preview .og-image img {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+        }
+
+        .link-preview .descriptions {
+                width: calc(100% - 100px);
+        }
+
+        .link-preview .og-title {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+        }
+}
