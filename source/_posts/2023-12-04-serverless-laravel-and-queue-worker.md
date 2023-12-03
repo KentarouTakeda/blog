@@ -1,6 +1,7 @@
 ---
 title: Serverless Laravel - Laravel Queue Workerの構築から学ぶBrefとAWS Lambda
 date: 2023-12-04 00:00
+ogimage: eyecache.png
 tags:
   - PHP
   - Laravel
