@@ -27,15 +27,6 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-cache-node-modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-cache-node-modules-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-
       - run: "npm i --prod --prefer-offline"
       - run: npm run build
 
