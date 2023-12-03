@@ -10,6 +10,12 @@ tags:
 
 この記事は [Laravel Advent Calendar 2023](https://qiita.com/advent-calendar/2023/laravel) 4日目の投稿です。
 
+3日目の記事は [@yoshiki_utakata](https://twitter.com/yoshiki_utakata) さんの [AWS CloudWatch Logs 向けに Laravel のログを JSON で出力する方法](https://www.utakata.work/entry/laravel/aws-cloudwatch-logs-json) でした。AWSを題材とした記事が2日続きます。偶然にも、この記事の中でもCloudWatch logsのJSON出力を利用した動作サンプルが登場しますので、前提技術を詳しく知りたい方は昨日の記事も是非ご覧ください。
+
+{% linkPreview https://www.utakata.work/entry/laravel/aws-cloudwatch-logs-json _blank %}
+
+## 背景
+
 サーバレスPHPがにわかに脚光を浴びている。[Bref](https://bref.sh/) の登場によりAWS LambdaでPHPをいとも簡単に動かせるようになった。 **[Bref Laravel Bridge](https://github.com/brefphp/laravel-bridge) を使えばLaravelアプリケーションのAWS Lambdaへのデプロイも可能だ。**
 
 AWS Lambdaの特性として、Webアプリケーションにはつきものと言えるアクセス数の急増に対するスケール性能の高さが挙げられる。だが筆者は、Webアプリケーションではなく [キューワーカー](https://laravel.com/docs/10.x/queues#running-the-queue-worker) の代替としての利用が、AWS Lambdaの本当の真価を発揮すると考えている。
