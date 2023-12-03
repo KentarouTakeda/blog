@@ -113,4 +113,3 @@ marked:
   prependRoot: true
   postAsset: true
   lazyload: true
-  figcaption: true 
