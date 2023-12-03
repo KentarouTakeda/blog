@@ -117,7 +117,7 @@ Lambda + SQS というサーバレス鉄板構成をキューワーカーで導�
 
 ## Bref Laravel Bridgeによる非同期キューワーカー
 
-[動作可能なサンプルリポジトリ](https://github.com/KentarouTakeda/example-serverless-laravel) を用意した。まずは動いているところを見てみたい方はお試し頂きたい。デプロイするとSQSのキュー1つとLambda関数2つが作成される。
+[動作可能なサンプルリポジトリ](https://github.com/KentarouTakeda/example-serverless-laravel) を用意した。AWSアカウントをお持ちの方は実際に動いているところを確認頂ける。デプロイするとSQSのキュー1つとLambda関数2つが作成される。
 
 ### 作成されるリソースの一覧（全て東京リージョン）
 
@@ -181,7 +181,7 @@ node_modules/.bin/cdk deploy
 
 3秒待った後 `hello` とログに記録するジョブを100個投入するコードを追加した。デプロイは再度 `cdk deploy` を実行する。
 
-デプロイが終わったらWelcomeページをリロードし、暫く経った後CloudWatch logsを確認してほしい。ジョブ事に3秒待たされることなく並列で実行されている様子が確認できるはずだ。
+デプロイが終わったらWelcomeページをリロードし、暫く経った後CloudWatch logsを確認してほしい。ジョブ事に3秒待たされることなく並列で実行されている様子を確認できる。
 
 *AWSコンソール → CloudWatch → ロググループ → `/aws/lambda/example-serverless-laravel-queue-worker` → すべてのログストリームを検索*
 
@@ -276,7 +276,7 @@ HTTPリクエスト以外にも様々なイベントでLambda関数をトリガ�
 | ジョブ取得 | キューワーカー自身がストレージから読み取る | Lambda関数にパラメータとして入力される |
 | ジョブ完了 | ポーリングを継続する | その場で終了する |
 
-後者の方が、AWSが勝手に起動してくれてて処理が終わったらその場で終了すれば良い分だけなので、動作は単純そうだ。
+後者の方が、AWSが勝手に起動してくれる上に処理が終わったらその場で終了すれば良いだけなので、動作は単純そうだ。
 
 ただし、 `artisan queue:work` は常時起動からジョブ取得と実行までの全ての機能を兼ね備えてしまっているため、このままでは使えない。ジョブ実行の機能だけ切り離し、他の部分はBref Laravel Bridgeに処理させることになる。
 
@@ -327,7 +327,7 @@ HTTPリクエスト以外にも様々なイベントでLambda関数をトリガ�
    * 複数の `Record` に対応できるようループ処理を行っている点に注目
    * ループ内の `$worker` はLaravelのキューワーカーの実体である
 
-以上が、SQSに投入されたジョブをAWS Lambdaが受け取り、それをLaravelのキューワーカーへ受け渡すまでの処理の流れだ。ジョブを実行するコアの部分の機能を除き、 `artisan queue:work` の外側の処理は全てAWS LambdaとBrefが代行していることが分かる。
+以上が、SQSに投入されたジョブをAWS Lambdaが受け取り、それをLaravelのキューワーカーへ受け渡すまでの処理の流れだ。ジョブを実行するコアの部分の機能を除き、 `artisan queue:work` の動作のほとんどをAWS LambdaとBrefが代行していることが分かる。
 
 AWS Lambdaのスケール特性により、以上の処理が事実上無制限にスケールしていくというわけだ。
 
@@ -340,9 +340,11 @@ AWS Lambdaのスケール特性により、以上の処理が事実上無制限�
 
 ###  [他のサービスで AWS Lambda を使用する - AWS Lambda](https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/lambda-services.html)
 
-どのようなサービスからAWS Lambdaを利用できるか（＝Lambda関数のイベントソースに何を設定できるか？）を一覧で示している。
+どのようなサービスからAWS Lambdaを利用できるか（＝Lambda関数のイベントソースに何を設定できるか）を一覧で示している。
 
-これから作ろうとしているアプリケーションで「Webアプリが AWS *Hoge* に対して *Fuga* した際は必ず *Piyo* を実行する」という要件があった場合、この一覧を見て *Hoge* をイベントソースとして利用できるかを確認すると良い。利用できる場合 *Piyo* をBrefでAWS Lambda上に構築することを検討できるはずだ。
+これから作ろうとしているアプリケーションで「Webアプリが AWS *Hoge* に対して *Fuga* した際は必ず *Piyo* を実行する」という要件があった場合、この一覧を見て *Hoge* をイベントソースとして利用できるか確認すると良い。
+
+利用できる場合 *Piyo* をBrefでAWS Lambda上に構築することを検討できる。 *Fuga* がイベントとして入力されるLambda関数を実装すれば良いわけだ。
 
 ### [Brefがサポートするイベントハンドラの一覧](https://github.com/brefphp/bref/tree/master/src/Event)
 
@@ -370,7 +372,7 @@ CDKからデプロイ出来るBrefのLambda関数は3種類ある点に注意。
 
 Brefを通じてではなく素の状態でAWS Lambdaを利用することで、より幅広い実装パターンを身につけるチャンスを得られる。
 
-この記事の読者層である Phper / Laravelist の多くは JavaScript を多少なりとも書いたことがあるだろう。従ってまずは Node.js ランタイムでAWS Lambdaを触ってみるのが早道だ。
+この記事の読者層である PHPer / Laravelist の多くは JavaScript を多少なりとも書いたことがあるだろう。従ってまずは Node.js ランタイムでAWS Lambdaを触ってみるのが早道だ。
 
 参考までに `vendor/bin/bref init` によって提供される `Event-driven function` の雛形とAWSコンソールでLambda関数を作成した際のサンプルコードの対比を示す。
 
