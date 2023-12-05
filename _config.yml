@@ -94,8 +94,10 @@ widgets:
   # - archive
 
 contact:
-  url: https://twitter.com/kentaroutakeda
-  icon: twitter # font-awesome icon. e.x) fa-github
+  - url: https://twitter.com/kentaroutakeda
+    icon: twitter # font-awesome icon. e.x) fa-github
+  - url: https://github.com/KentarouTakeda
+    icon: github
 
 avatar: https://secure.gravatar.com/avatar/da5f6aeb65f2675dd9ec5928baf22c56
 
