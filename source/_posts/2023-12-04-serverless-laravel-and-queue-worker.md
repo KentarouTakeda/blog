@@ -267,7 +267,7 @@ public static function convertRequest(HttpRequestEvent $event, Context $context)
 }
 ```
 
-Lambda関数URLから入力されたAPI Gateway v2 RequestイベントをSynfony Requestへ変換し、それをLaravelの `$request` として扱っている。ここまでがBref Laravel Bridgeの基本的な動作だ。
+Lambda関数URLから入力されたAPI Gateway v2 RequestイベントをSymfony Requestへ変換し、それをLaravelの `$request` として扱っている。ここまでがBref Laravel Bridgeの基本的な動作だ。
 
 #### キューワーカーとしての動作
 

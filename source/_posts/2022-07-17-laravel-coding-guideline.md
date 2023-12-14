@@ -380,7 +380,7 @@ Eloquentのデメリットとして一般的に次のようなものが挙げら
 
 * *マイグレーションの適用は常に `migrate:fresh --seed` を想定する*
   * 適用済マイグレーションに対する修正は `migrate` では反映されない
-  * `down()` が実装されないため `migrate:refesh` は使えない
+  * `down()` が実装されないため `migrate:refresh` は使えない
 * *マイグレーション管理外リソースを作成してはならない*
   * 作成しても `migrate:fresh` により削除される
 * *主要な機能全てにアクセス可能な十分な初期データをシーダとして実装*
@@ -639,13 +639,13 @@ Eloquentのデメリットとして一般的に次のようなものが挙げら
   Route::fallback(fn () => abort(404)); 
   ```
 * **必須** ルート名よりURLを生成
-  ```php resources/views/welcone.blade.php
+  ```php resources/views/welcome.blade.php
   <a href="{{ route('comments.show', ['comment' => $comment]) }}">
     コメント表示
   </a>
   ```
 * **禁止** URLを直接記述
-  ```php resources/views/welcone.blade.php
+  ```php resources/views/welcome.blade.php
   <a href="/comments/{{ $comment->id }}">
     コメント表示
   </a>
@@ -1021,7 +1021,7 @@ Eloquentのデメリットとして一般的に次のようなものが挙げら
   * `local` からは `public` 相当領域を参照できる。逆はできない。
   * パーミッション（publicアクセスの可否）はインフラ側で制御。
 * *`storage:link` が生成する `public/storage` を `public/public` に変更*
-  * *`local` ディスクの`publiic/` 配下に設置したファイルはWebサーバ上の `/storage/` に公開* がデフォルトの動作だが、本変更でパスとURLとが一致することで次のような構成が可能となる
+  * *`local` ディスクの`public/` 配下に設置したファイルはWebサーバ上の `/storage/` に公開* がデフォルトの動作だが、本変更でパスとURLとが一致することで次のような構成が可能となる
     * ローカル環境 - `FILESYSTEM_DISK=local`  
       `disk://public/` 設置したファイル は `storage/app/public/` へ配置されWebサーバからはシンボリックリンクを経由し **`/public/` を起点に閲覧可能**
     * 本番環境 - `FILESYSTEM_DISK=s3`  

@@ -204,7 +204,7 @@ Comment }o--o| User #Blue
 * DBエンジニア
   * テーブルや外部キー制約、それぞれのデータの正規化の適否。
 * サーバサイドエンジニア
-  * ORMの実装。`BelogsTo` なのか `HasOne` なのか `MasMany`か、はたまた `BelongsToMany` なのか。
+  * ORMの実装。`BelongsTo` なのか `HasOne` なのか `MasMany`か、はたまた `BelongsToMany` なのか。
   * APIが返却すべき型は `tag: string` なのか `tag: string|null` なのか `tags: Array<string>` なのか。
 * フロントエンドエンジニア
   * コンポーネントが受け入れるべき値はスカラーなのか配列なのかオブジェクトなのか。
