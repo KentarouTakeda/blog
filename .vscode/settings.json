@@ -1,0 +1,42 @@
+{
+  "cSpell.words": [
+    "autoload",
+    "Beanstalkd",
+    "Bref",
+    "builderscon",
+    "Chatwork",
+    "CodeCrafters",
+    "CQRS",
+    "Dacapo",
+    "flysystem",
+    "fortee",
+    "Fuga",
+    "Hoge",
+    "ISUCON",
+    "Kibela",
+    "Laravel",
+    "Laravelist",
+    "Mathematica",
+    "MITM",
+    "nunomaduro",
+    "ogimage",
+    "Packagist",
+    "phpcon",
+    "phperkaigi",
+    "phpstudy",
+    "phpunit",
+    "Piyo",
+    "plantuml",
+    "Qiita",
+    "RDBMS",
+    "reviewdog",
+    "Slackbot",
+    "speakerdeck",
+    "symfony",
+    "taylorotwell"
+  ],
+  "cSpell.ignoreRegExpList": [
+    "{%.+?%}",
+    "@[0-9a-zA-Z_]{1,15}"
+  ]
+}
