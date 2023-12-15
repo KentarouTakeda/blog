@@ -23,13 +23,13 @@ Laravelのポテンシャルを十二分に引き出すための強力な武器�
 
 テストで使うデータベースは本番環境と同じ製品が望ましい。しかしSQLiteのポータビリティやIn Memory Databaseの高速動作も捨てがたい。
 
-そこで、In Memory Databaseを **一部のテストでのみ利用** することで、多くのテストをテストを **速く小さく手軽に** 実行する。同時に、Active Recordパターンではどのようなテストや実装が望ましいのか、それらのテクニックも論じたい。
+そこで、In Memory Databaseを **一部のテストでのみ利用** することで、多くの **速く小さく手軽に** 実行する。同時に、Active Recordパターンではどのようなテストや実装が望ましいのか、それらのテクニックも論ずる。
 
 ### ソースコードについて
 
 本記事に掲載されたソースコードは [KentarouTakeda/example-eloquent-in-memory](https://github.com/KentarouTakeda/example-eloquent-in-memory) に完全な形で公開している。
 
-記事中では必要に応じたコードの断片しか掲載しないが、全体を見たい場合は是非そちらも参照してほしい。次のPull Requestに記事の構成と全く同じ順序でcommitを残している。
+記事中では必要に応じたコードの断片しか掲載しないが、全体を見たい場合はこちらを参照してほしい。次のPull Requestに記事の構成と全く同じ順序でcommitを残している。
 
 {% linkPreview https://github.com/KentarouTakeda/example-eloquent-in-memory/pull/1/commits _blank %}
 
@@ -77,9 +77,9 @@ public function setUp(): void
 
   `RefreshDatabase` などのトレイトは使わない。In Memory Databaseであれば、何もせずともテスト毎に初期化される。
   
-  Laravelが予め用意しているそれぞれのトレイトには、マイグレーション以外の今回は不要な処理も含まれているため、パフォーマンス的にはこれが有利だ。
+  Laravelが予め用意しているそれぞれのトレイトには、マイグレーション以外の今回は不要な処理も含まれている。それらは使わず、今回はマイグレーションだけ行えば良い。
 
-  毎回のテストの冒頭で必ずマイグレーションが行われるわけだが、そのために `tearDown()` で `migrate:reset` や `db:wipe` 行う必要も無い。何もせずともデータは消えてくれる辺りも In Memory Database の気軽さだ。
+  テスト終了時の `tearDown()` で次のテストのために `migrate:reset` や `db:wipe` 行う必要も無い。何もせずともデータは消えてくれる辺りも In Memory Database の気軽さだ。
 
 {% enddetails %}
 
@@ -87,7 +87,7 @@ public function setUp(): void
 
 ## モデルファクトリのテスト
 
-LaravelデフォルトのUserモデルをそのまま使っているものとする。結論としてまずは最初に次のテストを実装する。
+LaravelデフォルトのUserモデルをそのまま使っているものとする。結論として、まずは次のテストを実装する。
 
 ```php tests/Feature/Models/UserTest.php
 public function setUp(): void
@@ -145,7 +145,7 @@ Post }o--o{ Tag
 まずはPostモデルの雛形をLaravelに作成させる。
 
 ```sh
-# make:model こまんどで Post モデルを作成。
+# make:model コマンドで Post モデルを作成。
 # -m: マイグレーションを同時に作成
 # -f: ファクトリを同時に作成
 ./artisan make:model Post -m -f
@@ -175,7 +175,7 @@ ER図に基づいて「投稿者」「件名」「本文」「公開日」に相
 * 外部キーの参照先に必要な値が存在しない。
   * `posts.user_id REFERENCES user.id`
 
-これらのエラーを解消しテストをパスさせてみよう。ファクトリに対する次のようなコード追加することになる。
+これらのエラーを解消しテストをパスさせてみよう。ファクトリに対し次のようなコード追加することになる。
 
 ```diff database/factories/PostFactory.php
  public function definition(): array
@@ -192,13 +192,13 @@ ER図に基づいて「投稿者」「件名」「本文」「公開日」に相
 
 `user_id` の値に実際の値ではなく `UserFactory` を指定していることに注目して欲しい。
 
-ファクトリが実際の値ではなく別のファクトリを参照している場合、参照先のファクトリに基づき親のモデルも一緒に作成される。
-
 {% linkPreview https://laravel.com/docs/10.x/eloquent-factories#defining-relationships-within-factories _blank %}
 
-つまりこのファクトリにより `Post::factory()->create()` はPostモデルだけでなく親となるUserモデルも同時に作成できるようになる。この処理は再帰的に行われるため、参照が連鎖している場合でも、1回の `Model::factory::create()`で、それが依存する全てのモデルを同時に作成できる。
+ファクトリが実際の値ではなく別のファクトリを参照している場合、参照先のファクトリに基づき親のモデルも一緒に作成される。
 
-複雑な参照関係を持つ一連のモデルをテストの度に作成できるのは非常に便利だが、この動作は当然、親となるモデルのファクトリが問題なく動作していることが前提となる。冒頭でまず先に `UserFactory` のテストを書いたのはこれが理由だ。
+つまりこのファクトリは `Post::factory()->create()` によるPostモデルだけでなく親となるUserモデルも同時に作成する。この動作は再帰的に行われるため、参照が連鎖している場合でも、1回の `Model::factory::create()`で、それが依存する全てのモデルを同時に作成できる。
+
+複雑な参照関係を持つ一連のモデルをテストの度に作成できるのは非常に便利だが、この動作は当然、親となるモデルのファクトリが問題なく動作していることが前提となる。冒頭でまず `UserFactory` のテストを書いたのはこれが理由だ。
 
 ### 余談: ファクトリ実装とTDD
 
@@ -210,18 +210,18 @@ ER図に基づいて「投稿者」「件名」「本文」「公開日」に相
 | Green | 成功するよう実装を修正 | 成功するようファクトリやモデルを修正 | 
 | Refactor | コード品質の向上 | テーブルやモデルの改善（型やカラム順） |
 
-本題の通り、このテストはメモリ内で高速に動作している。データベースを起動する必要すらない。マイグレーションのコードを間違えても、`migrate:rollback`など実行せずとも何度でもやり直せる。
+本題の通り、このテストはメモリ内で高速に動作している。データベースを起動する必要すらない。マイグレーションのコードを間違えても、`migrate:rollback`を実行せずとも何度でもやり直せる。
 
-大量のカラムやリレーションシップを必要とするマイグレーションやファクトリを、`migrate`コマンドを手で何度もしながら実装したことがあるかもしれないが、もうその必要はない。 **TDDに似た短いフィードバックループでデータベース設計を行える** わけだ。 phpunit-watcher などのテストランナーと併用するとなお良いだろう。
+大量のカラムやリレーションシップを必要とするマイグレーションやファクトリを、`migrate:rollback`コマンドを手で何度も実行しながら実装したことがあるかもしれない。この方法ならもうその必要はない。 **TDDに似た短いフィードバックループでデータベース設計を行える** わけだ。 phpunit-watcher などのテストランナーと併用するとなお良いだろう。
 
 {% linkPreview https://github.com/spatie/phpunit-watcher _blank %}
 
 ### Post BelongsTo User の実装
 
-閑話休題。Postモデルは実装できたがリレーションシップがまだ無いため `$post->user` でユーザーを参照することがまだ出来ない。同じようにTDDのサイクルでこれを実装しよう。
+閑話休題。Postモデルは実装したがリレーションシップが無いため `$post->user` でユーザーを参照することが出来ない。同じようにTDDのサイクルでこれを実装しよう。
 
 * *Red:* PostTestに次のテストを追加する。当然ながら失敗する。
-  ```php
+  ```php tests/Feature/Models/PostTest.php
   public function testBelongsToUser(): void
   {
     $post = Post::factory()->create();
@@ -230,7 +230,7 @@ ER図に基づいて「投稿者」「件名」「本文」「公開日」に相
   ```
 
 * *Green:* このテストをパスさせるPostモデルの実装は次のようになる。
-  ```php
+  ```php app/Models/Post.php
   public function user(): BelongsTo
   {
     return $this->belongsTo(User::class);
@@ -238,7 +238,7 @@ ER図に基づいて「投稿者」「件名」「本文」「公開日」に相
   ```
 
 * *Refactor:* 追加分の実装のアノテーションなど。例えばide-helperでは次のようになる。
-  ```diff
+  ```diff app/Models/Post.php
    /**
     * App\Models\Post
     *
@@ -290,7 +290,7 @@ ER図に基づいて「投稿者」「件名」「本文」「公開日」に相
 
 ### Post BelongsToMany Tag の実装
 
-`belongsToMany()` やそのピボットモデルの実装も、ここまで見てきたやり方とほぼ一緒だ。記事では割愛するが、サンプルコードでは順を追ったコミットとして実装の過程を記録してある。必要に応じて参考にして欲しい。
+`belongsToMany()` やそのピボットモデルの実装も、ここまで見てきたやり方とほぼ一緒だ。記事では割愛する。サンプルコードでは全て実装してあるので参考にして欲しい。
 
 ## データベース初期化コードのリファクタリング
 
@@ -333,7 +333,7 @@ trait InMemoryDatabaseForTesting
 
 この観点で責務を分割しモデルに閉じ込めれば、それらだけを小さくテストすることは出来そうだ。
 
-この考え方はテストピラミッドの維持にも繋がる。「artisanコマンドで起動されるバッチ処理の中で使われる複雑怪奇なクエリビルダ実装」をIn Memory Databaseでテストするのはおそらく難しい。だが、小さく分割されたローカルスコープであればそれは容易い。
+この考え方は、テストピラミッドの維持にも繋がる。「バッチ処理の中で使われる複雑怪奇なクエリビルダ実装」をIn Memory Databaseでテストするのはおそらく難しい。小さく分割されたローカルスコープであればそれは容易い。
 
 実例として今回は、作成したモデルに次のような機能を追加してみる。
 
@@ -417,11 +417,11 @@ trait InMemoryDatabaseForTesting
 
 先に実装した `Post::query()->whereIsPublished()` を後で実装する `User::query()->whereIsActive()` で再利用している点に注目してほしい。同じことは当然、UseCaseやControllerでも行える。
 
-このような小さな実装のチェーンにより、それぞれのローカルスコープ中で必要となるクエリは `where()` かせいぜい `whereHas()` で事足りるようにできるだろう。この程度の範囲のテストであればIn Memory Database で全く問題ない。アクセサやキャスタで同じアプローチを採ることもできる。
+このような小さな実装のチェーンにより、それぞれのローカルスコープでのクエリは `where()` かせいぜい `whereHas()` で事足りるようになるだろう。これなら In Memory Database で全く問題ない。アクセサやキャスタで同じアプローチを採ることもできる。
 
 {% linkPreview https://laravel.com/docs/10.x/eloquent-mutators _blank %}
 
-Eloquentモデルへのテストの時点で境界やカバレッジの網羅が十分に行われていれば、UseCaseやControllerのテストでは大きく正常系を確認する程度のテストでも信頼性はカバーできる。これは理想的なテストピラミッドとなるだろう。
+Eloquentモデルへのテストの時点で境界やカバレッジの網羅が十分に行われていれば、UseCaseやControllerのテストでは大きく正常系を確認する程度のテストでも信頼性はカバーできる。これが理想的なテストピラミッドだ。
 
 最後に。この方法に頼り切っては当然いけない。やろうと思えばUseCaseやControllerも全てIn Memory Databaseでカバーできるが、DB固有の挙動に精通した上でないと「本番固有の不具合」を出しかねない。マイグレーションでどうしても必要となってしまったDB固有DDLの迂回ハックに苦しむことにもなるかもしれない。
 
