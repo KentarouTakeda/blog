@@ -173,7 +173,7 @@ ER図に基づいて「投稿者」「件名」「本文」「公開日」に相
 * `NOT NULL` であるべきカラムに `NULL` を投入しようとしている。
   * `user_id` / `subject` / `content`
 * 外部キーの参照先に必要な値が存在しない。
-  * `posts.user_id REFERENCES user.id`
+  * `posts.user_id REFERENCES users.id`
 
 これらのエラーを解消しテストをパスさせてみよう。ファクトリに対し次のようなコード追加することになる。
 
