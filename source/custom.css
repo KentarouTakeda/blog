@@ -47,6 +47,9 @@ details.default[open] > summary {
 
 .link-preview {
         color: inherit;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        display: block;
 }
 
 .link-preview .link-area {
