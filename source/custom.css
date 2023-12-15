@@ -1,115 +1,107 @@
 body {
-	overflow-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .footer {
-        padding: 0;
-        color: #999999;
+  padding: 0;
+  color: #999999;
 }
 .footer p {
-        font-size: 10px;
+  font-size: 10px;
 }
 
 .content figure.highlight {
-	margin-top: 1em;
-	margin-bottom: 1em;
-	margin-left: 0;
-	margin-right: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .highlight pre {
-	font-family:
-        'Noto Sans Mono CJK JP',
-        'Source Han Code JP',
-        'Ricty Diminished',
-        'Ricty',
-        SFMono-Regular,
-        Consolas,
-        'Roboto Mono', 
-        'Courier New', 
-        Meiryo,
-        monospace;
+  font-family: "Noto Sans Mono CJK JP", "Source Han Code JP", "Ricty Diminished",
+    "Ricty", SFMono-Regular, Consolas, "Roboto Mono", "Courier New", Meiryo,
+    monospace;
 }
 
 details.default {
-        border: 1px solid #cccccc;
-        border-radius: 10px;
-        margin: 10px 0;
-        padding: 5px 10px
+  border: 1px solid #cccccc;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 5px 10px;
 }
 summary {
-        cursor: pointer;
-        line-height: 200%;
+  cursor: pointer;
+  line-height: 200%;
 }
 details.default[open] > summary {
-        margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .link-preview {
-        color: inherit;
-        margin-top: 1em;
-        margin-bottom: 1em;
-        display: block;
+  color: inherit;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: block;
 }
 
 .link-preview .link-area {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        color: inherit;
-        border: 1px solid grey;
-        border-radius: 10px;
-        color: inherit;
-        overflow: hidden; /* はみ出し防止 */
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid grey;
+  border-radius: 10px;
+  color: inherit;
+  overflow: hidden; /* はみ出し防止 */
 }
 
 .link-preview .og-image {
-        flex-shrink: 0;
-        align-items: center;
-        justify-content: center;
-        width: 220px;
-        height: 110px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 110px;
 }
-      
+
 .link-preview .og-image img {
-        width: 220px;
-        height: 110px;
+  width: 220px;
+  height: 110px;
 }
 
 .link-preview .og-title {
-        font-weight: bold;
+  font-weight: bold;
 }
 .link-preview .descriptions {
-        padding: 5px;
-        width: calc(100% - 220px);
+  padding: 5px;
+  width: calc(100% - 220px);
 }
-      
+
 .link-preview .og-description {
-        font-size: smaller;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+  font-size: smaller;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-      
+
 @media screen and (max-width: 520px) {
-        .link-preview .og-image {
-                width: 100px;
-                height: 100px;
-        }
+  .link-preview .og-image {
+    width: 100px;
+    height: 100px;
+  }
 
-        .link-preview .og-image img {
-                width: 100px;
-                height: 100px;
-                object-fit: cover;
-        }
+  .link-preview .og-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
 
-        .link-preview .descriptions {
-                width: calc(100% - 100px);
-        }
+  .link-preview .descriptions {
+    width: calc(100% - 100px);
+  }
 
-        .link-preview .og-title {
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-        }
+  .link-preview .og-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
