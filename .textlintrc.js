@@ -4,7 +4,7 @@ module.exports = {
       allow: ['/{% .+ %}/m'],
     },
     'node-types': {
-      nodeTypes: ['BlockQuote'],
+      nodeTypes: ['BlockQuote', 'CodeBlock'],
     },
   },
   rules: {
