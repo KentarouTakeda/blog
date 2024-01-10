@@ -7,9 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-      S3_BUCKET: ${{ secrets.S3_BUCKET }}
 
     steps:
       - uses: actions/checkout@v4
@@ -34,5 +31,5 @@ jobs:
       - run: test -d public/post
       - run: test -z "$(find public -empty)"
 
-      - run: npm run deploy
-      - run: npm run purge
+      - run: aws s3 sync public/ s3://${{ secrets.S3_BUCKET }} --delete --cache-control=public,max-age=300,s-maxage=31536000
+      - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
