@@ -13,8 +13,6 @@
     "purge": "dotenv cross-var 'aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths \"/*\"'"
   },
   "dependencies": {
-    "cross-var-src-patch": "^1.1.1",
-    "dotenv-cli": "^7.2.1",
     "hexo": "^7.0.0",
     "hexo-browsersync": "^0.3.0",
     "hexo-filter-plantuml": "^2.1.1",
