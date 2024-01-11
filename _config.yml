@@ -96,8 +96,12 @@ widgets:
 contact:
   - url: https://twitter.com/kentaroutakeda
     icon: twitter # font-awesome icon. e.x) fa-github
+    show: true
   - url: https://github.com/KentarouTakeda
     icon: github
+    show: true
+  - url: http://www.hatena.ne.jp/KentarouTakeda/
+    show: false
 
 avatar: https://secure.gravatar.com/avatar/da5f6aeb65f2675dd9ec5928baf22c56
 
