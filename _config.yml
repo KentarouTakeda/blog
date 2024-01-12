@@ -121,6 +121,8 @@ marked:
   lazyload: true
 
 reveal:
+  plugins:
+    - RevealHighlight
   config:
     hash: true
     transition: 'none'
