@@ -113,9 +113,31 @@ details.default[open] > summary {
   position: relative;
 }
 
-.hexo-reveal-embed iframe {
+.hexo-reveal-embed.wide {
+  left: 0;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.hexo-reveal-embed:not(.focus) {
+  cursor: pointer;
+}
+
+.hexo-reveal-embed:not(.focus)::after {
+  background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0) 3em);
+  color: white;
+  content: 'Click to focus, use left/right arrow keys to navigate slides.';
+  height: 100%;
+  padding: 0.5em 1em;
+  position: absolute;
+  top: 0;
   width: 100%;
+}
+
+.hexo-reveal-embed iframe {
   height: 100%;
   position: absolute;
   top: 0;
+  width: 100%;
 }

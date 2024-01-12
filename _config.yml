@@ -83,7 +83,7 @@ deploy:
 simple_japanese:
   custom_assets:
     css: custom.css
-    # js: js/custom.js
+    js: custom.js
 
 
 widgets:
@@ -125,4 +125,6 @@ reveal:
     - RevealHighlight
   config:
     hash: true
-    transition: 'none'
+    help: false
+    overview: false
+    transition: none
