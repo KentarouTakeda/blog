@@ -123,3 +123,4 @@ marked:
 reveal:
   config:
     hash: true
+    transition: 'none'
