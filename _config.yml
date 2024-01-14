@@ -121,6 +121,8 @@ marked:
   lazyload: true
 
 reveal:
+  default:
+    theme: white
   plugins:
     - RevealHighlight
   config:

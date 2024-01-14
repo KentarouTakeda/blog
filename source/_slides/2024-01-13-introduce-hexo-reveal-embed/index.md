@@ -1,6 +1,5 @@
 ---
 title: Hexo Reveal Embed
-theme: white
 ---
 
 ## Hexo Reveal Embed
