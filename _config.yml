@@ -127,8 +127,24 @@ reveal:
     theme: white
   plugins:
     - RevealHighlight
+    - url: https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/customcontrols/plugin.js
+      name: RevealCustomControls
+  js_urls:
+    - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js
+  css_urls:
+    - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css
+    - https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/customcontrols/style.css
+    - /hexo-reveal-embed.css
   config:
     hash: true
     help: false
     overview: false
     transition: none
+    customcontrols:
+      controls:
+        - title: '全画面表示'
+          icon: '<i class="fa fa-expand"></i>'
+          action: 'document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen()'
+        - title: 'ワイド表示'
+          icon: '<i class="fa-solid fa-arrows-left-right-to-line"></i>'
+          action: 'parent.setRevealToWideScreen()'
