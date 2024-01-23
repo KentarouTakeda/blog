@@ -92,7 +92,9 @@ HexoはMarkdown形式で記事を執筆する。
 
 困っていたところ、まさに今回のユースケース通りの `robots` タグが存在した。
 
-{% linkPreview "https://www.suzukikenichi.com/blog/google-introducing-index-tagifembedded/" %}
+{% link_preview "https://www.suzukikenichi.com/blog/google-introducing-index-tagifembedded/" %}
+*リンク先情報の取得に失敗しました*
+{% endlink_preview %}
 
 スライドページにはこれが設定されている。
 

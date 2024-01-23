@@ -31,14 +31,17 @@ Laravelのポテンシャルを十二分に引き出すための強力な武器�
 
 記事中では必要に応じたコードの断片しか掲載しないが、全体を見たい場合はこちらを参照してほしい。次のPull Requestに記事の構成と全く同じ順序でcommitを残している。
 
-{% linkPreview https://github.com/KentarouTakeda/example-eloquent-in-memory/pull/1/commits _blank %}
-
+{% link_preview https://github.com/KentarouTakeda/example-eloquent-in-memory/pull/1/commits target:_blank rel:external %}
+*リンク先情報の取得に失敗しました*
+{% endlink_preview %}
 
 ## In-Memory Databasesの選択的適用
 
 Laravel初期状態のphpunit.xmlには次のような記述がある。
 
-{% linkPreview https://github.com/laravel/laravel/blob/v10.2.10/phpunit.xml#L24-L25 _blank %}
+{% link_preview https://github.com/laravel/laravel/blob/v10.2.10/phpunit.xml#L24-L25 target:_blank rel:external %}
+*リンク先情報の取得に失敗しました*
+{% endlink_preview %}
 
 ```xhtml ./phpunit.xml
 <!-- <env name="DB_CONNECTION" value="sqlite"/> -->
@@ -192,7 +195,9 @@ ER図に基づいて「投稿者」「件名」「本文」「公開日」に相
 
 `user_id` の値に実際の値ではなく `UserFactory` を指定していることに注目して欲しい。
 
-{% linkPreview https://laravel.com/docs/10.x/eloquent-factories#defining-relationships-within-factories _blank %}
+{% link_preview https://laravel.com/docs/10.x/eloquent-factories#defining-relationships-within-factories target:_blank rel:external %}
+*リンク先情報の取得に失敗しました*
+{% endlink_preview %}
 
 ファクトリが実際の値ではなく別のファクトリを参照している場合、参照先のファクトリに基づき親のモデルも一緒に作成される。
 
@@ -214,7 +219,9 @@ ER図に基づいて「投稿者」「件名」「本文」「公開日」に相
 
 大量のカラムやリレーションシップを必要とするマイグレーションやファクトリを、`migrate:rollback`コマンドを手で何度も実行しながら実装したことがあるかもしれない。この方法ならもうその必要はない。 **TDDに似た短いフィードバックループでデータベース設計を行える** わけだ。 phpunit-watcher などのテストランナーと併用するとなお良いだろう。
 
-{% linkPreview https://github.com/spatie/phpunit-watcher _blank %}
+{% link_preview https://github.com/spatie/phpunit-watcher target:_blank rel:external %}
+*リンク先情報の取得に失敗しました*
+{% endlink_preview %}
 
 ### Post BelongsTo User の実装
 
@@ -254,7 +261,9 @@ ER図に基づいて「投稿者」「件名」「本文」「公開日」に相
     */
   ```
 
-{%linkPreview https://github.com/barryvdh/laravel-ide-helper _blank %}
+{% link_preview https://github.com/barryvdh/laravel-ide-helper target:_blank rel:external %}
+*リンク先情報の取得に失敗しました*
+{% endlink_preview %}
 
 ### User HasMany Post の実装
 
@@ -296,7 +305,9 @@ ER図に基づいて「投稿者」「件名」「本文」「公開日」に相
 
 冒頭でテスト開始時に動的にデータベースを切り替えるコードを紹介した、ここまでの時点で、そのコードが4つのテストクラスにコピー＆ペーストされている。標準で提供されている `RefreshDatabase` などのように、テストクラス内で `use` するだけでそれが使えるようにしてみよう。
 
-{% linkPreview https://github.com/laravel/framework/pull/42394 _blank %}
+{% link_preview https://github.com/laravel/framework/pull/42394 target:_blank rel:external %}
+*リンク先情報の取得に失敗しました*
+{% endlink_preview %}
 
 ```php
 // trait名がたとえば FooBarBazだった場合、
@@ -325,7 +336,9 @@ trait InMemoryDatabaseForTesting
 
 この回答に相当するアイディアを、以前 [PHPerKaigi2023の登壇](https://youtu.be/QHjRGPw34EI?si=MWb-1v1i1S5MG0eE) で話させて頂いたことがある。該当箇所を引用する。
 
-{% linkPreview https://speakerdeck.com/kentaroutakeda/laravelhenoyi-chang-naai-qing-matahasi-haru-he-nisitexin-pei-surunowozhi-meteeloquentwoai-suruyouninatutaka?slide=57 _blank %}
+{% link_preview https://speakerdeck.com/kentaroutakeda/laravelhenoyi-chang-naai-qing-matahasi-haru-he-nisitexin-pei-surunowozhi-meteeloquentwoai-suruyouninatutaka?slide=57 target:_blank rel:external %}
+*リンク先情報の取得に失敗しました*
+{% endlink_preview %}
 
 > ### Eloquentの機能で宣言的に実装するメリット
 > * 再利用可能性
@@ -419,7 +432,9 @@ trait InMemoryDatabaseForTesting
 
 このような小さな実装のチェーンにより、それぞれのローカルスコープでのクエリは `where()` かせいぜい `whereHas()` で事足りるようになるだろう。これなら In Memory Database で全く問題ない。アクセサやキャスタで同じアプローチを採ることもできる。
 
-{% linkPreview https://laravel.com/docs/10.x/eloquent-mutators _blank %}
+{% link_preview https://laravel.com/docs/10.x/eloquent-mutators target:_blank rel:external %}
+*リンク先情報の取得に失敗しました*
+{% endlink_preview %}
 
 Eloquentモデルへのテストの時点で境界やカバレッジの網羅が十分に行われていれば、UseCaseやControllerのテストでは大きく正常系を確認する程度のテストでも信頼性はカバーできる。これが理想的なテストピラミッドだ。
 
