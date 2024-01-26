@@ -148,7 +148,3 @@ reveal:
         - title: 'ワイド表示'
           icon: '<i class="fa-solid fa-arrows-left-right-to-line"></i>'
           action: 'parent.setRevealToWideScreen()'
-
-link_preview:
-  # https://github.com/h-sugawara/hexo-tag-ogp-link-preview/pull/23 がマージされたら不要となる
-  disguise_crawler: false
