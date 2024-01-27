@@ -17,12 +17,6 @@ body {
   margin-right: 0;
 }
 
-.highlight pre {
-  font-family: "Noto Sans Mono CJK JP", "Source Han Code JP", "Ricty Diminished",
-    "Ricty", SFMono-Regular, Consolas, "Roboto Mono", "Courier New", Meiryo,
-    monospace;
-}
-
 details.default {
   border: 1px solid #cccccc;
   border-radius: 10px;
