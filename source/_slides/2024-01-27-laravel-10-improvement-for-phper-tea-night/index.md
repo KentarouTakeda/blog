@@ -173,7 +173,7 @@ Route::put(...)
 ```php [3]
 // クラス指定のみ + パラメータ + 変数（複数）
 Route::put(...)
-  ->middleware(RequirePassword::class . ':' . $route . ',' + $seconds);
+  ->middleware(RequirePassword::class . ':' . $route . ',' . $seconds);
 ```
 
 *After:*
