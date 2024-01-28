@@ -122,6 +122,9 @@ marked:
   postAsset: true
   lazyload: true
 
+plantuml:
+  link: "inline"
+
 reveal:
   default:
     theme: white
