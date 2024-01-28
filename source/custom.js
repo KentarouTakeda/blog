@@ -56,6 +56,5 @@ document.addEventListener("DOMContentLoaded", () =>
       e.setAttribute("preserveAspectRatio", "")
       e.setAttribute("style", "")
       e.setAttribute("height", "")
-      e.setAttribute("width", "")
     })
 );
