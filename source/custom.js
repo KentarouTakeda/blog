@@ -48,3 +48,14 @@ function setRevealToWideScreen() {
   overlay.style.zIndex = 1;
   document.body.prepend(overlay);
 }
+
+document.addEventListener("DOMContentLoaded", () =>
+  document
+    .querySelectorAll("svg")
+    .forEach((e) => {
+      e.setAttribute("preserveAspectRatio", "")
+      e.setAttribute("style", "")
+      e.setAttribute("height", "")
+      e.setAttribute("width", "")
+    })
+);
