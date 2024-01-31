@@ -54,6 +54,7 @@ details.default[open] > summary {
 .link-preview .og-image img {
   width: 220px;
   height: 110px;
+  object-fit: cover;
 }
 
 .link-preview .og-title {
@@ -80,7 +81,6 @@ details.default[open] > summary {
   .link-preview .og-image img {
     width: 100px;
     height: 100px;
-    object-fit: cover;
   }
 
   .link-preview .descriptions {
