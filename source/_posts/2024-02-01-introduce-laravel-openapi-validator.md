@@ -76,11 +76,11 @@ simpleではなくeasyに寄せた多機能なライブラリとした。理由�
      * レスポンスバリデーションに失敗した場合、エラー情報をレスポンスに含めるか？  
        デフォルト: `APP_DEBUG` に従う
 
-   * `OPENAPI_VALIDATOR_REQUEST_ERROR_LOG_LEVEL`
+   * `OPENAPI_VALIDATOR_REQUEST_ERROR_LOG_LEVEL`:
      * リクエストバリデーション失敗のログレベル  
        デフォルト: `info`
 
-   * `OPENAPI_VALIDATOR_RESPONSE_ERROR_LOG_LEVEL`
+   * `OPENAPI_VALIDATOR_RESPONSE_ERROR_LOG_LEVEL`:
      * レスポンスバリデーション失敗のログレベル  
        デフォルト: `warning` 
 
