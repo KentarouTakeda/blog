@@ -17,12 +17,7 @@ module.exports = {
       },
       'ja-no-weak-phrase': false,
       'max-kanji-continuous-len': false,
-      "no-mix-dearu-desumasu": {
-        "preferInHeader": "",
-        "preferInBody": "である",
-        "preferInList": "である",
-        "strict": false
-      },
+      "no-mix-dearu-desumasu": false,
       'no-doubled-joshi': {
         allow: ['か', 'も', 'や', 'に'],
       },
