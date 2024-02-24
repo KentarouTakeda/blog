@@ -50,11 +50,9 @@ function setRevealToWideScreen() {
 }
 
 document.addEventListener("DOMContentLoaded", () =>
-  document
-    .querySelectorAll("svg")
-    .forEach((e) => {
-      e.setAttribute("preserveAspectRatio", "")
-      e.setAttribute("style", "")
-      e.setAttribute("height", "")
-    })
+  document.querySelectorAll("svg").forEach((e) => {
+    e.removeAttribute("preserveAspectRatio");
+    e.removeAttribute("style");
+    e.removeAttribute("height");
+  })
 );
