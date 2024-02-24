@@ -3,6 +3,7 @@ module.exports = {
     allowlist: {
       allow: ['/{% .+ %}/m'],
     },
+    "comments": true,
     'node-types': {
       nodeTypes: ['BlockQuote', 'CodeBlock'],
     },
