@@ -12,7 +12,7 @@ tags:
 
 Laravel用パッケージ **Laravel OpenAPI Validator** をバージョン1.0.0としpackagistへ公開した。
 
-{% link_preview https://github.com/KentarouTakeda/laravel-openapi-validator %}
+{% link_preview https://github.com/KentarouTakeda/laravel-openapi-validator rel:noopener %}
 Laravel OpenAPI Validator
 {% endlink_preview %}
 
@@ -104,7 +104,7 @@ Laravel OpenAPI Validatorには上に抜粋した以外にも多くの設定が�
 >
 > **何らかの疑いがあるのであれば、どのような場合でも速やかに停止させるべき。** 通常の場合、障害を抱えて中途半端に動いているプログラムよりも死んだプログラムのほうがダメージは少ない
 
-{% link_preview https://speakerdeck.com/twada/php-conference-2016?slide=52 %}
+{% link_preview https://speakerdeck.com/twada/php-conference-2016?slide=52 rel:noopener %}
 PHP7 で堅牢なコードを書く - 例外処理、表明プログラミング、契約による設計 
 {% endlink_preview %}
 
@@ -200,7 +200,7 @@ PHP7 で堅牢なコードを書く - 例外処理、表明プログラミング
 
 Laravel OpenAPI Validatorは元々、[PHPerKaigi 2024](https://phperkaigi.jp/2024/) のレギュラートーク資料に使うサンプルコードとして書き始めたものだった。
 
-{% link_preview https://fortee.jp/phperkaigi-2024/proposal/9e2e6c38-d078-4efa-99b4-83ebf9033b34 %}
+{% link_preview https://fortee.jp/phperkaigi-2024/proposal/9e2e6c38-d078-4efa-99b4-83ebf9033b34 rel:noopener %}
 Laravel OpenAPIによる "辛くない" スキーマ駆動開発
 {% endlink_preview %}
 

@@ -31,7 +31,7 @@ Laravelのポテンシャルを十二分に引き出すための強力な武器�
 
 記事中では必要に応じたコードの断片しか掲載しないが、全体を見たい場合はこちらを参照してほしい。次のPull Requestに記事の構成と全く同じ順序でcommitを残している。
 
-{% link_preview https://github.com/KentarouTakeda/example-eloquent-in-memory/pull/1/commits target:_blank rel:external %}
+{% link_preview https://github.com/KentarouTakeda/example-eloquent-in-memory/pull/1/commits rel:noopener %}
 *リンク先情報の取得に失敗しました*
 {% endlink_preview %}
 
@@ -39,7 +39,7 @@ Laravelのポテンシャルを十二分に引き出すための強力な武器�
 
 Laravel初期状態のphpunit.xmlには次のような記述がある。
 
-{% link_preview https://github.com/laravel/laravel/blob/v10.2.10/phpunit.xml#L24-L25 target:_blank rel:external %}
+{% link_preview https://github.com/laravel/laravel/blob/v10.2.10/phpunit.xml#L24-L25 rel:noopener %}
 *リンク先情報の取得に失敗しました*
 {% endlink_preview %}
 
@@ -195,7 +195,7 @@ ER図に基づいて「投稿者」「件名」「本文」「公開日」に相
 
 `user_id` の値に実際の値ではなく `UserFactory` を指定していることに注目して欲しい。
 
-{% link_preview https://laravel.com/docs/10.x/eloquent-factories#defining-relationships-within-factories target:_blank rel:external %}
+{% link_preview https://laravel.com/docs/10.x/eloquent-factories#defining-relationships-within-factories rel:noopener %}
 *リンク先情報の取得に失敗しました*
 {% endlink_preview %}
 
@@ -219,7 +219,7 @@ ER図に基づいて「投稿者」「件名」「本文」「公開日」に相
 
 大量のカラムやリレーションシップを必要とするマイグレーションやファクトリを、`migrate:rollback`コマンドを手で何度も実行しながら実装したことがあるかもしれない。この方法ならもうその必要はない。 **TDDに似た短いフィードバックループでデータベース設計を行える** わけだ。 phpunit-watcher などのテストランナーと併用するとなお良いだろう。
 
-{% link_preview https://github.com/spatie/phpunit-watcher target:_blank rel:external %}
+{% link_preview https://github.com/spatie/phpunit-watcher rel:noopener %}
 *リンク先情報の取得に失敗しました*
 {% endlink_preview %}
 
@@ -261,7 +261,7 @@ ER図に基づいて「投稿者」「件名」「本文」「公開日」に相
     */
   ```
 
-{% link_preview https://github.com/barryvdh/laravel-ide-helper target:_blank rel:external %}
+{% link_preview https://github.com/barryvdh/laravel-ide-helper rel:noopener %}
 *リンク先情報の取得に失敗しました*
 {% endlink_preview %}
 
@@ -305,7 +305,7 @@ ER図に基づいて「投稿者」「件名」「本文」「公開日」に相
 
 冒頭でテスト開始時に動的にデータベースを切り替えるコードを紹介した、ここまでの時点で、そのコードが4つのテストクラスにコピー＆ペーストされている。標準で提供されている `RefreshDatabase` などのように、テストクラス内で `use` するだけでそれが使えるようにしてみよう。
 
-{% link_preview https://github.com/laravel/framework/pull/42394 target:_blank rel:external %}
+{% link_preview https://github.com/laravel/framework/pull/42394 rel:noopener %}
 *リンク先情報の取得に失敗しました*
 {% endlink_preview %}
 
@@ -336,7 +336,7 @@ trait InMemoryDatabaseForTesting
 
 この回答に相当するアイディアを、以前 [PHPerKaigi2023の登壇](https://youtu.be/QHjRGPw34EI?si=MWb-1v1i1S5MG0eE) で話させて頂いたことがある。該当箇所を引用する。
 
-{% link_preview https://speakerdeck.com/kentaroutakeda/laravelhenoyi-chang-naai-qing-matahasi-haru-he-nisitexin-pei-surunowozhi-meteeloquentwoai-suruyouninatutaka?slide=57 target:_blank rel:external %}
+{% link_preview https://speakerdeck.com/kentaroutakeda/laravelhenoyi-chang-naai-qing-matahasi-haru-he-nisitexin-pei-surunowozhi-meteeloquentwoai-suruyouninatutaka?slide=57 rel:noopener %}
 *リンク先情報の取得に失敗しました*
 {% endlink_preview %}
 
@@ -432,7 +432,7 @@ trait InMemoryDatabaseForTesting
 
 このような小さな実装のチェーンにより、それぞれのローカルスコープでのクエリは `where()` かせいぜい `whereHas()` で事足りるようになるだろう。これなら In Memory Database で全く問題ない。アクセサやキャスタで同じアプローチを採ることもできる。
 
-{% link_preview https://laravel.com/docs/10.x/eloquent-mutators target:_blank rel:external %}
+{% link_preview https://laravel.com/docs/10.x/eloquent-mutators rel:noopener %}
 *リンク先情報の取得に失敗しました*
 {% endlink_preview %}
 

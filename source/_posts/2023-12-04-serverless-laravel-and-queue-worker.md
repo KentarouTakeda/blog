@@ -13,7 +13,7 @@ tags:
 
 3日目の記事は [@yoshiki_utakata](https://twitter.com/yoshiki_utakata) さんの [AWS CloudWatch Logs 向けに Laravel のログを JSON で出力する方法](https://www.utakata.work/entry/laravel/aws-cloudwatch-logs-json) でした。AWSを題材とした記事が2日続きます。偶然にも、この記事の中でもCloudWatch logsのJSON出力を利用した動作サンプルが登場しますので、前提技術を詳しく知りたい方は昨日の記事も是非ご覧ください。
 
-{% link_preview https://www.utakata.work/entry/laravel/aws-cloudwatch-logs-json target:_blank rel:external %}
+{% link_preview https://www.utakata.work/entry/laravel/aws-cloudwatch-logs-json rel:noopener %}
 *リンク先情報の取得に失敗しました*
 {% endlink_preview %}
 
