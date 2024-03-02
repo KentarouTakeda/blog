@@ -637,11 +637,11 @@ public function build(): Schema
     /* 省略 */
     Schema::string('status')->description('ステータス')
       // OpenAPIドキュメント上のenumをPHPのenumから自動生成
-      ->enum(...Arr::pluck(PhperStatusEnum::cases(), 'value'))
-      ->example(PhperStatusEnum::default())
+      ->enum(...Arr::pluck(PhperStatus::cases(), 'value'))
+      ->example(PhperStatus::default())
       ->description(
         implode(' / ', Arr::map(
-          PhperStatusEnum::cases(),
+          PhperStatus::cases(),
           fn ($status) => "{$status->value}:{$status->display()}"
         )),
       ),
