@@ -85,18 +85,6 @@ simple_japanese:
     css: custom.css
     js: custom.js
 
-contact:
-  - url: https://twitter.com/KentarouTakeda
-    icon: twitter # font-awesome icon. e.x) fa-github
-    label: Twitter
-    show: true
-  - url: https://github.com/KentarouTakeda
-    icon: github
-    label: GitHub
-    show: true
-  - url: http://www.hatena.ne.jp/KentarouTakeda/
-    show: false
-
 avatar: https://secure.gravatar.com/avatar/da5f6aeb65f2675dd9ec5928baf22c56
 
 google_analytics: UA-4087497-44
