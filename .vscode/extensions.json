@@ -1,6 +1,8 @@
 {
   "recommendations": [
     "editorconfig.editorconfig",
+    "j69.ejs-beautify",
+    "leonzalion.vscode-ejs",
     "streetsidesoftware.code-spell-checker"
   ]
 }
