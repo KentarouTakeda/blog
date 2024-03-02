@@ -8,11 +8,11 @@
       <div><strong><%=config.author %></strong></div>
       <div>
         <% for (var contact of config.contact.filter(v => v.show)) { %>
-          <span class="icon">
-            <a href="<%- url_for(contact.url) %>" aria-label="<%=contact.label %>" rel="author" target="_blank">
-              <i class="fa fa-<%=contact.icon %>"></i>
-            </a>
-          </span>
+        <span class="icon">
+          <a href="<%- url_for(contact.url) %>" aria-label="<%=contact.label %>" rel="author" target="_blank">
+            <i class="fa fa-<%=contact.icon %>"></i>
+          </a>
+        </span>
         <% } %>
       </div>
       <br>

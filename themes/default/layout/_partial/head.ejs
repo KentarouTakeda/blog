@@ -1,6 +1,7 @@
 <% var title = page.title %>
 <!DOCTYPE html>
 <html lang="<%- config.language %>">
+
 <head>
   <meta charset="utf-8">
   <title><% if (title){ %><%= title %> | <% } %><%= config.title %></title>
@@ -22,13 +23,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <%- css(`css/style.css?${Date.now()}`) %>
   <% if (config.simple_japanese.custom_assets.css) { %>
-    <%- css(`${config.simple_japanese.custom_assets.css}?${Date.now()}`) %>
+  <%- css(`${config.simple_japanese.custom_assets.css}?${Date.now()}`) %>
   <% } %>
   <%- partial('gen-structured-data') %>
   <% if (config.simple_japanese.custom_assets.js) { %>
-    <%- js(`${config.simple_japanese.custom_assets.js}?${Date.now()}`) %>
+  <%- js(`${config.simple_japanese.custom_assets.js}?${Date.now()}`) %>
   <% } %>
   <% for (var contact of config.contact) { %>
-    <link rel="author" href="<%- url_for(contact.url) %>" />
+  <link rel="author" href="<%- url_for(contact.url) %>" />
   <% } %>
 </head>
