@@ -1,7 +1,13 @@
 <%- partial('_partial/head') %>
 
 <body>
-  <%- partial('_partial/header') %>
+  <header class="navbar" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a href="<%- url_for() %>" class="navbar-item">
+        <%= config.title %>
+      </a>
+    </div>
+  </header>
   <div class="container">
     <div class="columns">
       <div class="main column is-8">
@@ -12,7 +18,16 @@
       </div>
     </div>
   </div>
-  <%- partial('_partial/footer') %>
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          <%= config.title %>
+          Copyright &copy; <% new Date().getFullYear() %> <%= config.author %>
+        </p>
+      </div>
+    </div>
+  </footer>
 </body>
 
 </html>
