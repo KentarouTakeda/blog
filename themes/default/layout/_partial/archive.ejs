@@ -1,7 +1,7 @@
 <div class="archive">
   <% switch (type) {
       case 'archive':
-        const title = page.year || __('widget.archives');
+        const title = page.year || 'アーカイブ';
   %>
   <h2 class="archive-title subtitle is-4"><%= title %></h2>
   <%
@@ -11,7 +11,7 @@
   <%
         break;
       case 'index': %>
-  <h2 class="archive-title subtitle is-4"><%= __('widget.recents') %></h2>
+  <h2 class="archive-title subtitle is-4">最近の記事</h2>
   <% } %>
   <% page.posts.each(post => { %>
   <article class="archive-item media">
@@ -34,8 +34,8 @@
 <% if (page.total > 1) { %>
 <nav class="pagination">
   <%- paginator({
-      prev_text: '< ' + __('nav.prev'),
-      next_text: __('nav.next') + ' >'
+      prev_text: '< 前',
+      next_text: '次 >'
     }) %>
 </nav>
 <% } %>

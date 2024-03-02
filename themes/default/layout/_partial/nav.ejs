@@ -3,7 +3,7 @@
   <% if (post.prev) { %>
   <div class="footer-nav__prev">
     <div class="footer-nav__label">
-      <%= __('nav.newer') %>
+      新しい記事
     </div>
     <a href="<%- url_for(post.prev.path) %>">
       <%= post.prev.title %>
@@ -13,7 +13,7 @@
   <% if (post.next){ %>
   <div class="footer-nav__next">
     <div class="footer-nav__label">
-      <%= __('nav.older') %>
+      古い記事
     </div>
     <a href="<%- url_for(post.next.path) %>">
       <%= post.next.title %>
