@@ -85,14 +85,6 @@ simple_japanese:
     css: custom.css
     js: custom.js
 
-
-widgets:
-  # - search
-  - profile
-  - recent_posts
-  # - tagcloud
-  # - archive
-
 contact:
   - url: https://twitter.com/KentarouTakeda
     icon: twitter # font-awesome icon. e.x) fa-github
