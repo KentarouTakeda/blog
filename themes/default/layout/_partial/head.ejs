@@ -3,7 +3,6 @@
   <title><% if (page.title){ %><%= page.title %> | <% } %><%= config.title %></title>
   <meta name="viewport" content="width=device-width">
   <meta name="robots" content="max-image-preview:large" />
-  <link rel="preload" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" type="font/woff2" crossorigin>
   <link rel="canonical" href="<%- page.permalink ?? url.replace(/\/index.html$/, '/') -%>">
   <%- open_graph({
     url: page.permalink ?? (url.replace(/\/index.html$/, '/')) ,
@@ -16,7 +15,6 @@
   <link rel="icon" href="/favicon.ico">
   <%- partial('google-analytics', { head: true }) %>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <%- css(`css/style.css?${Date.now()}`) %>
   <% if (config.simple_japanese.custom_assets.css) { %>
   <%- css(`${config.simple_japanese.custom_assets.css}?${Date.now()}`) %>
