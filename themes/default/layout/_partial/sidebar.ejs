@@ -34,12 +34,12 @@
             <%- partial('../_partial/thumbnail.ejs', { post: post, hasLink: true, type: "6x6" }) %>
           </figure>
           <div class="media-content">
-            <p class="">
-              <a href="<%- url_for((post.link ? post.link : post.path)) %>" class="">
+            <p>
+              <a href="<%- url_for((post.link ? post.link : post.path)) %>">
                 <%= post.title %>
               </a>
             </p>
-            <p class="">
+            <p>
               <small>
                 <%- partial('../_partial/date.ejs', { datetime: post.date }) %>
               </small>
