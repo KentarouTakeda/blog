@@ -72,7 +72,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: simple-japanese
+theme: default
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -84,26 +84,6 @@ simple_japanese:
   custom_assets:
     css: custom.css
     js: custom.js
-
-
-widgets:
-  # - search
-  - profile
-  - recent_posts
-  # - tagcloud
-  # - archive
-
-contact:
-  - url: https://twitter.com/KentarouTakeda
-    icon: twitter # font-awesome icon. e.x) fa-github
-    label: Twitter
-    show: true
-  - url: https://github.com/KentarouTakeda
-    icon: github
-    label: GitHub
-    show: true
-  - url: http://www.hatena.ne.jp/KentarouTakeda/
-    show: false
 
 avatar: https://secure.gravatar.com/avatar/da5f6aeb65f2675dd9ec5928baf22c56
 
