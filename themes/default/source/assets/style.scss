@@ -3,3 +3,45 @@
 @use "style/link-preview";
 @use "style/hexo-reveal-embed";
 @use "style/details";
+
+:root {
+  --color-background: #ecf5ff;
+  --color-main: #ffffffd1;
+  --color-primary: #052d49;
+  --color-surface: #ffffff;
+  --color-text-main: #000000d1;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-main);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", Meiryo, sans-serif, "Segoe UI Emoji";
+  font-size: 1rem;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+  scroll-behavior: smooth;
+  text-rendering: optimizelegibility;
+}
+
+.navbar {
+  background-color: var(--color-primary);
+  color: white;
+
+  a {
+    color: var(--color-main);
+  }
+}
+
+.content {
+  background-color: var(--color-surface);
+}
+
+.footer {
+  color: #666666;
+  padding: 0;
+
+  p {
+    font-size: 10px;
+  }
+}
