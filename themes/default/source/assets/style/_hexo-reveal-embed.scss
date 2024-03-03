@@ -1,0 +1,41 @@
+.hexo-reveal-embed {
+  height: 0;
+  padding-top: 56.25%;
+  position: relative;
+  width: 100%;
+
+  &.wide {
+    left: 0;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+  }
+
+  &:not(.focus) {
+    cursor: pointer;
+  }
+
+  &:not(.focus)::after {
+    background: linear-gradient(
+        to bottom,
+        rgb(0 0 0 / 70%),
+        rgb(0 0 0 / 0%) 5em
+      ),
+      linear-gradient(to top, rgb(0 0 0 / 70%), rgb(0 0 0 / 0%) 5em);
+    box-sizing: border-box;
+    color: white;
+    content: "スライドをクリックし左右キーまたはスワイプでページを切り替えます。";
+    height: 100%;
+    padding: 1.2em 1em;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  iframe {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
