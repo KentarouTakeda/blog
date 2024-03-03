@@ -5,11 +5,9 @@
 
 <body>
   <header class="navbar" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a href="<%- url_for() %>" class="navbar-item">
-        <%= config.title %>
-      </a>
-    </div>
+    <a href="<%- url_for() %>">
+      <%= config.title %>
+    </a>
   </header>
   <div class="container">
     <div class="columns">
@@ -22,14 +20,8 @@
     </div>
   </div>
   <footer class="footer">
-    <div class="container">
-      <div class="content has-text-centered">
-        <p>
-          <%= config.title %>
-          Copyright &copy; <% new Date().getFullYear() %> <%= config.author %>
-        </p>
-      </div>
-    </div>
+    <%= config.title %>
+    Copyright &copy; <% new Date().getFullYear() %> <%= config.author %>
   </footer>
 </body>
 
