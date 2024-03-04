@@ -11,12 +11,18 @@
   --color-primary: #052d49;
   --color-surface: #ffffff;
   --color-text-main: #000000d1;
+  --color-text-light: #00000033;
   --width-container: 1150px;
   --width-main: 770px;
 }
 
 * {
   box-sizing: border-box;
+}
+
+ul,
+ol {
+  padding-left: 1.2em;
 }
 
 body {
@@ -91,6 +97,13 @@ a {
 
 .content {
   line-height: 1.7;
+
+  blockquote {
+    border-left: 4px solid var(--color-text-light);
+    margin: 0;
+    opacity: 0.7;
+    padding-left: 0.5em;
+  }
 }
 
 @media (width <= 1150px) {
