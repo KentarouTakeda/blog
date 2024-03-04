@@ -11,6 +11,12 @@
   --color-primary: #052d49;
   --color-surface: #ffffff;
   --color-text-main: #000000d1;
+  --width-container: 1150px;
+  --width-main: 770px;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -36,15 +42,22 @@ a {
 .navbar {
   background-color: var(--color-primary);
   color: white;
+  margin-bottom: 20px;
   padding: 0.5rem;
 
   a {
     color: var(--color-main);
   }
-}
 
-.content {
-  background-color: var(--color-surface);
+  .navbar-container {
+    margin: 0 auto;
+    width: var(--width-container);
+
+    @media (width <= 1150px) {
+      max-width: var(--width-main);
+      width: 100%;
+    }
+  }
 }
 
 .footer {
@@ -52,4 +65,44 @@ a {
   font-size: 10px;
   padding: 0.5rem;
   text-align: center;
+}
+
+.card {
+  background-color: var(--color-surface);
+  border-radius: 5px;
+  margin-bottom: 12px;
+  padding: 12px 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: var(--width-container);
+}
+
+.main {
+  width: var(--width-main);
+}
+
+.sidebar {
+  width: 360px;
+}
+
+.content {
+  line-height: 1.7;
+}
+
+@media (width <= 1150px) {
+  .container {
+    flex-direction: column;
+    max-width: var(--width-main);
+    width: 100%;
+  }
+
+  .main,
+  .sidebar {
+    max-width: var(--width-main);
+    width: 100%;
+  }
 }
