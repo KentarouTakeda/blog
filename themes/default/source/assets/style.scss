@@ -144,6 +144,7 @@ address {
 }
 
 .sidebar-profile {
+  align-items: center;
   display: flex;
   gap: 12px;
 }
@@ -160,7 +161,7 @@ address {
   }
 
   p {
-    font-size: 80%;
+    font-size: 75%;
     margin: 0;
   }
 }
