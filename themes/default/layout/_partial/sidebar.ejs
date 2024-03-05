@@ -43,7 +43,11 @@
           <div>
             <p>
               <a href="<%- url_for((post.link ? post.link : post.path)) %>">
-                <%= post.title %>
+                <% if(post.subtitle) { %>
+                <%=post.title %> - <%=post.subtitle %>
+                <% } else { %>
+                <%=post.title %>
+                <% } %>
               </a>
             </p>
             <p>

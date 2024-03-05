@@ -1,5 +1,6 @@
 ---
-title: Laravelパッケージ「Laravel OpenAPI Validator」 - OpenAPIドキュメントによる透過的バリデーション
+title: Laravelパッケージ「Laravel OpenAPI Validator」
+subtitle: OpenAPIドキュメントによる透過的バリデーション
 description: Laravel OpenAPI Validatorの新規リリースを紹介。LaravelユーザーやAPI開発者へ向けパッケージの機能や背景となるAPI設計テクニックを提供。パッケージの導入方法、バリデーションの設定、そして設計思想に関する詳細な解説など。
 ogimage: ogimage.webp
 twitter_image: twitter_image.webp

@@ -1,5 +1,6 @@
 ---
-title: Serverless Laravel - Laravel Queue Workerの構築から学ぶBrefとAWS Lambda
+title: Serverless Laravel
+subtitle: Laravel Queue Workerの構築から学ぶBrefとAWS Lambda
 date: 2023-12-04 00:00
 ogimage: ogimage.png # TODO 過去の画像ファイル名 `eyecache` を適当なタイミングで削除
 tags:

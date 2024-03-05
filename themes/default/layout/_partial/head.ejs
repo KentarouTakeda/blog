@@ -1,6 +1,12 @@
+<%
+  const title = page.title ? (
+    page.subtitle ? (page.title + ' - ' + page.subtitle) : page.title
+  ) : config.title;
+%>
+
 <head>
   <meta charset="utf-8">
-  <title><% if (page.title){ %><%= page.title %> | <% } %><%= config.title %></title>
+  <title><%= title %></title>
   <meta name="viewport" content="width=device-width">
   <meta name="robots" content="max-image-preview:large" />
   <link rel="canonical" href="<%- page.permalink ?? url.replace(/\/index.html$/, '/') -%>">

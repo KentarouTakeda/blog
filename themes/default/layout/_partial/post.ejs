@@ -1,19 +1,7 @@
 <article>
-  <figure>
-    <%- partial('thumbnail', { post: post, hasLink: false, type: "" }) %>
-  </figure>
-  <span>
-    <%- partial('date', { datetime: post.date }) %>
-  </span>
-  <% if (post.edit) { %>
-  / <span>
-    <%- partial('date', { datetime: post.edit }) %>
-    <span>更新
-      <% } %>
-      <h1><%=post.title %></h1>
-      <%- partial('tag', { post: post }) %>
-      <div class="content">
-        <%- post.content %>
-      </div>
-      <%- partial('nav', { post: post }) %>
+  <%- partial('tag', { post: post }) %>
+  <div class="content">
+    <%- post.content %>
+  </div>
+  <%- partial('nav', { post: post }) %>
 </article>

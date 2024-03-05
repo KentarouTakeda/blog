@@ -4,6 +4,7 @@
 @use "style/hexo-reveal-embed";
 @use "style/details";
 @use "style/pagination";
+@use "style/post";
 
 :root {
   --color-background: #ecf5ff;
@@ -82,6 +83,7 @@ a {
 
 .container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 auto;
   width: var(--width-container);

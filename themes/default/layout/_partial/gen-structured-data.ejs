@@ -24,11 +24,12 @@
 
   if(is_post()) {
     // for post
+    const title = page.subtitle ? (page.title + ' - ' + page.subtitle) : page.title;
     structured = {
       "@context": "http://schema.org",
       "@type": "BlogPosting",
-      headline: page.title,
-      name: page.title,
+      headline: title,
+      name: title,
       image: page.thumbnail,
       datePublished: page.date,
       dateModified: page.updated,

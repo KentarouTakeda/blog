@@ -1,0 +1,23 @@
+.post-header {
+  height: 150px;
+  margin: 1em 0;
+  width: 100%;
+}
+
+.post-title {
+  border-bottom: 1px solid var(--color-text-light);
+
+  h1 {
+    font-size: 20px;
+    font-weight: inherit;
+    line-height: 1.5em;
+    text-align: center;
+  }
+}
+
+.post-date {
+  font-size: 12px;
+  line-height: 1.5em;
+  margin-block: 0.67em;
+  text-align: center;
+}

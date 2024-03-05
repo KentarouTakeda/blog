@@ -23,7 +23,11 @@
         <%- partial('_partial/date', { datetime: post.date }) %>
         <h3>
           <a href="<%- url_for((post.link ? post.link : post.path)) %>">
+            <% if(post.subtitle) { %>
+            <%=post.title %> - <%=post.subtitle %>
+            <% } else { %>
             <%=post.title %>
+            <% } %>
           </a>
         </h3>
       </div>

@@ -1,10 +1,15 @@
 <%
+  const title = page.title ? (
+    page.subtitle ? (page.title + ' - ' + page.subtitle) : page.title
+  ) : config.title;
+%>
+<%
 if (post.thumbnail) {
   if (hasLink) { %>
 <a href="<%- url_for(post.link ? post.link : post.path) %>">
-  <img src="<%=post.thumbnail %>" alt="<%=post.title %>">
+  <img src="<%=post.thumbnail %>" alt="<%=title %>">
 </a>
 <% } else { %>
-<img src="<%=post.thumbnail %>" alt="<%=post.title %>">
+<img src="<%=post.thumbnail %>" alt="<%=title %>">
 <% }
 } %>
