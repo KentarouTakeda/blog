@@ -50,7 +50,8 @@ function setRevealToWideScreen() {
 }
 
 document.addEventListener("DOMContentLoaded", () =>
-  document.querySelectorAll("svg").forEach((e) => {
+  // レイアウトに遣うインラインSVGと区別する属性としてaria-labelを利用
+  document.querySelectorAll("svg:not([aria-label])").forEach((e) => {
     e.removeAttribute("preserveAspectRatio");
     e.removeAttribute("style");
     e.removeAttribute("height");

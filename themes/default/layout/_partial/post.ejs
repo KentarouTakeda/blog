@@ -1,4 +1,4 @@
-<article>
+<article class="post">
   <% if (post.tags && post.tags.length){ %>
   <ul class="post-tag">
     <% post.tags.forEach(tag => { %>
@@ -10,6 +10,8 @@
   <div class="content">
     <%- post.content %>
   </div>
+
+  <hr>
 
   <% if (post.prev || post.next){ %>
   <nav class="post-next-prev">
@@ -25,4 +27,19 @@
     <% } %>
   </nav>
   <% } %>
+
+  <hr>
+
+  <div class="post-share">
+    <div>SNSへシェア</div>
+    <a href="https://b.hatena.ne.jp/entry?url=<%= encodeURIComponent(post.permalink) %>" title="このエントリーをはてなブックマークに追加">
+      <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="はてなブックマーク" width="20" height="20" style="border: none; vertical-align: middle;" />
+    </a>
+    <a href="https://twitter.com/share?url=<%= encodeURIComponent(post.permalink) %>" rel="nofollow" target="_blank">
+      <svg width="20" viewBox="0 0 300 271" aria-label="X(Twitter)" style="vertical-align: middle">
+        <path d="m236 0h46l-101 115 118 156h-92.6l-72.5-94.8-83 94.8h-46l107-123-113-148h94.9l65.5 86.6zm-16.1 244h25.5l-165-218h-27.4z"></path>
+      </svg>
+    </a>
+  </div>
+
 </article>
