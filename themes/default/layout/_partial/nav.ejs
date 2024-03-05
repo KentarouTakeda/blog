@@ -1,8 +1,8 @@
 <% if (post.prev || post.next){ %>
-<nav class="footer-nav">
+<nav>
   <% if (post.prev) { %>
-  <div class="footer-nav__prev">
-    <div class="footer-nav__label">
+  <div>
+    <div>
       新しい記事
     </div>
     <a href="<%- url_for(post.prev.path) %>">
@@ -11,8 +11,8 @@
   </div>
   <% } %>
   <% if (post.next){ %>
-  <div class="footer-nav__next">
-    <div class="footer-nav__label">
+  <div>
+    <div>
       古い記事
     </div>
     <a href="<%- url_for(post.next.path) %>">

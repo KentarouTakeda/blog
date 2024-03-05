@@ -1,7 +1,7 @@
 <% if (post.tags && post.tags.length){ %>
-<div class="tags">
+<div>
   <% post.tags.forEach(tag => { %>
-  <a class="tag" href="<%- url_for(tag.path) %>"><%= tag.name %></a>
+  <a href="<%- url_for(tag.path) %>"><%= tag.name %></a>
   <% }) %>
 </div>
 <% } %>

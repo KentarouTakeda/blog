@@ -1,27 +1,27 @@
-<div class="archive">
+<div>
   <% switch (type) {
       case 'archive':
         const title = page.year || 'アーカイブ';
   %>
-  <h2 class="archive-title subtitle is-4"><%= title %></h2>
+  <h2><%= title %></h2>
   <%
         break;
       case 'tag': %>
-  <h2 class="archive-title subtitle is-4"><%= page.tag %></h2>
+  <h2><%= page.tag %></h2>
   <%
         break;
       case 'index': %>
-  <h2 class="archive-title subtitle is-4">最近の記事</h2>
+  <h2>最近の記事</h2>
   <% } %>
   <% page.posts.each(post => { %>
-  <article class="archive-item media">
-    <figure class="archive-thumbnail media-left">
+  <article>
+    <figure>
       <%- partial('_partial/thumbnail', { post: post, hasLink: false, type: '10x6' }) %>
     </figure>
-    <div class="media-content">
+    <div>
       <div class="content">
         <%- partial('_partial/date', { datetime: post.date }) %>
-        <h3 class="archive-title title is-5">
+        <h3>
           <a href="<%- url_for((post.link ? post.link : post.path)) %>">
             <%=post.title %>
           </a>
