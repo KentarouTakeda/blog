@@ -1,3 +1,4 @@
+@use "style/variables";
 @use "node_modules/prismjs/themes/prism-okaidia.min.css";
 @use "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css";
 @use "style/link-preview";
@@ -13,8 +14,6 @@
   --color-surface: #ffffff;
   --color-text-main: #000000d1;
   --color-text-light: #00000033;
-  --width-container: 1150px;
-  --width-main: 770px;
 }
 
 * {
@@ -62,10 +61,10 @@ address {
 
   .navbar-container {
     margin: 0 auto;
-    width: var(--width-container);
+    width: variables.$WIDTH_CONTAINER;
 
-    @media (width <= 1150px) {
-      max-width: var(--width-main);
+    @media (max-width: variables.$WIDTH_CONTAINER) {
+      max-width: variables.$WIDTH_MAIN;
       width: 100%;
     }
   }
@@ -90,11 +89,11 @@ address {
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 auto;
-  width: var(--width-container);
+  width: variables.$WIDTH_CONTAINER;
 }
 
 .main {
-  width: var(--width-main);
+  width: variables.$WIDTH_MAIN;
 }
 
 .sidebar {
@@ -132,13 +131,13 @@ address {
 @media (width <= 1150px) {
   .container {
     flex-direction: column;
-    max-width: var(--width-main);
+    max-width: variables.$WIDTH_MAIN;
     width: 100%;
   }
 
   .main,
   .sidebar {
-    max-width: var(--width-main);
+    max-width: variables.$WIDTH_MAIN;
     width: 100%;
   }
 }
@@ -166,9 +165,12 @@ address {
   }
 }
 
+.sidebar-profile-sns-icon {
+  margin-left: 10px;
+}
+
 .sidebar-recent-posts {
   time {
-    font-size: 70%;
     opacity: 0.7;
   }
 
@@ -178,7 +180,39 @@ address {
   }
 
   li {
-    font-size: 85%;
-    margin-bottom: 0.5em;
+    font-size: 90%;
+    margin-bottom: 0.7em;
+  }
+
+  a {
+    display: block;
+  }
+}
+
+.article {
+  time {
+    font-size: 80%;
+    opacity: 0.7;
+  }
+
+  h3 {
+    font-size: 110%;
+    font-weight: inherit;
+    margin: 0.1em 0;
+  }
+
+  p {
+    font-size: 90%;
+    margin: 0.4em 0;
+    opacity: 0.7;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    list-style-type: none;
+    margin-bottom: 1em;
   }
 }

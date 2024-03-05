@@ -1,7 +1,13 @@
+@use "variables";
+
 .post-header {
   height: 150px;
   margin: 1em 0;
   width: 100%;
+
+  @media (max-width: variables.$WIDTH_MAIN) {
+    height: initial;
+  }
 }
 
 .post-title {
@@ -12,6 +18,14 @@
     font-weight: inherit;
     line-height: 1.5em;
     text-align: center;
+
+    @media (max-width: variables.$WIDTH_MAIN) {
+      font-size: 16px;
+    }
+
+    @media (max-width: variables.$WIDTH_MAIN) {
+      border-bottom: none;
+    }
   }
 }
 
