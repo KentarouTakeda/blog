@@ -1,19 +1,45 @@
 <article class="post">
-  <figure class="post-thumbnail">
-    <%- partial('thumbnail', { post: post, hasLink: false, type: "" }) %>
-  </figure>
-  <span>
-    <%- partial('date', { datetime: post.date }) %>
-  </span>
-  <% if (post.edit) { %>
-  / <span>
-    <%- partial('date', { datetime: post.edit }) %>
-    <span>更新
-      <% } %>
-      <h1 class="title"><%=post.title %></h1>
-      <%- partial('tag', { post: post }) %>
-      <div class="content">
-        <%- post.content %>
-      </div>
-      <%- partial('nav', { post: post }) %>
+  <% if (post.tags && post.tags.length){ %>
+  <ul class="post-tag">
+    <% post.tags.forEach(tag => { %>
+    <li><a href="<%- url_for(tag.path) %>"><%= tag.name %></a></li>
+    <% }) %>
+  </ul>
+  <% } %>
+
+  <div class="content">
+    <%- post.content %>
+  </div>
+
+  <hr>
+
+  <% if (post.prev || post.next){ %>
+  <nav class="post-next-prev">
+    <% if (post.prev) { %>
+    <a href="<%- url_for(post.prev.path) %>" class="post-prev">
+      <%= post.prev.title %>
+    </a>
+    <% } %>
+    <% if (post.next){ %>
+    <a href="<%- url_for(post.next.path) %>" class="post-next">
+      <%= post.next.title %>
+    </a>
+    <% } %>
+  </nav>
+  <% } %>
+
+  <hr>
+
+  <div class="post-share">
+    <div>SNSへシェア</div>
+    <a href="https://b.hatena.ne.jp/entry?url=<%= encodeURIComponent(post.permalink) %>" title="このエントリーをはてなブックマークに追加">
+      <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="はてなブックマーク" width="20" height="20" style="border: none; vertical-align: middle;" />
+    </a>
+    <a href="https://twitter.com/share?url=<%= encodeURIComponent(post.permalink) %>" rel="nofollow" target="_blank">
+      <svg width="20" viewBox="0 0 300 271" aria-label="X(Twitter)" style="vertical-align: middle">
+        <path d="m236 0h46l-101 115 118 156h-92.6l-72.5-94.8-83 94.8h-46l107-123-113-148h94.9l65.5 86.6zm-16.1 244h25.5l-165-218h-27.4z"></path>
+      </svg>
+    </a>
+  </div>
+
 </article>

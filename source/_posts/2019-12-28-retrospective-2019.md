@@ -1,5 +1,6 @@
 ---
-title: 2019年の振り返り PHPerKaigi, Laravel, Angularなど
+title: 2019年の振り返り
+subtitle: PHPerKaigi, Laravel, Angularなど
 date: 2019-12-28 21:00
 tags:
   - essay

@@ -50,5 +50,11 @@
  "[html]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "j69.ejs-beautify"
+  },
+  "css.validate": false,
+  "scss.validate": false,
+  "stylelint.validate": ["css", "scss"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": "always"
   }
 }

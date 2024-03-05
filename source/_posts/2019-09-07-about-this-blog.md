@@ -1,5 +1,6 @@
 ---
-title: このblogについて - 自分に宛てたメモ
+title: このblogについて
+subtitle: 自分に宛てたメモ
 date: 2019/09/07 15:00
 tags: 
   - essay

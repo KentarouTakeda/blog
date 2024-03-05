@@ -1,5 +1,6 @@
 ---
-title: Eloquent In Memory Testing - Eloquentモデルを速く小さく手軽にテストする
+title: Eloquent In Memory Testing
+subtitle: Eloquentモデルを速く小さく手軽にテストする
 date: 2023-12-15 00:00
 ogimage: ogimage.png
 tags:

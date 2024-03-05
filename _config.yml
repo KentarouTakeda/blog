@@ -8,6 +8,9 @@ subtitle:
 description: No hack, no life. は、Laravel、PHP、Node.js、AWS LambdaなどのWebアプリケーション技術を紹介するブログです。KentarouTakedaが実践的なプログラミングテクニック、技術情報、カンファレンスの感想やエッセイを提供します。Webアプリケーションエンジニアや技術愛好家のための実践的な知識とインスピレーションを発信し、技術力の向上をサポートします。
 keywords:
 author: KentarouTakeda
+author_title: |-
+  Webアプリケーションエンジニア
+  Laravel / Symfony / PHP / TypeScript / Next.js / NestJS / Angular / PostgreSQL
 language: ja
 timezone: Asia/Tokyo
 
@@ -37,11 +40,13 @@ render_drafts: false
 post_asset_folder: true
 relative_link: false
 future: true
-highlight:
-  enable: true
+
+syntax_highlighter: prismjs
+prismjs:
+  preprocess: true
   line_number: true
-  auto_detect: false
-  tab_replace:
+  line_threshold: 0
+  tab_replace: ''
   
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -57,12 +62,7 @@ default_category: uncategorized
 category_map:
 tag_map:
 
-# Date / Time format
-## Hexo uses Moment.js to parse and display date
-## You can customize the date format as defined in
-## http://momentjs.com/docs/#/displaying/format/
-date_format: YYYY-MM-DD
-time_format: HH:mm:ss
+time_format: HH:mm
 
 # Pagination
 ## Set per_page to 0 to disable pagination

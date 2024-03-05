@@ -1,36 +1,39 @@
-<div class="archive">
+<section class="article">
   <% switch (type) {
       case 'archive':
         const title = page.year || 'アーカイブ';
   %>
-  <h2 class="archive-title subtitle is-4"><%= title %></h2>
+  <h2><%= title %></h2>
   <%
         break;
       case 'tag': %>
-  <h2 class="archive-title subtitle is-4"><%= page.tag %></h2>
+  <h2><%= page.tag %></h2>
   <%
         break;
       case 'index': %>
-  <h2 class="archive-title subtitle is-4">最近の記事</h2>
+  <h2>最近の記事</h2>
   <% } %>
-  <% page.posts.each(post => { %>
-  <article class="archive-item media">
-    <figure class="archive-thumbnail media-left">
-      <%- partial('_partial/thumbnail', { post: post, hasLink: false, type: '10x6' }) %>
-    </figure>
-    <div class="media-content">
-      <div class="content">
-        <%- partial('_partial/date', { datetime: post.date }) %>
-        <h3 class="archive-title title is-5">
-          <a href="<%- url_for((post.link ? post.link : post.path)) %>">
+  <ul>
+    <% page.posts.each(post => { %>
+    <li>
+      <article>
+        <a href="<%- url_for((post.link ? post.link : post.path)) %>">
+          <time datetime="<%= post.date.toISOString() %>"><%- partial('_partial/date', { datetime: post.date }) %></time>
+
+          <h3>
+            <% if(post.subtitle) { %>
+            <%=post.title %> - <%=post.subtitle %>
+            <% } else { %>
             <%=post.title %>
-          </a>
-        </h3>
-      </div>
-    </div>
-  </article>
-  <% }) %>
-</div>
+            <% } %>
+          </h3>
+          <p><%- post.description || strip_html(post.content).substring(0, 150) + '...' %></p>
+        </a>
+      </article>
+    </li>
+    <% }) %>
+  </ul>
+</section>
 <% if (page.total > 1) { %>
 <nav class="pagination">
   <%- paginator({

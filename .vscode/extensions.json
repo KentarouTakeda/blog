@@ -3,6 +3,7 @@
     "editorconfig.editorconfig",
     "j69.ejs-beautify",
     "leonzalion.vscode-ejs",
-    "streetsidesoftware.code-spell-checker"
+    "streetsidesoftware.code-spell-checker",
+    "stylelint.vscode-stylelint"
   ]
 }
