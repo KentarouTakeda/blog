@@ -1,5 +1,11 @@
 <article>
-  <%- partial('tag', { post: post }) %>
+  <% if (post.tags && post.tags.length){ %>
+  <ul class="post-tag">
+    <% post.tags.forEach(tag => { %>
+    <li><a href="<%- url_for(tag.path) %>"><%= tag.name %></a></li>
+    <% }) %>
+  </ul>
+  <% } %>
   <div class="content">
     <%- post.content %>
   </div>
