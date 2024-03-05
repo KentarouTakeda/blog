@@ -29,6 +29,13 @@ iframe {
   border: none;
 }
 
+hr {
+  background-color: var(--color-text-light);
+  border: none;
+  height: 1px;
+  margin-bottom: 1em;
+}
+
 body {
   background-color: var(--color-background);
   color: var(--color-text-main);
@@ -225,5 +232,9 @@ address {
   li {
     list-style-type: none;
     margin-bottom: 1em;
+
+    a {
+      display: block;
+    }
   }
 }

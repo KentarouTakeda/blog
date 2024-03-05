@@ -7,12 +7,14 @@
 
   @media (max-width: variables.$WIDTH_MAIN) {
     height: initial;
+
+    hr {
+      width: calc(100% - 40px);
+    }
   }
 }
 
 .post-title {
-  border-bottom: 1px solid var(--color-text-light);
-
   h1 {
     font-size: 20px;
     font-weight: inherit;
@@ -20,11 +22,8 @@
     text-align: center;
 
     @media (max-width: variables.$WIDTH_MAIN) {
-      font-size: 16px;
-    }
-
-    @media (max-width: variables.$WIDTH_MAIN) {
       border-bottom: none;
+      font-size: 16px;
     }
   }
 }
@@ -85,13 +84,6 @@
         content: ">";
       }
     }
-  }
-
-  hr {
-    background-color: var(--color-text-light);
-    border: none;
-    height: 1px;
-    margin-bottom: 1em;
   }
 
   .post-share {
