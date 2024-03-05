@@ -27,35 +27,22 @@
   </div>
 
   <% if (site.posts.length) { %>
-  <div class="card">
+  <div class="card sidebar-recent-posts">
     <div>最近の記事</div>
-    <div>
-      <ul>
-        <% site.posts.sort('date', -1).limit(5).each(post => { %>
-        <li>
-          <figure>
-            <%- partial('../_partial/thumbnail.ejs', { post: post, hasLink: true, type: "6x6" }) %>
-          </figure>
-          <div>
-            <p>
-              <a href="<%- url_for((post.link ? post.link : post.path)) %>">
-                <% if(post.subtitle) { %>
-                <%=post.title %> - <%=post.subtitle %>
-                <% } else { %>
-                <%=post.title %>
-                <% } %>
-              </a>
-            </p>
-            <p>
-              <small>
-                <%- partial('../_partial/date.ejs', { datetime: post.date }) %>
-              </small>
-            </p>
-          </div>
-        </li>
-        <% }) %>
-      </ul>
-    </div>
+    <ul>
+      <% site.posts.sort('date', -1).limit(10).each(post => { %>
+      <li>
+        <a href="<%- url_for((post.link ? post.link : post.path)) %>">
+          <time><%= date(post.date, 'YYYY-MM-DD') %></time>
+          <% if(post.subtitle) { %>
+          <%=post.title %> - <%=post.subtitle %>
+          <% } else { %>
+          <%=post.title %>
+          <% } %>
+        </a>
+      </li>
+      <% }) %>
+    </ul>
   </div>
   <% } %>
 
