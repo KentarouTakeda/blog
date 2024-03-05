@@ -11,14 +11,7 @@
       </a>
     </div>
   </header>
-  <div class="container">
-    <div class="main card">
-      <%- body %>
-    </div>
-    <div class="sidebar">
-      <%- partial('_partial/sidebar') %>
-    </div>
-  </div>
+  <%- body %>
   <footer class="footer">
     <%= config.title %>
     Copyright &copy; <% new Date().getFullYear() %> <%= config.author %>
