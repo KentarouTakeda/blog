@@ -46,6 +46,10 @@ a {
   text-decoration: inherit;
 }
 
+address {
+  font-style: inherit;
+}
+
 .navbar {
   background-color: var(--color-primary);
   color: white;
@@ -136,5 +140,27 @@ a {
   .sidebar {
     max-width: var(--width-main);
     width: 100%;
+  }
+}
+
+.sidebar-profile {
+  display: flex;
+  gap: 12px;
+}
+
+.sidebar-profile-picture {
+  img {
+    vertical-align: middle;
+  }
+}
+
+.sidebar-profile-text {
+  address {
+    margin-bottom: 0.3em;
+  }
+
+  p {
+    font-size: 80%;
+    margin: 0;
   }
 }
