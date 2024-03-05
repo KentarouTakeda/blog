@@ -54,3 +54,33 @@
   margin-block: 0.67em;
   text-align: center;
 }
+
+.post-next-prev {
+  display: flex;
+  gap: 1em;
+  justify-content: space-between;
+
+  .post-prev,
+  .post-next {
+    border: 1px solid var(--color-text-light);
+    border-radius: 4px;
+    flex: 1;
+    overflow: hidden;
+    padding: 8px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .post-prev {
+    &::before {
+      content: "<";
+    }
+  }
+
+  .post-next {
+    &::after {
+      content: ">";
+    }
+  }
+}

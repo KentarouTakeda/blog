@@ -6,8 +6,23 @@
     <% }) %>
   </ul>
   <% } %>
+
   <div class="content">
     <%- post.content %>
   </div>
-  <%- partial('nav', { post: post }) %>
+
+  <% if (post.prev || post.next){ %>
+  <nav class="post-next-prev">
+    <% if (post.prev) { %>
+    <a href="<%- url_for(post.prev.path) %>" class="post-prev">
+      <%= post.prev.title %>
+    </a>
+    <% } %>
+    <% if (post.next){ %>
+    <a href="<%- url_for(post.next.path) %>" class="post-next">
+      <%= post.next.title %>
+    </a>
+    <% } %>
+  </nav>
+  <% } %>
 </article>
