@@ -7,10 +7,7 @@
 
   @media (max-width: variables.$WIDTH_MAIN) {
     height: initial;
-
-    hr {
-      width: calc(100% - 40px);
-    }
+    padding: 0 20px;
   }
 }
 
