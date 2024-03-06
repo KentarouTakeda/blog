@@ -82,7 +82,7 @@ document.addEventListener("click", ({ target }) => {
   }
 
   const image = target.cloneNode();
-  image.classList.add("dimmer");
+  image.classList.add("popup");
   dimmer.appendChild(image);
   document.body.appendChild(dimmer);
 
