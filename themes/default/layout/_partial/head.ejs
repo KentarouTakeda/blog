@@ -22,7 +22,7 @@
   <%- partial('google-analytics', { head: true }) %>
   <%- css(`assets/style.css?${Date.now()}`) %>
   <%- partial('gen-structured-data') %>
-  <%- js({src:`${config.simple_japanese.custom_assets.js}?${Date.now()}`, async: true, defer: true}) %>
+  <%- js({src:`assets/script.js?${Date.now()}`, async: true, defer: true}) %>
 
   <link rel="author" href="http://www.hatena.ne.jp/KentarouTakeda/" />
   <link rel="author" href="https://twitter.com/KentarouTakeda" />
