@@ -33,6 +33,10 @@
 }
 
 .post {
+  img {
+    cursor: pointer;
+  }
+
   .post-tag {
     display: flex;
     gap: 12px;

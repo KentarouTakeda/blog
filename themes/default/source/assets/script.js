@@ -66,7 +66,31 @@ document.addEventListener("click", async ({ target }) => {
   await navigator.clipboard.writeText(text);
 
   target.classList.add("done");
-  setTimeout(()=>target.classList.remove("done"), 1000);
+});
+
+document.addEventListener("click", ({ target }) => {
+  if (!(target instanceof HTMLElement) || !target.matches(".post img") || target.closest('a')) {
+    return;
+  }
+
+  const dimmer =
+    document.querySelector("#dimmer") || document.createElement("div");
+  dimmer.id = "dimmer";
+  while (dimmer.firstChild) {
+    dimmer.removeChild(dimmer.firstChild);
+  }
+
+  const image = target.cloneNode();
+  image.classList.add("dimmer");
+  dimmer.appendChild(image);
+  document.body.appendChild(dimmer);
+
+  dimmer.addEventListener("click", ({ target }) => {
+    if (target !== dimmer) {
+      return;
+    }
+    dimmer.remove();
+  });
 });
 
 {
