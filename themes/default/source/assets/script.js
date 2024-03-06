@@ -66,6 +66,7 @@ document.addEventListener("click", async ({ target }) => {
   await navigator.clipboard.writeText(text);
 
   target.classList.add("done");
+  setTimeout(() => target.classList.remove("done"), 1000);
 });
 
 document.addEventListener("click", ({ target }) => {
