@@ -238,3 +238,22 @@ address {
     }
   }
 }
+
+a.copy-to-clipboard {
+  background-color: var(--color-primary);
+  color: white;
+  cursor: pointer;
+  display: block;
+  padding: 0.4em;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  &::after {
+    content: "Clipboard";
+  }
+
+  &.done::after {
+    content: "Copied!";
+  }
+}

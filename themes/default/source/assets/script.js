@@ -49,6 +49,26 @@ function setRevealToWideScreen() {
   document.body.prepend(overlay);
 }
 
+document.addEventListener("click", async ({ target }) => {
+  if (!(target instanceof HTMLElement)) {
+    return;
+  }
+  const parent = target.parentElement;
+  if (parent == null || !parent.matches("pre[data-language]")) {
+    return;
+  }
+  const code = parent.querySelector('code[class*="language-"]');
+  if (code == null) {
+    return;
+  }
+
+  const text = code.innerText;
+  await navigator.clipboard.writeText(text);
+
+  target.classList.add("done");
+  setTimeout(()=>target.classList.remove("done"), 1000);
+});
+
 {
   const main = () => {
     // レイアウトに遣うインラインSVGと区別する属性としてaria-labelを利用
@@ -57,12 +77,17 @@ function setRevealToWideScreen() {
       e.removeAttribute("style");
       e.removeAttribute("height");
     });
+
+    document.querySelectorAll("pre[data-language]").forEach((e) => {
+      const button = document.createElement("a");
+      button.classList.add("copy-to-clipboard");
+      e.appendChild(button);
+    });
   };
 
-  if (document.readyState === 'loading') {
+  if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => main());
   } else {
     main();
   }
 }
-
