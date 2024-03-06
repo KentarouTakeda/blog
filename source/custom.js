@@ -49,11 +49,20 @@ function setRevealToWideScreen() {
   document.body.prepend(overlay);
 }
 
-document.addEventListener("DOMContentLoaded", () =>
-  // レイアウトに遣うインラインSVGと区別する属性としてaria-labelを利用
-  document.querySelectorAll("svg:not([aria-label])").forEach((e) => {
-    e.removeAttribute("preserveAspectRatio");
-    e.removeAttribute("style");
-    e.removeAttribute("height");
-  })
-);
+{
+  const main = () => {
+    // レイアウトに遣うインラインSVGと区別する属性としてaria-labelを利用
+    document.querySelectorAll("svg:not([aria-label])").forEach((e) => {
+      e.removeAttribute("preserveAspectRatio");
+      e.removeAttribute("style");
+      e.removeAttribute("height");
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener("DOMContentLoaded", () => main());
+  } else {
+    main();
+  }
+}
+
