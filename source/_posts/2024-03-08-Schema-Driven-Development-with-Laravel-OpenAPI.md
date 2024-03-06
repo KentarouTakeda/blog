@@ -245,7 +245,7 @@ public function show(Item $item)
 
 <div class="content-flex">
 
-![](ファイル名・日付.png)
+![](files-date.png "日付をファイル名に含む複数の仕様書が存在する")
 
 * 履歴を管理できない形式
 * バックアップによる運用
@@ -254,7 +254,7 @@ public function show(Item $item)
 
 <div class="content-flex">
 
-![](ファイル名・ブランチ名.png)
+![](files-branch.png "ブランチ名をファイル名に含む複数の仕様書が存在する")
 
 * ブランチ毎に並列管理
 * マージを行えない形式
@@ -379,9 +379,9 @@ PhperComponent -u-> 仕様書
 
 <div class="content-flex">
 
-![](すばやく実装するための戦略とテクニック-表紙.png)
+![](すばやく実装するための戦略とテクニック-表紙.png "すばやく実装するための戦略とテクニック 表紙")
 
-![](すばやく実装するための戦略とテクニック-目次.png)
+![](すばやく実装するための戦略とテクニック-目次.png "すばやく実装するための戦略とテクニック 目次")
 
 </div>
 
@@ -542,10 +542,10 @@ OpenAPIドキュメント -u-> 間違えにくい道具
 <div class="content-flex">
 
 [Swagger Editor](https://editor.swagger.io/)
-![](Stoplight-Studio.png)
+![](Swagger-Editor.png "Swagger Editor スクリーンショット")
 
 [Stoplight Studio](https://stoplight.io/solutions) / [紹介記事](https://zenn.dev/mizu4ma/articles/07ad3aa05a785d)
-![](Swagger-Editor.png)
+![](Stoplight-Studio.png "Stoplight Studio スクリーンショット")
 
 </div>
 
@@ -726,10 +726,10 @@ public static function
 <div class="content-flex">
 
   [GitHub REST APIのOpenAPIドキュメント](https://github.com/github/rest-api-description)から
-  ![](OpenAPIドキュメント-GitHub.png)
+  ![](OpenAPIドキュメント-GitHub.png "GitHubリポジトリ github/rest-api-description")
 
   RedoclyでAPI仕様書を自動生成。
-  ![](Redocly-GitHub.png)
+  ![](Redocly-GitHub.png "GitHub REST API OpenAPIをRedoclyで仕様書に変換")
 
 </div>
 
@@ -739,7 +739,7 @@ OpenAPIドキュメントから生成されたAPI仕様書が一般公開され�
 
 <div class="content-flex">
 
-![](Redocly-GMOPG.png)
+![](Redocly-GMOPG.png "PGマルチペイメントサービス OpenAPIタイプ 仕様書")
 
 * [PGマルチペイメントサービス OpenAPIタイプ](https://static.mul-pay.jp/doc/openapi-type/)
 * API仕様書から元のOpenAPIドキュメントを取り出せる。
@@ -752,9 +752,9 @@ OpenAPIドキュメントから生成されたAPI仕様書が一般公開され�
 
 <div class="content-flex">
 
-![](Swagger-UI-ATF.png)
+![](Swagger-UI-ATF.png "Swagger UI オペレーションIDの一覧表示")
 
-![](Swagger-UI-テストリクエスト.png)
+![](Swagger-UI-テストリクエスト.png "Swagger UIからのテストリクエスト送信")
 
 </div>
 
@@ -862,7 +862,7 @@ class PhperApi
 
 <div class="content-flex">
 
-![](OpenAPI-Generator-クライアント生成可能言語.png)
+![](OpenAPI-Generator-クライアント生成可能言語.png "Swagger Generator クライアント生成言語一覧")
 
 * プログラム言語  
   PHP, TypeScript, JavaScript, Ruby, Go, Java, Objective-C, Kotlin, etc.
@@ -1109,7 +1109,7 @@ $properties = [
 ];
 ```
 
-![](VSCodeでの非推奨表示.png)
+![](VSCodeでの非推奨表示.png "DocBlock中の@deprecatedがエディタのUIで打消線表示されている")
 
 * OpenAPIドキュメントに deprecatedタグを付与することで、
 * クライアントライブラリのDocBlockそれが付与され、
