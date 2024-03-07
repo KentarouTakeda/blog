@@ -135,39 +135,6 @@ address {
   width: 360px;
 }
 
-.content {
-  line-height: 1.7;
-
-  img,
-  svg {
-    max-width: 100%;
-  }
-
-  blockquote {
-    border-left: 4px solid var(--color-text-light);
-    margin: 0;
-    opacity: 0.7;
-    padding-left: 0.5em;
-  }
-
-  table {
-    border-collapse: separate;
-    border-spacing: 0;
-    width: 100%;
-  }
-
-  th {
-    border-bottom: 1px solid var(--color-text-light);
-    font-weight: bolder;
-    padding: 0.5em;
-  }
-
-  td {
-    border-top: 1px solid var(--color-text-light);
-    padding: 0.5em;
-  }
-}
-
 @media (width <= 1150px) {
   .container {
     flex-direction: column;
