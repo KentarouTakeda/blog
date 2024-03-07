@@ -32,29 +32,34 @@
   text-align: center;
 }
 
+.post-tag {
+  display: flex;
+  gap: 12px;
+  list-style-type: none;
+  padding: 0;
+
+  li {
+    display: inline-block;
+
+    a.post-tag-anchor {
+      border: 1px solid var(--color-text-light);
+      border-radius: 4px;
+      color: inherit;
+      display: block;
+      font-size: 70%;
+      padding: 0.3em;
+    }
+  }
+}
+
 .post {
-  img {
-    cursor: pointer;
+  a {
+    opacity: 0.7;
+    text-decoration: underline;
   }
 
-  .post-tag {
-    display: flex;
-    gap: 12px;
-    list-style-type: none;
-    padding: 0;
-
-    li {
-      display: inline-block;
-
-      a {
-        border: 1px solid var(--color-text-light);
-        border-radius: 4px;
-        color: inherit;
-        display: block;
-        font-size: 70%;
-        padding: 0.3em;
-      }
-    }
+  img {
+    cursor: pointer;
   }
 
   code:not([class*="language-"]) {
@@ -62,41 +67,43 @@
     font-family: monospace;
     opacity: 0.8;
   }
+}
 
-  .post-next-prev {
-    display: flex;
-    gap: 1em;
-    justify-content: space-between;
-    margin-bottom: 1em;
+.post-next-prev {
+  display: flex;
+  gap: 1em;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  width: 100%;
 
-    .post-prev,
-    .post-next {
-      border: 1px solid var(--color-text-light);
-      border-radius: 4px;
-      flex: 1;
-      overflow: hidden;
-      padding: 8px;
-      text-align: center;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+  .post-prev,
+  .post-next {
+    border: 1px solid var(--color-text-light);
+    border-radius: 4px;
+    flex: 1;
+    overflow: hidden;
+    padding: 8px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
-    .post-prev {
-      &::before {
-        content: "<";
-      }
-    }
-
-    .post-next {
-      &::after {
-        content: ">";
-      }
+  .post-prev {
+    &::before {
+      content: "<";
     }
   }
 
-  .post-share {
-    align-items: center;
-    display: flex;
-    gap: 12px;
+  .post-next {
+    &::after {
+      content: ">";
+    }
   }
+}
+
+.post-share {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 1em;
 }
