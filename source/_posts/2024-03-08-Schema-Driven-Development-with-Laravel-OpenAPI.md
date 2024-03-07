@@ -90,8 +90,8 @@ PHPerKaigi 2024 レギュラートーク資料です。
 
 #### LaravelやSymfonyでAPI開発を行うようになった
 
-* 異なる言語で同じ意味のコードを2度書くストレス。
 * フロントエンド同等の型安全性を得られない。
+* 異なる言語で同じ意味のコードを2度書くストレス。
 
 #### 登壇のモチベーション
 
@@ -125,7 +125,6 @@ PHPerKaigi 2024 レギュラートーク資料です。
   * 表現の難しい複雑なオブジェクト
 
 </div>
-
 
 ---
 
@@ -193,7 +192,7 @@ axios.post("/api/phpers", {
 
 * 言語もコードベースも異なるため、再利用が効かない。
 * 手作業には常に、ミスのリスクが付きまとう。
-* 再利用を行えない意味の薄い単純作業に割かれる多くの時間。
+* <u>再利用を行えない意味の薄い単純作業に割かれる多くの時間。</u>
 
 ---
 
@@ -246,25 +245,30 @@ public function show(Item $item)
 
 <div class="post-flex">
 
+<div>
+
 ![](files-date.png "日付をファイル名に含む複数の仕様書が存在する")
 
 * 履歴を管理できない形式
 * バックアップによる運用
-
 </div>
 
-<div class="post-flex">
+<div>
 
 ![](files-branch.png "ブランチ名をファイル名に含む複数の仕様書が存在する")
 
 * ブランチ毎に並列管理
-* マージを行えない形式
-
+* マージを行えない形式  
+</div>
 </div>
 
 ---
 
 #### 隠蔽されない知識
+
+<div class="post-flex">
+
+<div>
 
 ##### API仕様書に準拠した実装
 
@@ -272,13 +276,17 @@ public function show(Item $item)
 // GET /api/phpers/{id}
 
 const phper = await axios
-  .get('/api/phpers/' + id );
+  .get('/api/phpers/' + id);
 ```
 
 * 目的: IDを指定しPHPer情報を取得する。
 * 手段: 指定された書式で **URLを組み立て** そこに **GETリクエスト** を送る。
 
 **ネットワークの知識がフロントに漏れ出している。**
+
+</div>
+
+<div>
 
 ##### 抽象化された実装
 
@@ -293,6 +301,10 @@ const phper = await phperApi
 * 手段: IDを指定しPHPer情報を取得する。
 
 **適切な隠蔽が目的と手段を一致させる。**
+
+</div>
+
+</div>
 
 ---
 
@@ -453,10 +465,10 @@ PhperComponent -u-> 仕様
 ```
 
 安定したインターフェース記述言語へ依存することで、  
-**秩序を強制し、品質を向上させる、開発手法**
+**秩序を<u>強制</u>し、品質を向上させる、開発手法**
 
-* **強制**が、メリットでありデメリット。
-* **強制**のコントロールが、開発の成否を決める。
+* <u>**強制**</u>が、メリットでありデメリット。
+* <u>**強制**</u>のコントロールが、開発の成否を決める。
 
 ---
 
@@ -534,9 +546,7 @@ OpenAPIドキュメント -u-> 間違えにくい道具
 
 ### スピードと品質との両立
 
-#### OpenAPIドキュメントを書く
-
-##### ツールで書く
+#### OpenAPIドキュメントを書く: ツールで書く
 
 メリット:導入が容易 / デメリット:コード管理・CI
 
@@ -550,12 +560,9 @@ OpenAPIドキュメント -u-> 間違えにくい道具
 
 </div>
 
-
-
-
 ---
 
-##### 直接書く
+#### OpenAPIドキュメントを書く: 直接書く
 
 メリット:自由度が高い / デメリット:管理と運用が煩雑
 
@@ -563,20 +570,22 @@ OpenAPIドキュメント -u-> 間違えにくい道具
 * ツールでは対応の難しい複雑なドキュメントを書くケース
 * OpenAPIドキュメント単体を一般公開するケース
 
-##### サーバサイドに書く
+---
+
+#### OpenAPIドキュメントを書く: サーバサイドに書く
 
 * メリット
   * API仕様はサーバサイドの担当者が書くことが多い
   * URL（ルーティング）はサーバサイドに実装される
   * 型（バリデーション）はサーバサイドに実装される
-  * 仕様と実装とを一致させやすい
+  * <u>仕様と実装とを一致させやすい</u>
 * 対応ツール
   * [L5 Swagger](https://github.com/DarkaOnLine/L5-Swagger) / [Swagger-PHP](https://zircote.github.io/swagger-php/)
   * [Laravel OpenAPI](https://vyuldashev.github.io/laravel-openapi/)
 
 ---
 
-###### L5 Swagger/ Swagger-PHP
+#### サーバサイドに書く: L5 Swagger/ Swagger-PHP
 
 ```php
 // app/Http/Controllers/PhperController.php
@@ -627,7 +636,7 @@ class PhperResource extends JsonResource
 
 ---
 
-###### [Laravel OpenAPI](https://vyuldashev.github.io/laravel-openapi/)
+#### サーバサイドに書く: [Laravel OpenAPI](https://vyuldashev.github.io/laravel-openapi/)
 
 phpコードで型を実装。
 
@@ -806,6 +815,11 @@ export function PhperFromJSONTyped(json: any, ignoreDiscriminator: boolean): Php
 }
 ```
 
+* 日時の自動変換。
+* enumの自動生成。
+
+---
+
 ```ts
 export const PhperStatusEnum = {
   Available: 'available',
@@ -829,8 +843,6 @@ class PhperApi {
 }
 ```
 
-* 日時の自動変換。
-* enumの自動生成。
 * OpenAPIドキュメントのタグ毎にクラスが作成される。
 * エンドポイント（オペレーションID）がメソッドになる。
 * それに対しリクエストと成功時レスポンスが型付けされる。
@@ -859,7 +871,7 @@ class PhperApi
 
 ---
 
-###### [対応言語一覧](https://github.com/OpenAPITools/openapi-generator?tab=readme-ov-file#overview)
+##### クライアントライブラリ自動生成: [対応言語一覧](https://github.com/OpenAPITools/openapi-generator?tab=readme-ov-file#overview)
 
 <div class="post-flex">
 
@@ -1040,7 +1052,7 @@ public function handle(Request $request, \Closure $next): Response {
 }
 ```
 
-Middleware Pipelineの外側の処理のため通常とは異なる方法でレスポンスを生成する必要がある店に注意
+Middleware Pipelineの外側の処理のため通常とは異なる方法でレスポンスを生成する必要がある点に注意
 
 ---
 
@@ -1059,12 +1071,12 @@ OpenAPIドキュメントの変更がフロントエンドに対して破壊的�
 ---
 
 Q. クライアントライブラリ（自動生成）の運用
-A. IMO: 生成結果ごとcommitすることを推奨
+A. IMO: 生成結果ごとフロントエンドへcommit
 
 理由:
 
-* <u>破壊的変更を受け入れるタイミング</u>をクライアント側が任意に決められる。
-* ブランチに応じて新旧双方のバージョンを<u>即座</u>に切り替える開発が行える。
+* <u>破壊的変更を受け入れるタイミング</u>をフロントエンドが任意に決められる。
+* ブランチに応じて新旧双方のバージョンを<u>即座</u>に切り替えられる。
 
 ---
 
@@ -1110,13 +1122,20 @@ $properties = [
 ];
 ```
 
-![](VSCodeでの非推奨表示.png "DocBlock中の@deprecatedがエディタのUIで打消線表示されている")
+<div class="post-flex">
+
+![](VSCode-Deprecated.png "DocBlock中の@deprecatedがエディタのUIで打消線表示されている")
 
 * OpenAPIドキュメントに deprecatedタグを付与することで、
 * クライアントライブラリのDocBlockそれが付与され、
 * 多くのエディタで、打ち消し線と共に非推奨として表示される。
 
+</div>
+
 ---
+
+
+<div class="post-flex">
 
 ```json
 // .eslintrc.json
@@ -1128,16 +1147,18 @@ $properties = [
   "deprecation/deprecation": "warn"
 }
 ```
+* [eslint-plugin-deprecation](https://github.com/gund/eslint-plugin-deprecation)で`deprecated`を自動検出
+* 任意タイミングで修正し、
+* サーバサイドより旧仕様を削除。
+
+</div>
+
 ```bash
 $ npx eslint src
 
 /path/to/src/hooks/use-login.ts
   48:9  warning  'updatedAt' is deprecated. deprecation/deprecation
 ```
-
-* [eslint-plugin-deprecation](https://github.com/gund/eslint-plugin-deprecation)で`deprecated`を自動検出
-* 任意タイミングで修正し、
-* サーバサイドより旧仕様を削除。
 
 ---
 
@@ -1240,15 +1261,9 @@ steps:
 
 ---
 
-#### 開発効率と品質の向上
-
-> * 200番台のステータスコードで仕様外のレスポンスを返却することは、決してありません。  
-> * 400だった場合は、フロントの実装に誤りがあります。自分のコードを見直してください。  
-> * 500だった場合は、原因はバックエンドです。レスポンスにデバッグ情報が含まれるので、それを下さい。  
-
 ##### エラー原因の提供
 
-###### バリデーションの目的
+バリデーションの目的
 
 * データの正確性
 * セキュリティ向上
@@ -1258,7 +1273,11 @@ steps:
 
 ---
 
-###### エラー原因の提供
+> * 200番台のステータスコードで仕様外のレスポンスを返却することは、決してありません。  
+> * 400だった場合は、フロントの実装に誤りがあります。自分のコードを見直してください。  
+> * 500だった場合は、原因はバックエンドです。レスポンスにデバッグ情報が含まれるので、それを下さい。  
+
+---
 
 ```json
 {
