@@ -3,7 +3,6 @@ title: Laravel OpenAPIによる "辛くない" スキーマ駆動開発
 subtitle: PHPerKaigi 2024 レギュラートーク資料
 description: PHPerKaigi 2024でのレギュラートーク資料。LaravelとOpenAPIを駆使して、煩雑なスキーマ駆動開発をシンプルにする方法を紹介します。API仕様とサーバー実装の一致、フロントエンド開発の効率化、そしてAPIの繋ぎ込みや結合テストの問題切り分けの不要化について解説。PHPとLaravelを使った開発においてスキーマ駆動開発に関心がある方や、より効率的な開発手法を求める方にとって必見の内容です。
 ogimage: ogimage.webp
-twitter_image: twitter_image.webp
 date: 2024-03-08 11:15
 tags:
   - PHP
