@@ -10,7 +10,7 @@
     "watch": "hexo s",
     "lint": "textlint source/_posts",
     "fix": "run-s fix:scss",
-    "fix:scss": "stylelint themes/default/source/assets --fix",
+    "fix:scss": "stylelint themes/default/source/assets/**/*.scss --fix",
     "prepare": "husky"
   },
   "dependencies": {
