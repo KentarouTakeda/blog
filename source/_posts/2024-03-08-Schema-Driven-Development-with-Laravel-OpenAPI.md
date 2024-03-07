@@ -112,7 +112,7 @@ PHPerKaigi 2024 レギュラートーク資料です。
 
 #### 解釈の余地のある仕様書
 
-<div class="content-flex">
+<div class="post-flex">
 
   ![](excel仕様書.png "Excelで作成された仕様書 表でオブジェクトが表現され、型の表現などが標準外の記法で表現されている。")
 
@@ -244,7 +244,7 @@ public function show(Item $item)
 
 #### 信じられない仕様書
 
-<div class="content-flex">
+<div class="post-flex">
 
 ![](files-date.png "日付をファイル名に含む複数の仕様書が存在する")
 
@@ -253,7 +253,7 @@ public function show(Item $item)
 
 </div>
 
-<div class="content-flex">
+<div class="post-flex">
 
 ![](files-branch.png "ブランチ名をファイル名に含む複数の仕様書が存在する")
 
@@ -378,7 +378,7 @@ PhperComponent -u-> 仕様書
 
 #### 「仕様書」は依存に値するか？
 
-<div class="content-flex">
+<div class="post-flex">
 
 ![](すばやく実装するための戦略とテクニック-表紙.png "すばやく実装するための戦略とテクニック 表紙")
 
@@ -540,7 +540,7 @@ OpenAPIドキュメント -u-> 間違えにくい道具
 
 メリット:導入が容易 / デメリット:コード管理・CI
 
-<div class="content-flex">
+<div class="post-flex">
 
 [Swagger Editor](https://editor.swagger.io/)
 ![](Swagger-Editor.png "Swagger Editor スクリーンショット")
@@ -724,7 +724,7 @@ public static function
 
 ##### ドキュメントや開発ツールの自動生成
 
-<div class="content-flex">
+<div class="post-flex">
 
   [GitHub REST APIのOpenAPIドキュメント](https://github.com/github/rest-api-description)から
   ![](OpenAPIドキュメント-GitHub.png "GitHubリポジトリ github/rest-api-description")
@@ -738,7 +738,7 @@ public static function
 
 OpenAPIドキュメントから生成されたAPI仕様書が一般公開されている例:
 
-<div class="content-flex">
+<div class="post-flex">
 
 ![](Redocly-GMOPG.png "PGマルチペイメントサービス OpenAPIタイプ 仕様書")
 
@@ -751,7 +751,7 @@ OpenAPIドキュメントから生成されたAPI仕様書が一般公開され�
 
 [Swagger UI](https://swagger.io/tools/swagger-ui/)によるブラウザからのテストリクエスト
 
-<div class="content-flex">
+<div class="post-flex">
 
 ![](Swagger-UI-ATF.png "Swagger UI オペレーションIDの一覧表示")
 
@@ -861,7 +861,7 @@ class PhperApi
 
 ###### [対応言語一覧](https://github.com/OpenAPITools/openapi-generator?tab=readme-ov-file#overview)
 
-<div class="content-flex">
+<div class="post-flex">
 
 ![](OpenAPI-Generator-クライアント生成可能言語.png "Swagger Generator クライアント生成言語一覧")
 
