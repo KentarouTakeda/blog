@@ -3,7 +3,6 @@ title: PHPerKaigi 2023 感想
 date: 2023-04-01 18:00
 tags:
   - PHP
-  - phperkaigi2023
   - phperkaigi
 ---
 

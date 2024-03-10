@@ -3,7 +3,6 @@ title: 「Laravelへの異常な愛情 または私は如何にして心配す�
 date: 2023-05-05 18:00
 tags:
   - PHP
-  - phperkaigi2023
   - phperkaigi
   - essay
   - Laravel
