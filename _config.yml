@@ -63,6 +63,7 @@ category_map:
 tag_map:
 
 time_format: HH:mm
+updated_option: date
 
 # Pagination
 ## Set per_page to 0 to disable pagination
