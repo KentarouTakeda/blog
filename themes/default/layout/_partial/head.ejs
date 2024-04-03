@@ -16,7 +16,8 @@
     twitter_id: config.twitter,
     twitter_image: page.twitter_image ?? page.ogimage,
     fb_admins: config.fb_admins,
-    fb_app_id: config.fb_app_id
+    fb_app_id: config.fb_app_id,
+    twitter_card: page.twitter_large_card ? 'summary_large_image' : 'summary'
   }) %>
   <link rel="icon" href="/favicon.ico">
   <%- partial('google-analytics', { head: true }) %>
