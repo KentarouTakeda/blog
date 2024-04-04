@@ -55,7 +55,7 @@ tags:
 
 ## 翻訳の開始とChatGPT
 
-ところで、翻訳を開始する直前までは[PHPerKaigi 2024レギュラートーク資料](http://localhost:4000/post/2024-03-08-Schema-Driven-Development-with-Laravel-OpenAPI/)の作成に多くの時間を費やしていた。
+ところで、翻訳を開始する直前までは{% post_link 2024-03-08-Schema-Driven-Development-with-Laravel-OpenAPI PHPerKaigi 2024レギュラートーク資料 %}の作成に多くの時間を費やしていた。
 
 資料作成ではChatGPT（GPT-4）やGPTsが大活躍した。トークの中でも、独創性やアイディアの必要のない、単純な「文章に関する作業」のほとんどはChatGPTに任せられるノウハウや感触を掴んだ。このノウハウは「翻訳」に活かせる、そう確信したことが翻訳の着手のきっかけだ。
 
