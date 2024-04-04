@@ -87,7 +87,7 @@ tags:
 
     * 基本的にはMarkdown形式のテキストですが、以降の通りある程度の拡張構文が含まれます。
     * 冒頭にはYAML形式のメタデータ（Yaml Front Matter）が含まれます。
-        * 意味は https://hexo.io/docs/front-matter に掛かれています。
+        * 意味は https://hexo.io/docs/front-matter に書かれています。
     * プレーンなMarkdownで表現できない部分はhtmlが含まれます。
     * 本文中に {% raw %}`{{ ... }}` や `{% ... %}`{% endraw %} などNunjucksの構文が含まれます。
         * Nunjucksから使われているそれぞれのタグ（関数）の意味は https://hexo.io/docs/tag-plugins に書かれています。
