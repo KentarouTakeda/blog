@@ -26,25 +26,32 @@
     </div>
   </div>
 
-  <% if (site.posts.length) { %>
-  <div class="card sidebar-recent-posts">
-    <div>最近の記事</div>
-    <ul>
-      <% site.posts.sort('date', -1).limit(10).each(post => { %>
-      <li>
-        <a href="<%- url_for((post.link ? post.link : post.path)) %>">
-          <time><%= date(post.date, 'YYYY-MM-DD') %></time>
-          <% if(post.subtitle) { %>
-          <%=post.title %> - <%=post.subtitle %>
-          <% } else { %>
-          <%=post.title %>
-          <% } %>
-        </a>
-      </li>
-      <% }) %>
-    </ul>
+  <div class="sidebar-sticky">
+    <% if (page.content) { %>
+    <div class="card sidebar-toc">
+      <div>目次</div>
+      <%- toc(page.content, {list_number: false}) %>
+    </div>
+    <% } %>
+    <% if (site.posts.length) { %>
+    <div class="card sidebar-recent-posts">
+      <div>最近の記事</div>
+      <ul>
+        <% site.posts.sort('date', -1).limit(10).each(post => { %>
+        <li>
+          <a href="<%- url_for((post.link ? post.link : post.path)) %>">
+            <time><%= date(post.date, 'YYYY-MM-DD') %></time>
+            <% if(post.subtitle) { %>
+            <%=post.title %> - <%=post.subtitle %>
+            <% } else { %>
+            <%=post.title %>
+            <% } %>
+          </a>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+    <% } %>
   </div>
-  <% } %>
-
 
 </aside>

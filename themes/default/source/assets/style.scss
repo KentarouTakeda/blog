@@ -14,6 +14,8 @@
   --color-surface: #ffffff;
   --color-text-main: #000000d1;
   --color-text-light: #00000033;
+
+  scroll-behavior: smooth;
 }
 
 * {
@@ -138,6 +140,10 @@ address {
 
 .sidebar {
   width: 360px;
+
+  aside {
+    height: 100%;
+  }
 }
 
 @media (width <= 1150px) {
@@ -152,6 +158,11 @@ address {
     max-width: variables.$WIDTH_MAIN;
     width: 100%;
   }
+}
+
+.sidebar-sticky {
+  position: sticky;
+  top: 12px;
 }
 
 .sidebar-profile {
@@ -181,6 +192,18 @@ address {
 
 .sidebar-profile-sns-icon {
   margin-left: 10px;
+}
+
+.sidebar-toc {
+  .toc {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .toc-child {
+    list-style-type: none;
+    padding-left: 1em;
+  }
 }
 
 .sidebar-recent-posts {
