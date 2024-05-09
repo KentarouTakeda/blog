@@ -389,7 +389,7 @@ export class SomeController {
 
 **この依存の追加が、破滅への第一歩だ。** 具体的には:
 
-* `controllers` や `provides` 今よりも増えていった場合
+* `controllers` や `provides` が今よりも増えていった場合
 * 「孫」だけでなくそれより先の子孫の依存が必要になった場合
 
 こういった状況で、この `provides` を管理できるだろうか？
