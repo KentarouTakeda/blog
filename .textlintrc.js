@@ -16,6 +16,11 @@ module.exports = {
       'ja-no-successive-word': {
         allow: ['/〇/', '！'],
       },
+      "ja-no-mixed-period": {
+        "allowPeriodMarks": [
+          ":"
+        ]        
+      },
       'ja-no-weak-phrase': false,
       'max-kanji-continuous-len': false,
       "no-mix-dearu-desumasu": false,
