@@ -11,15 +11,10 @@ module.exports = {
   rules: {
     'preset-ja-technical-writing': {
       'ja-no-mixed-period': {
-        allowPeriodMarks: ['、', '…'],
+        allowPeriodMarks: ['、', '…', ':'],
       },
       'ja-no-successive-word': {
         allow: ['/〇/', '！'],
-      },
-      "ja-no-mixed-period": {
-        "allowPeriodMarks": [
-          ":"
-        ]        
       },
       'ja-no-weak-phrase': false,
       'max-kanji-continuous-len': false,
