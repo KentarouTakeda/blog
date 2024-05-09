@@ -394,7 +394,7 @@ export class SomeController {
 
 こういった状況で、この `provides` を管理できるだろうか？
 
-修正範囲はおそらく `SomeControllerModule` に留まらない。  **`VerySimpleService` を `provides` する全てのモジュール** はもちろんのこと `'@nestjs/testing'` によるユニットテストを実装している場合、 **テストコード中の `Test.createTestingModule()`** など全てで修正が必要になる。
+修正範囲はおそらく `SomeControllerModule` に留まらない。  **`VerySimpleService` を `provides` する全てのモジュール** はもちろんのこと `@nestjs/testing` によるユニットテストを実装している場合、 **テストコード中の `Test.createTestingModule()`** など全てで修正が必要になる。
 
 一度こうなってしまうと **何か依存を追加する度に `Nest can't resolve dependencies of ...` に長時間悩む** ことになる。これは避けたい。
 
