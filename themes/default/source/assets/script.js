@@ -1,3 +1,5 @@
+// @ts-check
+
 document.addEventListener("click", ({ target }) => {
   if (!(target instanceof HTMLElement)) {
     return;
@@ -23,7 +25,7 @@ document.addEventListener("click", ({ target }) => {
 
   if (shouldFocus) {
     target.classList.add("focus");
-    target.getElementsByTagName("iframe").item(0).focus();
+    target.querySelector("iframe")?.focus();
   }
 });
 
@@ -41,11 +43,11 @@ function setRevealToWideScreen() {
   overlay.classList.add("hexo-reveal-embed-overlay");
   overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
   overlay.style.height = "100%";
-  overlay.style.left = 0;
+  overlay.style.left = '0';
   overlay.style.position = "fixed";
-  overlay.style.top = 0;
+  overlay.style.top = '0';
   overlay.style.width = "100%";
-  overlay.style.zIndex = 1;
+  overlay.style.zIndex = '1';
   document.body.prepend(overlay);
 }
 
@@ -58,7 +60,7 @@ document.addEventListener("click", async ({ target }) => {
     return;
   }
   const code = parent.querySelector('code[class*="language-"]');
-  if (code == null) {
+  if (code == null || !(code instanceof HTMLElement)) {
     return;
   }
 
@@ -82,6 +84,9 @@ document.addEventListener("click", ({ target }) => {
   }
 
   const image = target.cloneNode();
+  if(!(image instanceof HTMLImageElement)) {
+    throw new Error();
+  }
   image.classList.add("popup");
   dimmer.appendChild(image);
   document.body.appendChild(dimmer);
