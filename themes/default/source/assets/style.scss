@@ -75,7 +75,11 @@ body {
   width: 100%;
   z-index: 9999;
 
-  & > img.popup {
+  & > .popup {
+    background-color: var(--color-surface);
+    border-color: var(--color-background);
+    border-style: solid;
+    border-width: 1px;
     margin: auto;
     max-height: 95%;
     max-width: 95%;

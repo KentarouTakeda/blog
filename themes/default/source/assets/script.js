@@ -43,11 +43,11 @@ function setRevealToWideScreen() {
   overlay.classList.add("hexo-reveal-embed-overlay");
   overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
   overlay.style.height = "100%";
-  overlay.style.left = '0';
+  overlay.style.left = "0";
   overlay.style.position = "fixed";
-  overlay.style.top = '0';
+  overlay.style.top = "0";
   overlay.style.width = "100%";
-  overlay.style.zIndex = '1';
+  overlay.style.zIndex = "1";
   document.body.prepend(overlay);
 }
 
@@ -72,7 +72,13 @@ document.addEventListener("click", async ({ target }) => {
 });
 
 document.addEventListener("click", ({ target }) => {
-  if (!(target instanceof HTMLElement) || !target.matches(".post img") || target.closest('a')) {
+  if (!(target instanceof HTMLElement || target instanceof SVGElement || target instanceof SVGTextElement) || target.closest("a")) {
+    return;
+  }
+  const plantumlSvg = target.closest("svg.plantuml");
+  const popup = plantumlSvg instanceof SVGElement ? plantumlSvg : target;
+
+  if (!popup.matches(".post img") && !popup.matches("svg.plantuml")) {
     return;
   }
 
@@ -83,11 +89,14 @@ document.addEventListener("click", ({ target }) => {
     dimmer.removeChild(dimmer.firstChild);
   }
 
-  const image = target.cloneNode();
-  if(!(image instanceof HTMLImageElement)) {
-    throw new Error();
+  const image = popup.cloneNode(true);
+  if (!(image instanceof HTMLImageElement || image instanceof SVGElement)) {
+    return;
   }
+
   image.classList.add("popup");
+  image.removeAttribute('width');
+
   dimmer.appendChild(image);
   document.body.appendChild(dimmer);
 
@@ -106,6 +115,7 @@ document.addEventListener("click", ({ target }) => {
       e.removeAttribute("preserveAspectRatio");
       e.removeAttribute("style");
       e.removeAttribute("height");
+      e.classList.add("plantuml");
     });
 
     document.querySelectorAll("pre[data-language]").forEach((e) => {
