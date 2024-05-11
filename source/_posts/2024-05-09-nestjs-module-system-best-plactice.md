@@ -67,7 +67,7 @@ package UsersModule {
     users/users.service.ts
   }
 
-  UsersController -d-> UsersService : provides
+  UsersController -d-> UsersService : providers
 }
 
 package PostsModule {
@@ -78,7 +78,7 @@ package PostsModule {
     posts/posts.repository.ts
   }
 
-  PostsController -d-> PostService : provides
+  PostsController -d-> PostService : providers
 }
 
 AppModule -d-> UsersController : imports
@@ -100,7 +100,7 @@ package UsersModule {
     users/users.service.ts
   }
 
-  UsersController -d-> UsersService : provides
+  UsersController -d-> UsersService : providers
 }
 
 package PostsModule {
@@ -114,8 +114,8 @@ package PostsModule {
     posts/posts.service.ts
   }
 
-  PostsController -d-> UsersService2 : provides
-  PostsController -d-> PostService : provides
+  PostsController -d-> UsersService2 : providers
+  PostsController -d-> PostService : providers
 }
 
 AppModule .d.> UsersController : imports
@@ -145,7 +145,7 @@ package UsersModule {
     users/users.service.ts
   }
 
-  UsersController -d-> UsersRepository : provides
+  UsersController -d-> UsersRepository : providers
 }
 note as N
   複数の用途でimportsされる
@@ -160,7 +160,7 @@ package PostsModule {
     posts/posts.service.ts
   }
 
-  PostsController -d-> PostService : provides
+  PostsController -d-> PostService : providers
 }
 
 PostsController .l.> UsersRepository : imports
@@ -304,7 +304,7 @@ package FooBarServiceModule {
   class FooService <<exports>>
   class BarService
 
-  FooService -d-> BarService : provides
+  FooService -d-> BarService : providers
 }
 
 package HogeServiceModule {
@@ -319,12 +319,12 @@ class VerySimpleService
 
 SomeController .d.> FooService : imports
 SomeController .d.> HogeService : imports
-SomeController -d-> VerySimpleService : provides
+SomeController -d-> VerySimpleService : providers
 
 HogeService .d.> FugaService : imports
 ```
 
-* `VerySimpleService`: モジュールでラップせず直接 `provides` される設計
+* `VerySimpleService`: モジュールでラップせず直接 `providers` へ指定
 * `BarService`: 注入クラスを `providers` へ直接指定
 * `FugaService`: 注入クラスの提供モジュールを `imports` へ指定
 
@@ -349,7 +349,7 @@ export class SomeControllerModule {}
 
 この構成に対し、何らかの追加要件で `VerySimpleService` が他のサービスに依存しなければならなくなった状況を考えよう。
 
-### 🚫 `provides` の連鎖
+### 🚫 `providers` の連鎖
 
 ```plantuml
 package SomeControllerModule {
@@ -359,8 +359,8 @@ package SomeControllerModule {
 class VerySimpleService
 class LittleComplexService
 
-SomeController -d-> VerySimpleService : provides
-VerySimpleService -d-> LittleComplexService : provides
+SomeController -d-> VerySimpleService : providers
+VerySimpleService -d-> LittleComplexService : providers
 ```
 
 まず確認だが、`SomeController` が **直接**依存しているのは `VerySimpleService` だけだ。従ってコードは次のようになっている:
@@ -374,7 +374,7 @@ export class SomeController {
 }
 ```
 
-だが、この孫の依存も、それが所属する `SomeControllerModule` で `provides` することになる。
+だが、この孫の依存も、それが所属する `SomeControllerModule` から `providers` として参照することになる。
 
 ```typescript some.controller.module.ts typesc
  @Module({
@@ -389,12 +389,12 @@ export class SomeController {
 
 **この依存の追加が、破滅への第一歩だ。** 具体的には:
 
-* `controllers` や `provides` が今よりも増えていった場合
+* `controllers` や `providers` が今よりも増えていった場合
 * 「孫」だけでなくそれより先の子孫の依存が必要になった場合
 
-こういった状況で、この `provides` を管理できるだろうか？
+こういった状況で、この `providers` を管理できるだろうか？
 
-修正範囲はおそらく `SomeControllerModule` に留まらない。  **`VerySimpleService` を `provides` する全てのモジュール** はもちろんのこと `@nestjs/testing` によるユニットテストを実装している場合、 **テストコード中の `Test.createTestingModule()`** など全てで修正が必要になる。
+修正範囲はおそらく `SomeControllerModule` に留まらない。  **`VerySimpleService` を間接的にでも参照する全てのモジュール** はもちろんのこと `@nestjs/testing` によるユニットテストを実装している場合、 **テストコード中の `Test.createTestingModule()`** などにまで及ぶ。
 
 一度こうなってしまうと **何か依存を追加する度に `Nest can't resolve dependencies of ...` に長時間悩む** ことになる。これは避けたい。
 
@@ -419,15 +419,15 @@ SomeController .d.> HogeService : imports
 HogeService .d.> FugaService : imports
 ```
 
-この形であれば対応は容易だ。依存が追加された以上それに対応するモジュールに `provides` を追加することは避けられないが、新たな依存はモジュールの内部に隠蔽されているため **修正箇所は1箇所** で済む。従って:
+この形であれば対応は容易だ。依存が追加された以上、それが所属するモジュールに `providers` を追加することは避けられないが、新たな依存はモジュールの内部に隠蔽されているため **修正箇所は1箇所** で済む。従って:
 
 * *SHOULD:* 単独の小さなサービスであっても、モジュールでラップし `exports` で公開 *すべきである*
-* *MAY:* 新たな依存は追加されない無いと予想できる小さなサービスは単独で `provides` *しても良い*
+* *MAY:* 新たな依存は追加されないと予想できる小さなサービスは `providers` で直接参照 *しても良い*
   * *MUST:* 予想に反し依存が追加された場合、その時点でモジュールに隠蔽 *しなければならない*
 
 このように考えると良いだろう。
 
-ここは臨機応変な対応が重要だ。将来を心配するのであれば *あらゆるサービスは直接の `provides` を避けモジュールでラップすべき* となるが、極めて小さな（しかし複数のモジュールから参照される）ユースケースを書く度にファイルを2つ作成し `@Module()` を設定するのは気が重い。
+ここは臨機応変な対応が重要だ。将来を心配するのであれば *あらゆるサービスは `providers` への直接の指定を避けモジュールでラップすべき* となるが、極めて小さな（しかし複数のモジュールから参照される）ユースケースを書く度にファイルを2つ作成し `@Module()` を設定するのは気が重い。
 
 幸いなことにTypeScriptは、気の利いたエディタであればクラス名の変更やファイル移動（及びそれに応じた `import from` の自動修正）は容易だ。上の *SHOULD* と *MUST* に特に注意しつつ、状況が許せば *MAY* の採用を辞さないのが合理的と私は考えている。
 
@@ -435,7 +435,7 @@ HogeService .d.> FugaService : imports
 
 ここまで「ディレクトリ構成」「依存の設定方法」について述べてきたが、何れも単なる「指針」にしか過ぎず、強制力が無い。
 
-本来であればモジュールを通じて `imports` されることを想定したサービスクラスを別のモジュールで直接 `provides` されてしまうことは、TypeScriptの仕様として避けられないわけだが、これを避け安全に運用するため、何等か追加のルールやツールを導入してもいいだろう。
+本来であればモジュールを通じて `imports` されることを想定したサービスクラスを別のモジュールで直接 `providers` から参照されてしまうことは、TypeScriptの仕様として避けられないわけだが、これを避け安全に運用するため、何等か追加のルールやツールを導入してもいいだろう。
 
 ### ℹ️ `index.ts` による暗黙的な表明
 
