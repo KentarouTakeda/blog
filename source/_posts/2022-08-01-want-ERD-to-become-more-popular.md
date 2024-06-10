@@ -204,7 +204,7 @@ Comment }o--o| User #Blue
 * DBエンジニア
   * テーブルや外部キー制約、それぞれのデータの正規化の適否。
 * サーバサイドエンジニア
-  * ORMの実装。`BelongsTo` なのか `HasOne` なのか `MasMany`か、はたまた `BelongsToMany` なのか。
+  * ORMの実装。`BelongsTo` なのか `HasOne` なのか `HasMany`か、はたまた `BelongsToMany` なのか。
   * APIが返却すべき型は `tag: string` なのか `tag: string|null` なのか `tags: Array<string>` なのか。
 * フロントエンドエンジニア
   * コンポーネントが受け入れるべき値はスカラーなのか配列なのかオブジェクトなのか。
@@ -279,7 +279,7 @@ end note
   * https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
   * ネットを検索するとJavaのインストールを必要とする記事が見つかるが、最近のバージョンはインストールなしでも動く。
 * この記事の [ソースコード](https://github.com/KentarouTakeda/blog/blob/master/source/_posts/2022-08-01-want-ERD-to-become-more-popular.md)
-  * 本記事ではER図以外も含む全て図をPlantUMLで作図した。
+  * 本記事ではER図以外も含む全ての図をPlantUMLで作図した。
 
 一昔前よりも敷居は低くなっていると感じる。思い立ってこのブログをPlantUMLのレンダリングに対応した際も [コマンド一発](https://www.npmjs.com/package/hexo-filter-plantuml) で完了した。
 
