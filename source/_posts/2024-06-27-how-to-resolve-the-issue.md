@@ -178,4 +178,4 @@ function getDistanceFromOrigin(
 {% link_preview https://www.youtube.com/watch?v=sC5miUc1MgQ %}
 {% endlink_preview %}
 
-この記事より「数学」をフォーカスした紹介だが、持ち前のひたすらわかりやすい説明が心地良い。少し別の視点でこの本を知りたい方は、ぜひともご覧いただきたい。
+この記事より「数学」にフォーカスした紹介だが、持ち前のひたすらわかりやすい説明が心地良い。少し別の視点でこの本を知りたい方は、ぜひともご覧いただきたい。
