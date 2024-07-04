@@ -30,7 +30,7 @@
     <% if (page.content) { %>
     <div class="card sidebar-toc">
       <div>目次</div>
-      <%- toc(page.content, {list_number: false}) %>
+      <%- toc(page.content, {list_number: false, max_items: 40}) %>
     </div>
     <% } %>
     <% if (site.posts.length) { %>
