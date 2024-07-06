@@ -130,6 +130,48 @@ document.addEventListener("click", ({ target }) => {
       button.classList.add("copy-to-clipboard");
       e.appendChild(button);
     });
+
+    const tocItems = [...document.querySelectorAll(".toc .toc-link[href]")]
+      .filter((e) => e instanceof HTMLAnchorElement)
+      .map((toc) => {
+        const href = toc.getAttribute("href");
+        const id = decodeURIComponent(href?.slice(1) ?? "");
+        const heading = id ? document.getElementById(id) : null;
+
+        return href && heading ? { toc, heading } : null;
+      })
+      .filter((v) => !!v)
+      .reverse();
+
+    const tocFocusHandler = () => {
+      if (!tocItems.length) {
+        return;
+      }
+
+      const isSidebarHorizontal = getComputedStyle(
+        document.body,
+      ).getPropertyValue("--is-sidebar-horizontal");
+      if ("true" !== isSidebarHorizontal) {
+        tocItems.forEach(({ toc }) => toc.classList.remove("focus"));
+
+        return;
+      }
+
+      const focusedItem = tocItems.find(
+        (v) => v.heading.getBoundingClientRect().y < window.innerHeight / 3,
+      );
+
+      tocItems.forEach(({ toc }) =>
+        toc === focusedItem?.toc
+          ? toc.classList.add("focus")
+          : toc.classList.remove("focus"),
+      );
+    };
+
+    if (tocItems.length) {
+      window.addEventListener("scroll", tocFocusHandler);
+      window.addEventListener("resize", tocFocusHandler);
+    }
   };
 
   if (document.readyState === "loading") {

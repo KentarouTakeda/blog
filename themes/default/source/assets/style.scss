@@ -14,6 +14,7 @@
   --color-surface: #ffffff;
   --color-text-main: #000000d1;
   --color-text-light: #00000033;
+  --is-sidebar-horizontal: true;
 
   scroll-behavior: smooth;
 }
@@ -151,6 +152,10 @@ address {
 }
 
 @media (width <= 1150px) {
+  :root {
+    --is-sidebar-horizontal: false;
+  }
+
   .container {
     flex-direction: column;
     max-width: variables.$WIDTH_MAIN;
@@ -209,6 +214,11 @@ address {
   .toc-child {
     list-style-type: none;
     padding-left: 0.5em;
+  }
+
+  .focus {
+    color: var(--color-text-main);
+    font-weight: bold;
   }
 
   ol {
