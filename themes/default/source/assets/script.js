@@ -72,7 +72,14 @@ document.addEventListener("click", async ({ target }) => {
 });
 
 document.addEventListener("click", ({ target }) => {
-  if (!(target instanceof HTMLElement || target instanceof SVGElement || target instanceof SVGTextElement) || target.closest("a")) {
+  if (
+    !(
+      target instanceof HTMLElement ||
+      target instanceof SVGElement ||
+      target instanceof SVGTextElement
+    ) ||
+    target.closest("a")
+  ) {
     return;
   }
   const plantumlSvg = target.closest("svg.plantuml");
@@ -95,7 +102,7 @@ document.addEventListener("click", ({ target }) => {
   }
 
   image.classList.add("popup");
-  image.removeAttribute('width');
+  image.removeAttribute("width");
 
   dimmer.appendChild(image);
   document.body.appendChild(dimmer);
