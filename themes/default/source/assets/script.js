@@ -138,7 +138,7 @@ document.addEventListener("click", ({ target }) => {
         const id = decodeURIComponent(href?.slice(1) ?? "");
         const heading = id ? document.getElementById(id) : null;
 
-        return href && heading ? { toc, heading } : null;
+        return heading ? { toc, heading } : null;
       })
       .filter((v) => !!v)
       .reverse();
