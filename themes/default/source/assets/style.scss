@@ -1,6 +1,6 @@
 @use "style/variables";
-@use "node_modules/prismjs/themes/prism-tomorrow.min.css";
-@use "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css";
+@use "../../../../node_modules/prismjs/themes/prism-tomorrow.min.css";
+@use "../../../../node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css";
 @use "style/link-preview";
 @use "style/hexo-reveal-embed";
 @use "style/details";
