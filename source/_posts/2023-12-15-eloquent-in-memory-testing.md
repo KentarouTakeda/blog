@@ -165,7 +165,7 @@ ER図に基づいて「投稿者」「件名」「本文」「公開日」に相
  Schema::create('posts', function (Blueprint $table) {
      $table->id();
      $table->timestampsTz();
-     $table->foreignIdFor(User::class)->index()->constrained()>cascadeOnDelete();
++    $table->foreignIdFor(User::class)->index()->constrained()>cascadeOnDelete();
 +    $table->text('subject');
 +    $table->text('content');
 +    $table->dateTimeTz('published_at')->nullable();
