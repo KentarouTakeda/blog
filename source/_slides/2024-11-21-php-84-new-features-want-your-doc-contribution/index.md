@@ -883,4 +883,13 @@ error_log($answer ** $enigma); // 21613926941579800829422581272845221888
 * 他にも多くの新機能や改善
   * cURL / DOM / Intl / OpenSSL / PCRE / PDO / PDO_MYSQL / PDO_PGSQL / PDO_SQLITE / Phar / Readfile / Reflection / SOAP / Standard / XSL / Zip
 
+---
+
+## 詳しくは
+## マニュアルを参照ください
+
+---
+
+# あれ？
+
 <!-- textlint-enable -->
