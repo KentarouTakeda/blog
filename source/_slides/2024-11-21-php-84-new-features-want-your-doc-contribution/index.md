@@ -15,7 +15,7 @@ title: 本日はPHP 8.4のリリース日です。新機能を見てみましょ
 ### 復習: privateとgetter
 
 
-```php [|3-6|8-16|18-21]
+```php [|4-5|8-16|18-21]
 class User
 {
   public function __construct(
@@ -54,7 +54,7 @@ $user->getFullName(); // Kenta Usami
 ### 復習: PHP 8.1: readonlyプロパティ
 
 
-```php [3-6]
+```php [4-5]
 class User
 {
   public function __construct(
@@ -69,7 +69,7 @@ class User
 }
 ```
 
-```php
+```php [5-6]
 // `readonly` なのでプロパティを直接公開できる
 $user->firstName; // Yuya
 $user->lastName; // Hamada
@@ -101,7 +101,7 @@ class User
 }
 ```
 
-```php
+```php [3,5-7]
 $user->firstName; // Tetsuji
 $user->lastName; // Koyama
 $user->fullName; // Tetsuji Koyama
@@ -115,7 +115,7 @@ $user->fullName; // Tetsuji Koyama
 
 ### PHP 8.4: `get` フック
 
-```php
+```php [8-10]
 class User
 {
   public function __construct(
@@ -129,7 +129,7 @@ class User
 }
 ```
 
-```php
+```php [3,5-7]
 $user->firstName; // Taichi
 $user->lastName; // Inaba
 $user->fullName; // Taichi Inaba
@@ -161,13 +161,13 @@ class User
 
   public function __construct(
     public string $firstName {
-      get => mb_ucfirst($this->firstName);
       set => mb_strtolower($value);
+      get => mb_ucfirst($this->firstName);
     },
 
     public string $lastName {
-      get => mb_ucfirst($this->lastName);
       set => mb_strtolower($value);
+      get => mb_ucfirst($this->lastName);
     },
   ) {}
 }
@@ -177,15 +177,10 @@ class User
 
 ### PHP 8.4: プロパティフック 動作例
 
-```php
-// 入力時は正規化
+```php [1,3-10,12-15]
 $user = new User('ILIJA', 'TOVILO');
 
-// 出力時は適切に加工
-$user->firstName; // Ilija
-$user->lastName; // Tovilo
-$user->fullName; // Ilija Tovilo
-
+// 格納時に正規化されている
 var_dump($user);
 // object(User)#1 (2) {
 //   ["firstName"]=>
@@ -194,6 +189,10 @@ var_dump($user);
 //   string(6) "tovilo"
 // }
 
+// 出力時は適切に加工される
+$user->firstName; // Ilija
+$user->lastName; // Tovilo
+$user->fullName; // Ilija Tovilo
 ```
 
 ---
@@ -259,7 +258,7 @@ class User
 
 ### PHP 8.4: 非対称可視性プロパティ
 
-```php [5-6]
+```php [5-6,8-9]
 $user = new User('asumikam');
 
 $user->name; // asumikam
@@ -317,12 +316,6 @@ $phper->name; // zonuexe
 
 ---
 
-### [Laravel 遅延プロバイダ](https://readouble.com/laravel/11.x/ja/providers.html#deferred-providers)
-
-> Laravelは遅延サービスプロバイダが提示した全サービスのリストをコンパイルし、サービスプロバイダのクラス名と共に保存します。その後、**登録されているサービスのどれか一つを依存解決する必要が起きた時のみ、Laravelはそのサービスプロバイダをロードします。**
-
----
-
 ### 2種類のレイジーオブジェクト
 
 #### ゴースト: 主に自作クラスで利用
@@ -363,7 +356,7 @@ class User
 get_class($userGhost); // User
 
 $userGhost->name;
-// Fatal error: Uncaught Exception in /tmp/lazy-object.php:8
+// Fatal error: Uncaught Exception in /tmp/lazy-object.php:7
 // Stack trace: #0 /tmp/lazy-object.php(3): User->__construct()
 ```
 
@@ -371,7 +364,7 @@ $userGhost->name;
 get_class($userProxy); // User
 
 $userProxy->name;
-// Fatal error: Uncaught Exception in /tmp/lazy-object.php:8
+// Fatal error: Uncaught Exception in /tmp/lazy-object.php:7
 // Stack trace: #0 /tmp/lazy-object.php(3): User->__construct()
 ```
 
@@ -582,6 +575,10 @@ fizBuzz();
 
 ---
 
+## `new`式の簡略化
+
+---
+
 ### `new`式の簡略化
 
 ### PHP 8.3
@@ -622,11 +619,11 @@ object(Closure)#1 (0) {
 ```
 object(Closure)#1 (3) {
   ["name"]=>
-  string(60) "{closure:/tmp/closure-debug-info.php:3}"
+  string(39) "{closure:/tmp/closure-debug-info.php:1}"
   ["file"]=>
-  string(48) "/tmp/closure-debug-info.php"
+  string(27) "/tmp/closure-debug-info.php"
   ["line"]=>
-  int(3)
+  int(1)
 }
 ```
 
