@@ -10,9 +10,6 @@ tags:
 
 この記事は、11月21日開催予定 [第170回 PHP勉強会＠東京](https://phpstudy.connpass.com/event/335943/) （ハッシュタグは [#phpstudy](https://x.com/hashtag/phpstudy) ）のメイントーク資料、およびその補足ポエムです。イベント開催日より前に、この文章を書いています。
 
-
-
-
 ## トーク資料: PHP 8.4 新機能紹介
 
 {% reveal "2024-11-21-php-84-new-features-want-your-doc-contribution/" %}
