@@ -90,7 +90,7 @@ end note
 | 2 | 3 | OK |
 | 3 | **1** | **一意制約違反** |
 
-`books` テーブルは `id` 列単独で主キーのため、たとえ著者が異なっても `book.id` に2件の `1` は存在できない。
+`books` テーブルは `id` 列単独で主キーのため、たとえ著者が異なっても `books.id` に2件の `1` は存在できない。
 
 ### 複合主キー
 
@@ -135,9 +135,9 @@ end note
 
 *PK:主キー* を複数列に跨ぐことで、「単独の列で一意」ではなく「2列の組み合わせで一意」を可能とした。これで「*書籍ID* は **著者ごとに** 一意」を実現できる。コメントも同じように「3列の組み合わせで一意」とした。
 
-現代では、「組み合わせで一意」という要件の場合、組み合わせに対する複合一意制約とは別で `id` という列を表の先頭に設け、それを単独で主キーとすることが多い。要件に応じて *自然* に決まる「*ナチュラル* キー」とは別で、主キー用に *代理* の「*サロゲート* キー」を用意する、現代ではこれが常識だが、ORM普及以前は必ずしもそうでなかった。
+現代では、「組み合わせで一意」という要件の場合、組み合わせに対する複合一意制約とは別で `id` という列を表の先頭に設け、それを単独で主キーとすることが多い。要件に応じて *自然* に決まる「*ナチュラル* キー」とは別で、主キー用に *代理* の「*サロゲート* キー」を用意する。
 
-このパターンを、Eloquentは扱えない。
+今やこれが常識だが、ORM普及以前は必ずしもそうでなかった。このパターンを、Eloquentは扱えない。
 
 ## LaravelとEloquentでの複合主キー
 
@@ -161,7 +161,7 @@ Schema::create('comments', function (Blueprint $table) {
 });
 ```
 
-クエリビルダも問題ない。PHPコードによるSQLの単なるラッパーなので、指示した通りのSQLが実行される。
+クエリビルダも問題ない。PHPコードとして表現した通りのSQLが実行される。
 
 ### Eloquentで複合主キーに対応する実装例
 
@@ -231,7 +231,7 @@ class Book extends Model
 }
 ```
 
-Eloquentは複合主キー非対応のため、それを破った実装に対するフールプルーフやエラーメッセージは用意されていない。苦肉の策として「絶対にエラーが発生するSQL」をEloquentに実行させその文字列を出力させている。「カラム名 = エラーメッセージ」は人間が読めれば何でも良い:
+非対応を破った実装に対するフールプルーフやエラーメッセージはLaravel自体には用意されていない。そこで「絶対にエラーが発生するSQL」をEloquentに実行させその文字列を出力させている。「カラム名 = エラーメッセージ」は人間が読めれば何でも良い:
 
 ```php
 Comment::find(1)
@@ -250,13 +250,13 @@ Comment::find(1)
 | 3 | **1** | 1 |失敗から学ぶ RDBの正しい歩き方 | 実践的でした！ |
 
 ```php
-// 1: 「和田卓人」
+// OK: 1 - 和田卓人
 $author = Author::find(1);
 
-// 1,1: 「SQLアンチパターン」
+// OK: 1,1 - SQLアンチパターン
 $book = $author->books->first();
 
-// 1,1,1: 「体系的でした！」 ← ここが問題になる
+// NG: 1,1,1: 「体系的でした！」 ← ここが問題になる
 $comments = $book->comments;
 ```
 
@@ -278,7 +278,7 @@ public function comments(): HasMany
 クエリビルダのデバッグと同じように、リレーションシップが実行するSQLを調べる:
 
 ```php
-$comments = $book->comments()->toRawSql();
+$book->comments()->toRawSql();
 // select * from "comments" where
 //   "comments"."book_id" = 1 and
 //   "comments"."book_id" is not null
@@ -322,7 +322,7 @@ public function book(): BelongsTo
 
 ### ルートモデル結合
 
-複合主キーを持つモデルは、Eloquent以前にURL体型の時点で制約事項がある。次のルートを考えてみよう:
+複合主キーを持つモデルは、Eloquent以前にURL体型で制約事項がある。次のルートを考えてみよう:
 
 ```php
 Route::get(
@@ -341,7 +341,7 @@ GET /books/1
 // ???
 ```
 
-やはり `find()` と同じ問題が発生する。このURLが「SQLアンチパターン」「失敗から学ぶ RDBの正しい歩き方」どちらを示すのか特定できない。つまり、複合主キーを持つモデルをルートモデル結合の場合:
+やはり `find()` と同じ問題が発生する。このURLでは「SQLアンチパターン」「失敗から学ぶ RDBの正しい歩き方」どちらを示すのかは特定できない。複合主キーを持つモデルへのルートモデル結合の場合:
 
 ```php
 Route::get(
@@ -358,7 +358,9 @@ GET /authors/3/books/1
 // 失敗から学ぶRDBの正しい歩き方
 ```
 
-親の情報もURLに含まている必要がある。ここまでは当然の話だが、Eloquentでこれを扱う場合やはり追加のコードが必要となる。ここから先は[ネストしたリソース](https://readouble.com/laravel/11.x/ja/controllers.html#restful-nested-resources)として設定された次の例を考える:
+親の情報もURLに含まている必要がある。
+
+ここまでは当然の話だが、Eloquentでこれを扱う場合やはり追加のコードが必要となる。ここから先は[ネストしたリソース](https://readouble.com/laravel/11.x/ja/controllers.html#restful-nested-resources)として設定された次の例を考える:
 
 ```php
 Route::resource(
@@ -375,7 +377,7 @@ GET /authors/3/books/1/comments/1
 // 404 not found
 ```
 
-予想に反し `404 not found` が返却されてしまった。これは `Book` や `Comment` の主キーが、前述のコードでいう `複合キーのため主キー未設定` であることが理由だ。Laravelがルートモデル結合のために実行しているSQLを調べると次のようになる:
+予想に反し `404 not found` が返却されてしまった。これは `Book` や `Comment` の主キーが、前述のコードでいう `複合キーのため主キー未設定` であることが理由だ。Laravelがルートモデル結合のために実行しているSQLを調べてみる:
 
 ```php
 \DB::enableQueryLog();
@@ -400,7 +402,7 @@ select * from "books" where "複合キーのため主キー未設定" = '11' lim
 -- Bookが取得できなかった時点でモデルの解決は中断される
 ```
 
-主キーは設定できないがルートモデル結合の解決キーは指定する必要がある。[キーのカスタマイズ](https://readouble.com/laravel/11.x/ja/routing.html#customizing-the-default-key-name)を使って、今回は次のように解決する:
+主キーは設定できないがルートモデル結合の解決キーは指定する必要がある。[キーのカスタマイズ](https://readouble.com/laravel/11.x/ja/routing.html#customizing-the-default-key-name)を使って、今回は次のように指定する:
 
 ```php app/Models/Book.php
 // 解決キーを明示的に指定
@@ -418,13 +420,13 @@ public function getRouteKeyName()
 }
 ```
 
-ここまでで `404 not found` は解消されるが、絞り込みが不十分なため *親子関係の異なる誤った* リソースが返却される可能性を排除できない。そこでルートに次のような記述を追加する:
+ここまでで `404 not found` は解消されるが、絞り込みが不十分なため *親子関係の異なる誤った* リソースが返却される可能性は残る。そこでルートに次のような記述を追加する:
 
 ```php
 Route::resource(
   'authors.books.comments',
   CommentController::class
-)->scoped(); // 追加
+)->scoped(); // 追加: ネストしたリソースのスコープを明示的に宣言
 ```
 
 以上の対応で問題なく動作する。
