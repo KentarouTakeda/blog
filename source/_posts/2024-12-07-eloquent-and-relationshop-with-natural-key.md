@@ -441,9 +441,9 @@ GET /authors/3/books/1
 
 `find()` 非対応は一見するとダメージが大きそうだが、実はそんなことはない。上に述べた通り `HasMany`, `BelongsTo` は問題なく利用できるため:
 
+* 適切なURL体型とルートモデル結合での取得
 * 探したいモデルの子から `BelongsTo` で取得
 * 探したいモデルの親から `HasMany` で取得
-* ルートモデル結合の場合、URL体型に応じて[Eloquentモデルのスコープの設定](https://readouble.com/laravel/11.x/ja/routing.html#implicit-model-binding-scoping)により子を一意に特定可能
 
 このような方法で容易にモデルを一意に特定できる。
 
@@ -459,6 +459,7 @@ https://github.com/KentarouTakeda/example-eloquent-composite-primary-key/pull/2
 
 * 記事中のテーブル設計を再現するマイグレーション
 * 複合主キーに対応する `HasMany`, `BelongsTo` の実装
+* ルートモデル結合の設定例
 * 意図通りの動作であることを確認するテストコード
 
 必要に応じて参照して欲しい。
@@ -470,7 +471,6 @@ https://github.com/KentarouTakeda/example-eloquent-composite-primary-key/pull/2
 * 複合主キーが必要な状況とその設計例
 * Laravelで複合主キーを扱うためのマイグレーション
 * Eloquentモデルでの制約と解決策
-* `find()` の代替
 
 ### 備考
 
