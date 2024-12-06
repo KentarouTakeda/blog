@@ -320,7 +320,124 @@ public function book(): BelongsTo
 }
 ```
 
-## `find()`の代替
+### ルートモデル結合
+
+複合主キーを持つモデルは、Eloquent以前にURL体型の時点で制約事項がある。次のルートを考えてみよう:
+
+```php
+Route::get(
+  'books/{book}',
+  [BookController::class, 'show']
+);
+
+// GET books/{book}
+```
+
+次のようなHTTPリクエストを送ったとする:
+
+```
+GET /books/1
+
+// ???
+```
+
+やはり `find()` と同じ問題が発生する。このURLが「SQLアンチパターン」「失敗から学ぶ RDBの正しい歩き方」どちらを示すのか特定できない。つまり、複合主キーを持つモデルをルートモデル結合の場合:
+
+```php
+Route::get(
+  'authors/{author}/books/{book}',
+  [BookController::class, 'show']]
+);
+
+// GET authors/{author}/books/{book}
+```
+
+```
+GET /authors/3/books/1
+
+// 失敗から学ぶRDBの正しい歩き方
+```
+
+親の情報もURLに含まている必要がある。ここまでは当然の話だが、Eloquentでこれを扱う場合やはり追加のコードが必要となる。ここから先は[ネストしたリソース](https://readouble.com/laravel/11.x/ja/controllers.html#restful-nested-resources)として設定された次の例を考える:
+
+```php
+Route::resource(
+  'authors.books.comments',
+  CommentController::class
+);
+
+// GET authors/{author}/books/{book}/comments/{comment}
+```
+
+```
+GET /authors/3/books/1/comments/1
+
+// 404 not found
+```
+
+予想に反し `404 not found` が返却されてしまった。これは `Book` や `Comment` の主キーが、前述のコードでいう `複合キーのため主キー未設定` であることが理由だ。Laravelがルートモデル結合のために実行しているSQLを調べると次のようになる:
+
+```php
+\DB::enableQueryLog();
+
+$response = $this->json(
+  Request::METHOD_GET,
+  'authors/3/books/1/comments/1'
+);
+
+dump(\DB::getRawQueryLog());
+```
+
+```sql
+-- OK: Author: 単独で主キーのため問題ない
+select * from "authors" where "author_id" = '2' limit 1
+
+-- NG: Book: `find()` を利用禁止した際のエラーSQLが実行される
+select * from "books" where "複合キーのため主キー未設定" = '11' limit 1
+-- （設定していなかった場合、親子関係の異なる誤った書籍が返却されてしまう）
+
+-- NG: Comment: 何も実行されない
+-- Bookが取得できなかった時点でモデルの解決は中断される
+```
+
+主キーは設定できないがルートモデル結合の解決キーは指定する必要がある。[キーのカスタマイズ](https://readouble.com/laravel/11.x/ja/routing.html#customizing-the-default-key-name)を使って、今回は次のように解決する:
+
+```php app/Models/Book.php
+// 解決キーを明示的に指定
+public function getRouteKeyName()
+{
+    return 'book_id';
+}
+```
+
+```php app/Models/Comment.php
+// 解決キーを明示的に指定
+public function getRouteKeyName()
+{
+    return 'comment_id';
+}
+```
+
+ここまでで `404 not found` は解消されるが、絞り込みが不十分なため *親子関係の異なる誤った* リソースが返却される可能性を排除できない。そこでルートに次のような記述を追加する:
+
+```php
+Route::resource(
+  'authors.books.comments',
+  CommentController::class
+)->scoped(); // 追加
+```
+
+以上の対応で問題なく動作する。
+
+```
+GET /authors/3/books/1
+
+// 失敗から学ぶRDBの正しい歩き方
+```
+
+今回はモデル側をカスタマイズしルートは通常のやり方で指定したが、ルート側をカスタマイズする方法もある。後述のサンプルコードには一通りの実装が含まれているので、興味があれば参照して欲しい。
+
+### `find()`の代替
 
 `find()` 非対応は一見するとダメージが大きそうだが、実はそんなことはない。上に述べた通り `HasMany`, `BelongsTo` は問題なく利用できるため:
 
@@ -334,8 +451,8 @@ public function book(): BelongsTo
 
 この記事で解説した設計とコードを筆者のGitHubリポジトリで公開した:
 
-{% link_preview https://github.com/KentarouTakeda/example-eloquent-composite-primary-key/pull/1 rel:noopener %}
-https://github.com/KentarouTakeda/example-eloquent-composite-primary-key/pull/1
+{% link_preview https://github.com/KentarouTakeda/example-eloquent-composite-primary-key/pull/2 rel:noopener %}
+https://github.com/KentarouTakeda/example-eloquent-composite-primary-key/pull/2
 {% endlink_preview %}
 
 コードには次のものが含まれる:
@@ -360,3 +477,10 @@ https://github.com/KentarouTakeda/example-eloquent-composite-primary-key/pull/1
 この記事ではファクトリの作成方法について触れていない。単に、筆者がまだ検証していないことが理由だ。良い実装を見つけ次第、追記する予定。
 
 このやり方は、筆者が手探りで考案したものだ。紹介した手法より良い方法をご存じの方は、是非ともXなどで共有して欲しい。
+
+{% details 更新履歴 %}
+
+* 2024年12月6日
+  * ルートモデル結合の説明を追加
+
+{% enddetails %}
