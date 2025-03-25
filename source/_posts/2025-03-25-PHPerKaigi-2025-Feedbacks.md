@@ -2,6 +2,8 @@
 title: PHPerKaigi 2025 感想
 description: PHPerKaigi 2025参加記録。主にトークセッションへの感想。
 date: 2025-03-25 23:00
+ogimage: ogimage.webp
+twitter_large_card: true
 tags:
   - PHP
   - phperkaigi
