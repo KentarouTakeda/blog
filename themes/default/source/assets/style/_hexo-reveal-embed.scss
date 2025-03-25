@@ -16,11 +16,8 @@
   }
 
   &:not(.focus)::after {
-    background: linear-gradient(
-        to bottom,
-        rgb(0 0 0 / 70%),
-        rgb(0 0 0 / 0%) 5em
-      ),
+    background:
+      linear-gradient(to bottom, rgb(0 0 0 / 70%), rgb(0 0 0 / 0%) 5em),
       linear-gradient(to top, rgb(0 0 0 / 70%), rgb(0 0 0 / 0%) 5em);
     box-sizing: border-box;
     color: white;
