@@ -23,7 +23,7 @@
     "hexo-generator-tag": "^2.0.0",
     "hexo-renderer-dartsass": "^1.0.0",
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-marked": "^6.0.0",
+    "hexo-renderer-marked": "^7.0.1",
     "hexo-reveal-embed": "^1.0.2",
     "hexo-tag-ogp-link-preview": "^1.1.0",
     "hexo-tag-twitter": "^1.0.2",
@@ -38,7 +38,7 @@
     "prettier": "^3.2.5",
     "stylelint": "^16.2.1",
     "stylelint-config-recommended-scss": "^14.0.0",
-    "stylelint-config-standard": "^36.0.0",
+    "stylelint-config-standard": "^37.0.0",
     "stylelint-order": "^6.0.4",
     "stylelint-prettier": "^5.0.0",
     "stylelint-scss": "^6.1.0",
@@ -46,7 +46,7 @@
     "textlint-filter-rule-allowlist": "^4.0.0",
     "textlint-filter-rule-comments": "^1.2.2",
     "textlint-filter-rule-node-types": "^1.1.0",
-    "textlint-rule-preset-ja-technical-writing": "^10.0.1"
+    "textlint-rule-preset-ja-technical-writing": "^12.0.2"
   },
   "lint-staged": {
     "themes/default/source/assets/**/*.scss": "stylelint --fix"
