@@ -103,3 +103,44 @@ PHPerKaigi 2025に3年連続で登壇させて頂いている。
 ちょっとしたパッケージへのプルリクエストならすぐに送れるようになるはずだ。そこまで至らなくとも、問題に遭遇した時に自分たちのコードが原因なのか、フレームワークのバグなのか仕様なのか、この程度の区別はすぐつけられるようになる。
 
 今回のトークやこの記事が、Laravelの理解を深めるきっかけになってくれると嬉しい。
+
+## 関連URL
+
+### トークに言及頂いたブログ記事
+
+* [「PHPerKaigi 2025 Day1」参加レビュー | 学び・セッション感想まとめ](https://let-bygones-be-bygones.com/2025/03/23/phperkaigi-2025-day1-review/)
+* [PHPerKaigi 2025 に参加してきました！ #PhperKaigi - Qiita](https://qiita.com/climber-miyagi/items/f3add49f2147a26ac28c)
+* [PhperKaigi 2025 参加レポート #PHP - Qiita](https://qiita.com/Alfredo/items/fae39dd1319892dea710)
+* [PHPerKaigi 2025に参加しました vol.1｜かぴ | ゆーさく](https://note.com/ysssssss98/n/n317f4799d9d8)
+* [PHPerKaigiに参加しての感想 #PHP - Qiita](https://qiita.com/Takuya_Kouyama/items/2f42983a5aaafd97e4af)
+
+*ここに書かれていないURLをご存じの方はお知らせ下さい。ぜひ追加させて頂きたいと思います。*
+
+### 資料中の参考リンク
+
+* [[Kaigi on Rails 2024] Rails Way, or the highway - Speaker Deck](https://speakerdeck.com/palkan/kaigi-on-rails-2024-rails-way-or-the-highway)
+* [[orm] Authentication - Laravel Doctrine](https://www.laraveldoctrine.org/docs/1.8/orm/auth)
+* [「コンセプト」に気づけば実装の意図が分かる。Laravelスペシャリストに聞く、OSSを読む意義 | レバテックラボ（レバテックLAB）](https://levtech.jp/media/article/interview/detail_561/)
+* [「貢献」ではなく「自分が楽をしたいから」。Laravelスペシャリストが語る、肩の力を抜いたOSS活動のススメ - Findy Engineer Lab](https://findy-code.io/engineer-lab/kentaroutakeda)
+* [『博士の愛した数式』 小川洋子 | 新潮社](https://www.shinchosha.co.jp/book/401303/)
+* [ext/pdo_pgsql: Expanding COPY input from an array to an iterable by KentarouTakeda · Pull Request #15893 · php/php-src](https://github.com/php/php-src/pull/15893)
+* [ext/pdo_pgsql: Retrieve the memory usage of the query result resource #14260](https://github.com/php/php-src/pull/14260)
+* [Laravel Nightwatch - Laravel専用監視サービス](https://zenn.dev/casti/articles/e5ef9ac2afebfa)
+* [Laravel Nightwatch](https://nightwatch.laravel.com/)
+* [laravel-doctrine/orm: An integration library for Laravel and Doctrine ORM](https://github.com/laravel-doctrine/orm)
+* [Laravel12.x公式ドキュメント翻訳リポジトリ](https://github.com/laravel-ja/ja-docs-12.x)
+* [Laravelが如何にダメで時代遅れかを説明する #Laravel - Qiita](https://qiita.com/MadakaHeri/items/e6034727fcab8b61b55e)
+* [Laravel日本語ドキュメント 12.x サービスプロバイダ](https://readouble.com/laravel/12.x/ja/providers.html)
+* [Laravel日本語ドキュメント 12.x パッケージ開発](https://readouble.com/laravel/12.x/ja/packages.html)
+* [Laravel日本語ドキュメント 12.x リクエストのライフサイクル](https://readouble.com/laravel/12.x/ja/lifecycle.html)
+* [Laravel日本語ドキュメント 12.x リリースノート](https://readouble.com/laravel/12.x/ja/releases.html)
+* [Laravel日本語ドキュメント 12.x 認証](https://readouble.com/laravel/12.x/ja/authentication.html)
+* [Packages Toolkit for Laravel](https://packages.tools/)
+* [PHP 8.4 マニュアル翻訳状況 · Issue #150 · php/doc-ja](https://github.com/php/doc-ja/issues/150)
+* [PHP: プロパティフック - Manual](https://www.php.net/manual/ja/language.oop5.property-hooks.php)
+* [Rails vs Node.js 最終章 「Prisma」](https://mizchi-20241002-cf-meetup.pages.dev)
+* [tpetry/laravel-postgresql-enhanced: Support for many missing PostgreSQL specific features](https://github.com/tpetry/laravel-postgresql-enhanced)
+* [いろいろなフレームワークの仕組みを index.php から読み解こう / index.php of each framework - Speaker Deck](https://speakerdeck.com/okashoi/index-dot-php-of-each-framework)
+* [エンタープライズアプリケーションアーキテクチャパターン（長瀬 嘉秀 長瀬 嘉秀 Martin Fowler 株式会社テクノロジックアート）｜翔泳社の本](https://www.shoeisha.co.jp/book/detail/9784798105536)
+* [改めて整理するアプリケーション設計の基本 - Speaker Deck](https://speakerdeck.com/os1ma/gai-metezheng-li-suruapurikesiyonshe-ji-noji-ben)
+* [重要なのは「基本を押さえ、適したものを採用すること」　“本来の役割”を押さえたアプリケーション設計 | ログミーBusiness](https://logmi.jp/main/technology/328341)
