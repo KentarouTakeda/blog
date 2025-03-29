@@ -124,7 +124,7 @@ PHPerKaigi 2025に3年連続で登壇させて頂いている。
 * [「貢献」ではなく「自分が楽をしたいから」。Laravelスペシャリストが語る、肩の力を抜いたOSS活動のススメ - Findy Engineer Lab](https://findy-code.io/engineer-lab/kentaroutakeda)
 * [『博士の愛した数式』 小川洋子 | 新潮社](https://www.shinchosha.co.jp/book/401303/)
 * [ext/pdo_pgsql: Expanding COPY input from an array to an iterable by KentarouTakeda · Pull Request #15893 · php/php-src](https://github.com/php/php-src/pull/15893)
-* [ext/pdo_pgsql: Retrieve the memory usage of the query result resource #14260](https://github.com/php/php-src/pull/14260)
+* [ext/pdo_pgsql: Retrieve the memory usage of the query result resource by KentarouTakeda · Pull Request #14260 · php/php-src](https://github.com/php/php-src/pull/14260)
 * [Laravel Nightwatch - Laravel専用監視サービス](https://zenn.dev/casti/articles/e5ef9ac2afebfa)
 * [Laravel Nightwatch](https://nightwatch.laravel.com/)
 * [laravel-doctrine/orm: An integration library for Laravel and Doctrine ORM](https://github.com/laravel-doctrine/orm)
