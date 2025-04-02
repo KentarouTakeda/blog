@@ -114,6 +114,7 @@ PHPerKaigi 2025に3年連続で登壇させて頂いている。
 * [PHPerKaigi 2025 に参加しました #phperkaigi | stenyan.dev](https://stenyan.dev/posts/2025/03/30/phperkaigi-2025)
 * [PhperKaigi 2025 参加レポート #PHP - Qiita](https://qiita.com/Alfredo/items/fae39dd1319892dea710)
 * [PHPerKaigi 2025に参加しました vol.1｜かぴ | ゆーさく](https://note.com/ysssssss98/n/n317f4799d9d8)
+* [phperkaigi2025に参加してきました！](https://zenn.dev/uiui/articles/3612f612fc190d)
 * [PHPerKaigiに参加しての感想 #PHP - Qiita](https://qiita.com/Takuya_Kouyama/items/2f42983a5aaafd97e4af)
 
 *ここに書かれていないURLをご存じの方はお知らせ下さい。ぜひ追加させて頂きたいと思います。*
