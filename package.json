@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "7.3.0"
+    "version": "8.0.0"
   },
   "scripts": {
     "build": "hexo g",
@@ -14,7 +14,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "hexo": "^7.0.0",
+    "hexo": "^8.0.0",
     "hexo-filter-plantuml": "^2.1.1",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
@@ -33,16 +33,16 @@
     "hexo-browser-reloader-websocket": "^1.0.0",
     "hexo-server": "^3.0.0",
     "husky": "^9.0.11",
-    "lint-staged": "^15.2.2",
+    "lint-staged": "^16.2.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.2.5",
     "stylelint": "^16.2.1",
-    "stylelint-config-recommended-scss": "^14.0.0",
-    "stylelint-config-standard": "^38.0.0",
-    "stylelint-order": "^6.0.4",
+    "stylelint-config-recommended-scss": "^16.0.2",
+    "stylelint-config-standard": "^39.0.1",
+    "stylelint-order": "^7.0.0",
     "stylelint-prettier": "^5.0.0",
     "stylelint-scss": "^6.1.0",
-    "textlint": "^14.0.2",
+    "textlint": "^15.2.2",
     "textlint-filter-rule-allowlist": "^4.0.0",
     "textlint-filter-rule-comments": "^1.2.2",
     "textlint-filter-rule-node-types": "^1.1.0",
