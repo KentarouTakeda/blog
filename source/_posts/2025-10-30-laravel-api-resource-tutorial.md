@@ -153,7 +153,7 @@ TDDスタイルでの開発に非常に有効なツール。既に紹介したSQ
    * ファイルの更新を検知し自動的にテストが実行される
    * 上のコードの通りテストは失敗する
 
-*参考: [GitHub spatie/phpunit-watcher](https://spatie.be/docs/laravel-phpunit-watcher/v5/introduction)*
+*参考: [GitHub spatie/phpunit-watcher](https://github.com/spatie/phpunit-watcher)*
 
 ## Laravelアプリの初期状態を観察する—覚えておきたいartisanコマンド一覧
 
