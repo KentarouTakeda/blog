@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "8.0.0"
+    "version": "8.1.1"
   },
   "scripts": {
     "build": "hexo g",
@@ -27,7 +27,7 @@
     "hexo-reveal-embed": "^1.0.2",
     "hexo-tag-ogp-link-preview": "^1.1.0",
     "hexo-tag-twitter": "^1.0.2",
-    "hexo-util": "^3.0.1"
+    "hexo-util": "^4.0.0"
   },
   "devDependencies": {
     "hexo-browser-reloader-websocket": "^1.0.0",
