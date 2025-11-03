@@ -8,6 +8,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      plantuml:
+        image: plantuml/plantuml-server:jetty
+        ports:
+          - 8080:8080
+
     steps:
       - uses: actions/checkout@v5
 
@@ -23,6 +29,9 @@ jobs:
           cache: 'npm'
 
       - run: "npm i --prod --prefer-offline --ignore-scripts"
+
+      - run: 'sed -E -i "s|(^ *)# ?(.*) *# GHA: uncomment-before-build|\1\2|" _config.yml'
+
       - name: npm run build
         uses: nick-fields/retry@v3
         with:

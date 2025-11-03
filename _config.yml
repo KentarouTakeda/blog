@@ -74,6 +74,7 @@ marked:
   lazyload: true
 
 plantuml:
+  # server: "http://localhost:8080/" # GHA: uncomment-before-build
   link: "inline"
 
 reveal:
