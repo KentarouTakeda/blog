@@ -44,8 +44,8 @@ jobs:
       - run: test -z "$(find public -empty)"
 
       - run: aws s3 sync public/ s3://${{ secrets.S3_BUCKET }} --delete  --exclude "*" --include "*.html" --cache-control "max-age=3600"
-      - run: aws s3 sync public/ s3://${{ secrets.S3_BUCKET }} --delete  --exclude "*" --include "*.css" --include "*.js" --include "*.woff" --include "*.ttf" --cache-control "max-age=31536000"
-      - run: aws s3 sync public/ s3://${{ secrets.S3_BUCKET }} --delete  --exclude "*" --include "*.png" --include "*.jpg" --include "*.gif" --cache-control "max-age=86400"
-      - run: aws s3 sync public/ s3://${{ secrets.S3_BUCKET }} --delete  --exclude "*.html" --exclude "*.css" --exclude "*.js" --exclude "*.woff" --exclude "*.ttf" --exclude "*.png" --exclude "*.jpg" --exclude "*.gif"
+      - run: aws s3 sync public/ s3://${{ secrets.S3_BUCKET }} --delete  --exclude "*" --include "*.woff" --include "*.ttf" --include "*.eot" --cache-control "max-age=31536000"
+      - run: aws s3 sync public/ s3://${{ secrets.S3_BUCKET }} --delete  --exclude "*" --include "*.css" --include "*.js" --include "*.png" --include "*.jpg" --include "*.gif" --include "*.webp" --cache-control "max-age=86400"
+      - run: aws s3 sync public/ s3://${{ secrets.S3_BUCKET }} --delete  --exclude "*.html" --exclude "*.css" --exclude "*.js" --exclude "*.woff" --exclude "*.ttf" --exclude "*.eot" --exclude "*.png" --exclude "*.jpg" --exclude "*.gif" --exclude "*.webp" --cache-control "max-age=604800"
 
       - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
