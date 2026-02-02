@@ -125,7 +125,7 @@ Anti-Promptingの影響を軽減できることは分かった。実際にどの
 
 AGENTS.mdの記述量の削減がそのままMemory Filesのコンテキスト削減に繋がっている。「PostリソースのCRUD-API」を書くには追加のSkillは必要ないため、削減がそのまま速度向上に繋がったということだろう。
 
-出力されたコードはいずれも、過去に書いた「{% post_link 2025-10-30-laravel-api-resource-tutorial Laravelで理解するREST設計の基本 %}」と同等の内容だが、品質は2.0の方が高かった。1.0では認可を`StorePostRequest`, `UpdatePostRequest`に記述していた。2.0では`PostPolicy`を生成し、`delete()`への認可も正しく行っていた。
+出力されたコードはいずれも、過去に書いた「{% post_link 2025-10-30-laravel-api-resource-tutorial Laravelで理解するREST設計の基本 %}」と同等の内容だが、品質は2.0の方が高かった。1.0では認可を`StorePostRequest`, `UpdatePostRequest`に記述していた。2.0では`PostPolicy`を生成し、`destroy()`への認可も正しく行っていた。
 
 ## Skillsへの分離による精度向上
 
@@ -149,7 +149,7 @@ Skillsは「必要な時だけ呼び出される」という仕組みなのでAn
 
 では具体的に何をGuidelineに残し、何をSkillに分離するのか。判断基準は明快だ。Guidelineには「このライブラリが入っていることでコーディングの前提がどう変わるか」だけを書く。Skillには「具体的にどう実装するか」を書く。
 
-Laravel OpenAPI Validatorの場合、Guidelineはわずか15行で済む。例えば「正常系テストだけでスキーマ準拠を保証できる」といった前提の転換を伝えるだけだ。これだけでAIのコード生成方針は変わる。しかもこの15行は常時コンテキストを占有するが、その負荷は十分に小さい。
+Laravel OpenAPI Validatorの場合、Guidelineはわずか15行で済む。例えば「正常系テストだけでスキーマ準拠を保証できる」といった前提の転換を伝えるだけだ。これだけでAIのコード生成方針は変わる。この15行だけ、常時コンテキストを占有するが、その負荷は十分に小さい。
 
 一方、Skillは270行に及ぶ。実装に必要な詳細を網羅しているが、これらは実際にコードを書く時にだけ必要であり、常時読み込む必要はない。
 
