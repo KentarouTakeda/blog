@@ -1,5 +1,6 @@
 ---
-title: 「私の愛したLaravel」―トークの裏側、シンプルへのこだわり
+title: 「私の愛したLaravel」
+subtitle: トークの裏側、シンプルへのこだわり
 date: 2025-03-29 12:00
 ogimage: ogimage.webp
 twitter_large_card: true
