@@ -10,14 +10,19 @@
   <meta name="viewport" content="width=device-width">
   <meta name="robots" content="max-image-preview:large" />
   <link rel="canonical" href="<%- page.permalink ?? url.replace(/\/index.html$/, '/') -%>">
+  <%
+    const ogimage = page.ogimage || (is_post() ? '_ogimage-default.png' : undefined);
+    const twitterCard = (page.twitter_large_card || (!page.ogimage && ogimage))
+      ? 'summary_large_image' : 'summary';
+  %>
   <%- open_graph({
     url: page.permalink ?? (url.replace(/\/index.html$/, '/')) ,
-    image: page.ogimage,
+    image: ogimage,
     twitter_id: config.twitter,
-    twitter_image: page.twitter_image ?? page.ogimage,
+    twitter_image: page.twitter_image ?? ogimage,
     fb_admins: config.fb_admins,
     fb_app_id: config.fb_app_id,
-    twitter_card: page.twitter_large_card ? 'summary_large_image' : 'summary'
+    twitter_card: twitterCard
   }) %>
   <link rel="icon" href="/favicon.ico">
   <%- partial('google-analytics', { head: true }) %>
