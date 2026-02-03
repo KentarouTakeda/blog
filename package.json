@@ -14,6 +14,8 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@fontsource/noto-sans-jp": "^5.2.9",
+    "budoux": "^0.7.0",
     "hexo": "^8.0.0",
     "hexo-filter-plantuml": "^2.1.1",
     "hexo-generator-archive": "^2.0.0",
@@ -27,7 +29,9 @@
     "hexo-reveal-embed": "^1.0.2",
     "hexo-tag-ogp-link-preview": "^1.1.0",
     "hexo-tag-twitter": "^1.0.2",
-    "hexo-util": "^4.0.0"
+    "hexo-util": "^4.0.0",
+    "satori": "^0.19.1",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "hexo-browser-reloader-websocket": "^1.0.0",
