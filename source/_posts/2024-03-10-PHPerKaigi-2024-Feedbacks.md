@@ -1,5 +1,6 @@
 ---
 title: PHPerKaigi 2024 感想
+description: PHPerKaigi 2024参加記録。forteeへ送った各セッションへのフィードバック。タイムゾーン、マイクロサービス、B+木、CSRF対策など。
 date: 2024-03-10 22:00
 tags:
   - PHP

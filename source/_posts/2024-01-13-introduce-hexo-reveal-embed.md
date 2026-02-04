@@ -1,5 +1,6 @@
 ---
 title: ブログ記事へのスライド埋め込みプラグイン Hexo Reveal Embed を公開した
+description: Hexoブログにreveal.jsスライドを埋め込むプラグインHexo Reveal Embedを公開。SEOスコアの獲得と執筆環境の統合が目的。
 date: 2024-01-13 00:00
 ogimage: ogp.webp
 tags:

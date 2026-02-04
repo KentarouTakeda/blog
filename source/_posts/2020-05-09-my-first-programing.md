@@ -1,5 +1,6 @@
 ---
 title: 最初に作ったプログラム
+description: N88-BASICの写経、Mathematicaでのグラフ描画、MIDIツール開発、草の根BBS、フリーランス初仕事。プログラマーとしての原体験を振り返る。
 date: 2020-05-09 13:00
 tags:
   - essay

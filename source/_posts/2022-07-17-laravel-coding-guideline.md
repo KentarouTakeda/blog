@@ -1,6 +1,7 @@
 ---
 title: 使い倒し系Laravelコーディング規約
 subtitle: 小中規模案件を爆速で回す
+description: 小中規模案件向けLaravelコーディング規約。Eloquent、マイグレーション、ルーティング、認可、テストなどLaravelを使い倒すための実践的なルール集。
 date: 2022-07-17 17:00
 edit: 2022-07-31 12:00
 tags:

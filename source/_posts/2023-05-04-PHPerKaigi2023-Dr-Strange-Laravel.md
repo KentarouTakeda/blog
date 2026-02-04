@@ -1,5 +1,6 @@
 ---
 title: 「Laravelへの異常な愛情 または私は如何にして心配するのを止めてEloquentを愛するようになったか」補足記事
+description: PHPerKaigi 2023登壇の補足。Laravel Wayを突き詰めるモチベーションと、開発効率を優先したフレームワーク活用の考え方。
 date: 2023-05-05 18:00
 tags:
   - PHP

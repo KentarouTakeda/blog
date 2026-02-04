@@ -1,5 +1,6 @@
 ---
 title: PHPerKaigi 2023 感想
+description: PHPerKaigi 2023参加記録。forteeへ送った各セッションへのフィードバック。フレームワーク、キャッシュ、ISUCON、Composerなど。
 date: 2023-04-01 18:00
 tags:
   - PHP

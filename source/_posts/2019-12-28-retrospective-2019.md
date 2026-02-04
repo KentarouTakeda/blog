@@ -1,6 +1,7 @@
 ---
 title: 2019年の振り返り
 subtitle: PHPerKaigi, Laravel, Angularなど
+description: 2019年の振り返り。PHPerKaigi 2019をきっかけにLaravelを本格的に学び始め、フレームワークとの向き合い方がAngularの理解にも繋がった話。
 date: 2019-12-28 21:00
 tags:
   - essay

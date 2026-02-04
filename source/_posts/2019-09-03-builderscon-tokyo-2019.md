@@ -1,7 +1,8 @@
 ---
 title: builderscon tokyo 2019 に参加
+description: builderscon tokyo 2019参加記録。ゲームAI、非同期処理の歴史、PWAゲーム開発、レッドチームによるセキュリティ診断など印象的なセッションの感想。
 date: 2019/09/05 22:00
-tags: 
+tags:
   - builderscon
 ---
 
