@@ -3,8 +3,6 @@ title: Laravel Eloquentで複合主キーのテーブルとリレーションシ
 subtitle: Eloquentの制約を克服し、複合主キーを使いこなすための具体例
 description: Eloquentは複合主キーに対応していない。この記事では、Laravelで複合主キーを扱う方法やリレーションシップの工夫を詳しく解説。既存データベースを活用したい開発者必見。
 date: 2024-12-07 00:00
-ogimage: ogimage.webp
-twitter_large_card: true
 tags:
   - PHP
 ---

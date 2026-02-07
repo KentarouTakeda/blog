@@ -4,7 +4,6 @@ subtitle: コントリビューションへ至った動機と作業の記録
 description: 静的サイトジェネレータ「Hexo」日本語ドキュメント翻訳の記録。ChatGPTを活用し2週間で45ページの翻訳を完了。コントリビューションの動機やChatGPT活用方法、メンテナやレビュアーとのコミュニケーションなど。
 date: 2024-04-03 23:00
 ogimage: ogimage.webp
-twitter_large_card: true
 tags:
   - Hexo
 ---

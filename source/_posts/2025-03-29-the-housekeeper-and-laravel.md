@@ -3,8 +3,6 @@ title: 「私の愛したLaravel」
 subtitle: トークの裏側、シンプルへのこだわり
 description: PHPerKaigi 2025登壇「私の愛したLaravel」の裏側。小川洋子「博士の愛した数式」から得たインスピレーションと、シンプルさへのこだわり。
 date: 2025-03-29 12:00
-ogimage: ogimage.webp
-twitter_large_card: true
 tags:
   - PHP
   - phperkaigi

@@ -2,7 +2,6 @@
 title: NestJS モジュール分割 ベストプラクティス
 description: NestJSのモジュール分割の陥りがちな問題を克服するための詳細ガイド。実践的なアプローチでSOLID原則に準拠し、高品質なアプリケーション設計を実現する方法を紹介。
 date: 2024-05-09 20:00
-ogimage: nest-og.png
 tags:
   - NestJS
   - Node.js

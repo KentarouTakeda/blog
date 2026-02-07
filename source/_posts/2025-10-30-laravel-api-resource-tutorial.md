@@ -3,8 +3,6 @@ title: Laravelで理解するREST設計の基本
 subtitle: Eloquentとartisanが導く「正しい構造」
 description: LaravelのREST設計を最小構成で実装。Eloquentのリレーション、artisanの自動生成、APIリソースによる責務分離までを一気通貫で体験できるチュートリアル。設計崩壊を防ぐための基本がここにある。
 date: 2025-10-29 19:00
-ogimage: ogimage.webp
-twitter_large_card: true
 tags:
   - PHP
   - Laravel

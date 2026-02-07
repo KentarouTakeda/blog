@@ -3,8 +3,6 @@ title: 良い設計は読み手を選ばない
 subtitle: Claude CodeとLaravel Boost Skillsで得た確信
 date: 2026-02-01 19:00
 description: Laravel Boost 2.0のSkills対応を通じて見えた、AIコーディングの精度とパフォーマンスを向上させる設計。Laravel OpenAPI Validatorの対応記録とベンチマーク結果を交えて紹介する。
-ogimage: ogimage.webp
-twitter_large_card: false
 tags:
   - Laravel
   - AI

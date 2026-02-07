@@ -3,7 +3,6 @@ title: php-srcはあなたのコントリビューションを求めています
 subtitle: 「PHP Lovers Meetup vol.5」LT資料と後記
 description: php-srcへの貢献はPHPエンジニアにとって新たな学びの場。コア開発の経験の無いPHPユーザーは、どのようにすればPHP本体への貢献を行えるか、「テスト」という観点から紹介。
 date: 2024-03-21 21:00
-ogimage: ogimage.webp
 tags:
   - PHP
 ---

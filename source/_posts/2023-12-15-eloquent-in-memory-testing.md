@@ -3,7 +3,6 @@ title: Eloquent In Memory Testing
 subtitle: Eloquentモデルを速く小さく手軽にテストする
 description: SQLite In-Memory DatabaseでEloquentモデルを高速テスト。TDDライクなマイグレーション開発とテストピラミッドを意識した設計手法。
 date: 2023-12-15 00:00
-ogimage: ogimage.png
 tags:
   - PHP
   - Laravel

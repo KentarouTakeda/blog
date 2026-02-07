@@ -2,7 +2,6 @@
 title: Laravel 10 マイナーバージョンでの機能追加を振り返る
 description: Laravel 10のマイナーバージョンで追加された機能を紹介。クラスベース追加バリデーション、Sleepヘルパ、秒単位スケジューラーなど。
 date: 2024-01-27 20:00
-ogimage: ogimage.png
 tags:
   - PHP
   - Laravel
