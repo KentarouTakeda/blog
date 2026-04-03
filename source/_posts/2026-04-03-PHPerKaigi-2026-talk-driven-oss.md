@@ -128,6 +128,7 @@ pdo_pgsqlはマージされ、PhpRedisは断念した。構成の設計意図は
 * [PHPerKaigi 2026 に行ってきた｜yuk](https://zenn.dev/yuksew/articles/b4c19d3ff3c912) - [@yuksew](https://x.com/yuksew)
 * [PHPerKaigi 2026 参加レポート｜Arlo@ Web Engineer](https://zenn.dev/fire_arlo/articles/phperkaigi-2026-report) - [@fire_arlo](https://x.com/fire_arlo)
 * [PHPerKaigi 2026 登壇 & 参加レポート - freee Developers Hub](https://developers.freee.co.jp/entry/phperkaigi2026) - [@theyoshida3](https://x.com/theyoshida3)
+* [PHPerKaigi 2026 登壇の裏側と学び - CARTA TECH BLOG](https://techblog.cartaholdings.co.jp/entry/2026/04/02/121642) - [@yish0](https://github.com/yish0)
 * [PHPerKaigi 2026にスポンサー参加しました & ブース出展しました！ - エス・エム・エス エンジニア テックブログ](https://tech.bm-sms.co.jp/entry/2026/03/26/160000)
 * [PHPerKaigi 2026へ行ってきた - Magnolia Tech](https://blog.magnolia.tech/entry/2026/03/21/221138) - [@magnolia_k_](https://x.com/magnolia_k_)
 * [PHPerKaigi2026に参加しました! - GO Tech Blog](https://techblog.goinc.jp/entry/2026/03/24/161701) - [@pyama86](https://x.com/pyama86)
