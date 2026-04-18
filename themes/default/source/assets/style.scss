@@ -232,6 +232,11 @@ address {
   a {
     display: block;
   }
+
+  // marked-footnote が .post 内に生成する見出しをTOCから除外
+  a[href="#footnote-label"] {
+    display: none;
+  }
 }
 
 .sidebar-recent-posts {

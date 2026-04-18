@@ -115,6 +115,44 @@
     flex: 1;
     min-width: 280px;
   }
+
+  // .footnotes, .sr-only — marked-footnote が生成するクラス
+  .footnotes {
+    border-top: 1px solid var(--color-text-light);
+    margin-top: 2em;
+    padding-top: 1em;
+
+    p {
+      margin: 0;
+    }
+
+    // screen reader only
+    .sr-only {
+      border: 0;
+      clip-path: inset(50%);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
+  }
+
+  [data-footnote-ref] {
+    margin-left: 0.1em;
+    padding: 0.1em 0.2em;
+    text-decoration: none;
+
+    &::before {
+      content: "[";
+    }
+
+    &::after {
+      content: "]";
+    }
+  }
 }
 
 .post-next-prev {

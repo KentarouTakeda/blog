@@ -30,6 +30,7 @@
     "hexo-tag-ogp-link-preview": "^1.1.0",
     "hexo-tag-twitter": "^1.0.2",
     "hexo-util": "^4.0.0",
+    "marked-footnote": "^1.4.0",
     "satori": "^0.26.0",
     "sharp": "^0.34.5"
   },
