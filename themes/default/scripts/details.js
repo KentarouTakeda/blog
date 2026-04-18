@@ -1,4 +1,7 @@
 const util = require('hexo-util');
+const { Marked } = require('marked');
+
+const marked = new Marked();
 
 const ARGS = [
     'classes:',
@@ -30,7 +33,7 @@ hexo.extend.tag.register('details', async (args, content) => {
     }
 
     return util.htmlTag('details', attrs,
-        util.htmlTag('summary', {}, summary) +
+        util.htmlTag('summary', {}, marked.parseInline(summary), false) +
         await hexo.render.render({ text: content, engine: 'markdown' }),
         false
     );
