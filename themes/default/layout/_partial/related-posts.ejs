@@ -1,0 +1,24 @@
+<% if (related_posts().length) { %>
+
+<hr>
+
+<div class="related-posts">
+  <div>関連記事</div>
+
+  <ul>
+    <% related_posts().forEach(related => { %>
+    <li>
+      <a href="<%- url_for(related.path) %>">
+        <time><%= date(related.date, 'YYYY-MM-DD') %></time>
+        <% if(related.subtitle) { %>
+        <%= related.title %> - <%= related.subtitle %>
+        <% } else { %>
+        <%= related.title %>
+        <% } %>
+      </a>
+    </li>
+    <% }) %>
+  </ul>
+</div>
+
+<% } %>

@@ -30,6 +30,8 @@
   <%- css(`assets/style.css?${Date.now()}`) %>
   <%- partial('gen-structured-data') %>
   <%- js({src:`assets/script.js?${Date.now()}`, async: true, defer: true}) %>
+  <%- js({src:`assets/search-scoring.js?${Date.now()}`, defer: true}) %>
+  <%- js({src:`assets/search.js?${Date.now()}`, defer: true}) %>
 
   <link rel="author" href="http://www.hatena.ne.jp/KentarouTakeda/" />
   <link rel="author" href="https://twitter.com/KentarouTakeda" />
