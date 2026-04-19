@@ -42,11 +42,20 @@ user-invocable: false
 - Prettierと連携
 - 自動修正: `npm run fix`（pre-commitフックでも自動実行される）
 
-### Hexoスクリプト
+### テーマスクリプト（`themes/default/scripts/`）
 
-- `scripts/amp-fallback.js` — AMPフォールバック処理
-- `scripts/details.js` — detailsタグのポリフィル
+- `og-image.js` — OG画像の自動生成（テーマのカラー・フォントを使用）
 
-### クライアント側JavaScript
+### プロジェクトスクリプト（`scripts/`）
 
-- `source/assets/script.js` — フロント側カスタムスクリプト
+- `amp-fallback.js` — AMP URLから元記事へのリダイレクト
+- `details.js` — `{% details %}` 折りたたみタグプラグイン
+- `footnote.js` — 脚注記法の拡張（marked-footnote）
+- `related-posts.js` — 記事間の類似度算出、`related_posts`ヘルパー提供
+- `search-index.js` — サイト内検索用インデックス（`/assets/search-index.json`）の生成
+
+### クライアント側JavaScript（`themes/default/source/assets/`）
+
+- `script.js` — 画像ポップアップ、コードコピー、TOCハイライト、スライド埋込
+- `search.js` — 検索パネルUI
+- `search-scoring.js` — 検索クエリのスコアリング
