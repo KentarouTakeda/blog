@@ -1,0 +1,75 @@
+@use "variables";
+
+.navbar-search {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  float: right;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.search-panel {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-text-light);
+  box-shadow: 0 4px 12px #00000015;
+  left: 0;
+  margin-top: -20px;
+  position: absolute;
+  right: 0;
+  z-index: 100;
+}
+
+.search-panel-inner {
+  margin: 0 auto;
+  padding: 12px;
+  width: variables.$WIDTH_CONTAINER;
+
+  @media (max-width: variables.$WIDTH_CONTAINER) {
+    width: 100%;
+  }
+}
+
+.search-input {
+  border: 1px solid var(--color-text-light);
+  border-radius: 4px;
+  font-size: 1rem;
+  padding: 0.5em;
+  width: 100%;
+
+  &:focus {
+    border-color: var(--color-primary);
+    outline: none;
+  }
+}
+
+.search-results {
+  font-size: 90%;
+  max-height: 60vh;
+  overflow-y: auto;
+
+  time {
+    margin-right: 0.5em;
+    opacity: 0.7;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin-top: 0.5em;
+  }
+
+  a {
+    display: block;
+  }
+}
+
+.search-empty {
+  margin-top: 0.5em;
+  opacity: 0.5;
+}

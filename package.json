@@ -11,6 +11,7 @@
     "lint": "textlint source/_posts",
     "fix": "run-s fix:scss",
     "fix:scss": "stylelint themes/default/source/assets/**/*.scss --fix",
+    "test": "node --test 'tests/**/*.test.mjs'",
     "prepare": "husky"
   },
   "dependencies": {
