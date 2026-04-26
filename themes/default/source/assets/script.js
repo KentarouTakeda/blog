@@ -55,12 +55,13 @@ document.addEventListener("click", async ({ target }) => {
   if (!(target instanceof HTMLElement)) {
     return;
   }
-  const parent = target.parentElement;
-  if (parent == null || !parent.matches("pre[data-language]")) {
+  if (!target.matches("a.copy-to-clipboard")) {
     return;
   }
-  const code = parent.querySelector('code[class*="language-"]');
-  if (code == null || !(code instanceof HTMLElement)) {
+  const code = target.parentElement?.querySelector(
+    'pre[data-language] code[class*="language-"]',
+  );
+  if (!(code instanceof HTMLElement)) {
     return;
   }
 
@@ -126,9 +127,14 @@ document.addEventListener("click", ({ target }) => {
     });
 
     document.querySelectorAll("pre[data-language]").forEach((e) => {
+      const wrapper = document.createElement("div");
+      wrapper.classList.add("code-block");
+      e.before(wrapper);
+      wrapper.appendChild(e);
+
       const button = document.createElement("a");
       button.classList.add("copy-to-clipboard");
-      e.appendChild(button);
+      wrapper.appendChild(button);
     });
 
     const tocItems = [...document.querySelectorAll(".toc .toc-link[href]")]

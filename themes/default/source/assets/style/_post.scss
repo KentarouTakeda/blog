@@ -105,6 +105,16 @@
     opacity: 0.8;
   }
 
+  pre .caption {
+    opacity: 0.6;
+  }
+
+  pre.language-diff.line-numbers {
+    .line-numbers-rows > span::before {
+      color: transparent;
+    }
+  }
+
   .post-flex {
     display: flex;
     flex-wrap: wrap;

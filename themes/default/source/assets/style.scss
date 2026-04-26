@@ -295,6 +295,10 @@ address {
   }
 }
 
+.code-block {
+  position: relative;
+}
+
 a.copy-to-clipboard {
   background-color: var(--color-primary);
   color: white;
