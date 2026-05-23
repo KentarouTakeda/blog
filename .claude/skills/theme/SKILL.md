@@ -44,7 +44,8 @@ user-invocable: false
 
 ### テーマスクリプト（`themes/default/scripts/`）
 
-- `og-image.js` — OG画像の自動生成（テーマのカラー・フォントを使用）
+- `og-image.js` — OG画像の自動生成（テーマのカラー・フォントを使用。日英で別画像）
+- `i18n-en.js` — 記事単位の日英両配信（`.en.md` 検出・`/en/` URL導出・一覧/フィード/検索からの除外・`post.lang` 注入・hreflang/og:locale・言語切替リンク・lang対応 `post_link`）
 
 ### プロジェクトスクリプト（`scripts/`）
 
@@ -59,3 +60,9 @@ user-invocable: false
 - `script.js` — 画像ポップアップ、コードコピー、TOCハイライト、スライド埋込
 - `search.js` — 検索パネルUI
 - `search-scoring.js` — 検索クエリのスコアリング
+
+### 多言語 / i18n
+
+- 一部記事を日英両配信する（仕組みは `i18n-en.js`）。言語は `.en.md` から注入される `page.lang` で決まる
+- UI文字列は Hexo ネイティブ i18n。`languages/{ja,en}.yml` に置き、テンプレートで `__('key')` で出す
+- 検索UI/JS・サイドバー「最近の記事」・タグ/関連/前後ナビは `page.lang === 'ja'` で囲い、英語ページでは出していない（英語版は簡素化する方針）
