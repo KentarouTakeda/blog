@@ -10,7 +10,7 @@
     "@type": "Person",
     name: config.author,
     image: config.avatar,
-    description: config.author_title
+    description: __('author_title')
   };
 
   const publisher = {
@@ -28,6 +28,7 @@
     structured = {
       "@context": "http://schema.org",
       "@type": "BlogPosting",
+      inLanguage: page.lang,
       headline: title,
       name: title,
       image: page.thumbnail,

@@ -220,12 +220,19 @@ hexo.extend.generator.register("ogimage", async (locals) => {
   const avatarSrc = hexo.config.avatar
     ? await fetchAvatar(hexo.config.avatar)
     : "";
-  const authorLabel = hexo.config.author_display
-    ? `${hexo.config.author_display} / @${hexo.config.author}`
-    : hexo.config.author;
+  const posts = locals.posts.toArray().concat(locals.posts_en?.toArray() ?? []);
 
   const results = await Promise.all(
-    locals.posts.map(async (post) => {
+    posts.map(async (post) => {
+      const displayName =
+        post.lang === "en"
+          ? hexo.config.author_display_en
+          : hexo.config.author_display;
+
+      const authorLabel = displayName
+        ? `${displayName} / @${hexo.config.author}`
+        : hexo.config.author;
+
       const svg = await satori(
         buildLayout(
           post.title,

@@ -18,9 +18,9 @@
 
     <% const hasUpdated = page.updated && page.updated.valueOf() > page.date.valueOf(); %>
     <div class="post-date">
-      <% if (hasUpdated) { %>初出: <% } %><time datetime="<%= page.date.toISOString() %>"><%- partial('_partial/date', { datetime: page.date }) %></time>
+      <% if (hasUpdated) { %><%= __('first_published') %>: <% } %><time datetime="<%= page.date.toISOString() %>"><%- partial('_partial/date', { datetime: page.date }) %></time>
       <% if (hasUpdated) { %>
-      / 更新: <time datetime="<%= page.updated.toISOString() %>"><%- partial('_partial/date', { datetime: page.updated }) %></time>
+      / <%= __('updated') %>: <time datetime="<%= page.updated.toISOString() %>"><%- partial('_partial/date', { datetime: page.updated }) %></time>
       <% } %>
     </div>
   </div>

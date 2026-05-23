@@ -32,6 +32,16 @@
   text-align: center;
 }
 
+.post-translation {
+  font-size: 0.8rem;
+  margin-block: 0.5em;
+  opacity: 0.8;
+
+  a {
+    text-decoration: underline;
+  }
+}
+
 .post-tag {
   display: flex;
   gap: 12px;

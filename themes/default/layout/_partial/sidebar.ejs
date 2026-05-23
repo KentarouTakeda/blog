@@ -22,18 +22,18 @@
           </a>
         </span>
       </address>
-      <p><%= config.author_title %></p>
+      <p><%= __('author_title') %></p>
     </div>
   </div>
 
   <div class="sidebar-sticky">
     <% if (page.content) { %>
     <div class="card sidebar-toc">
-      <div>目次</div>
+      <div><%= __('toc') %></div>
       <%- toc(page.content, {list_number: false, max_items: 40}) %>
     </div>
     <% } %>
-    <% if (site.posts.length) { %>
+    <% if (page.lang === 'ja' && site.posts.length) { %>
     <div class="card sidebar-recent-posts">
       <div>最近の記事</div>
       <ul>

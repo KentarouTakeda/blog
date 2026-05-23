@@ -10,6 +10,12 @@
   <meta name="viewport" content="width=device-width">
   <meta name="robots" content="max-image-preview:large" />
   <link rel="canonical" href="<%- page.permalink ?? url.replace(/\/index.html$/, '/') -%>">
+  <% i18n_alternates().forEach(alt => { %>
+  <link rel="alternate" hreflang="<%= alt.hreflang %>" href="<%- full_url_for(alt.path) %>">
+  <% }); %>
+  <% if (i18n_default()) { %>
+  <link rel="alternate" hreflang="x-default" href="<%- full_url_for(i18n_default()) %>">
+  <% } %>
   <%
     const ogimage = page.ogimage || (is_post() ? '_ogimage-default.png' : undefined);
     const twitterCard = (page.twitter_large_card || (!page.ogimage && ogimage))
@@ -30,8 +36,10 @@
   <%- css(`assets/style.css?${Date.now()}`) %>
   <%- partial('gen-structured-data') %>
   <%- js({src:`assets/script.js?${Date.now()}`, async: true, defer: true}) %>
+  <% if (page.lang === 'ja') { %>
   <%- js({src:`assets/search-scoring.js?${Date.now()}`, defer: true}) %>
   <%- js({src:`assets/search.js?${Date.now()}`, defer: true}) %>
+  <% } %>
 
   <link rel="author" href="http://www.hatena.ne.jp/KentarouTakeda/" />
   <link rel="author" href="https://twitter.com/KentarouTakeda" />

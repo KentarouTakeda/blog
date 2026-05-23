@@ -1,4 +1,14 @@
-<% if (post.tags && post.tags.length){ %>
+<% if (i18n_counterpart()) { %>
+<p class="post-translation">
+  <% if (page.lang === 'ja') { %>
+  <a href="<%- url_for(i18n_counterpart()) %>">This article is also available in English.</a>
+  <% } else { %>
+  <a href="<%- url_for(i18n_counterpart()) %>">この記事は日本語版もあります。</a>
+  <% } %>
+</p>
+<% } %>
+
+<% if (page.lang === 'ja' && post.tags && post.tags.length){ %>
 <ul class="post-tag">
   <% post.tags.forEach(tag => { %>
   <li><a href="<%- url_for(tag.path) %>" class="post-tag-anchor"><%= tag.name %></a></li>
@@ -13,7 +23,7 @@
 <hr>
 
 <div class="post-share">
-  <div>SNSへシェア</div>
+  <div><%= __('share') %></div>
   <a href="https://b.hatena.ne.jp/entry?url=<%= encodeURIComponent(post.permalink) %>" title="このエントリーをはてなブックマークに追加">
     <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="はてなブックマーク" width="20" height="20" style="border: none; vertical-align: middle;" />
   </a>
@@ -24,6 +34,7 @@
   </a>
 </div>
 
+<% if (page.lang === 'ja') { %>
 <%- partial('related-posts') %>
 
 <hr>
@@ -42,3 +53,4 @@
     <% } %>
   </nav>
 </div>
+<% } %>
