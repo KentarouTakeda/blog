@@ -20,7 +20,7 @@ module.exports = {
       'max-kanji-continuous-len': false,
       "no-mix-dearu-desumasu": false,
       'no-doubled-joshi': {
-        allow: ['か', 'も', 'や', 'に'],
+        allow: ['か', 'も', 'や', 'に', 'にも'],
       },
       'no-exclamation-question-mark': false,
       'sentence-length': {
