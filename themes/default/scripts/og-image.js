@@ -54,6 +54,8 @@ const segmentText = (text) => {
           typeof result[result.length - 1] === "string"
         ) {
           result[result.length - 1] += nbsp;
+        } else {
+          result.push(nbsp);
         }
 
         result.push({ type: "wbr", props: {} });
