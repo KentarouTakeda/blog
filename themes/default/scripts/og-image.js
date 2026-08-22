@@ -69,19 +69,29 @@ const segmentText = (text) => {
 };
 
 const TITLE_FONT_SIZE = 56;
-const SUBTITLE_FONT_SIZE = Math.round(TITLE_FONT_SIZE * 0.83);
 const TEXT_COLOR = "#000000d1";
 
 const FRAME_COLOR = "#052d49";
 const FRAME_WIDTH = 24;
 
-const buildLayout = (title, subtitle, blogTitle, authorLabel, avatarSrc) => {
+// はみ出し判定のためレイアウト結果から拾う2つのノード
+const AREA_KEY = "content-area";
+const CONTENT_KEY = "content";
+
+const buildLayout = (
+  title,
+  subtitle,
+  blogTitle,
+  authorLabel,
+  avatarSrc,
+  titleFontSize,
+) => {
   const titleElement = {
     type: "div",
     props: {
       style: {
         color: TEXT_COLOR,
-        fontSize: `${TITLE_FONT_SIZE}px`,
+        fontSize: `${titleFontSize}px`,
         fontWeight: 700,
         lineHeight: 1.4,
         display: "flex",
@@ -100,10 +110,10 @@ const buildLayout = (title, subtitle, blogTitle, authorLabel, avatarSrc) => {
           props: {
             style: {
               color: TEXT_COLOR,
-              fontSize: `${SUBTITLE_FONT_SIZE}px`,
+              fontSize: `${Math.round(titleFontSize * 0.83)}px`,
               fontWeight: 400,
               lineHeight: 1.4,
-              marginTop: `${Math.round(TITLE_FONT_SIZE * 1.4 * 0.5)}px`,
+              marginTop: `${Math.round(titleFontSize * 1.4 * 0.5)}px`,
               display: "flex",
               flexWrap: "wrap",
               justifyContent: "center",
@@ -164,15 +174,28 @@ const buildLayout = (title, subtitle, blogTitle, authorLabel, avatarSrc) => {
               // コンテンツエリア
               {
                 type: "div",
+                key: AREA_KEY,
                 props: {
                   style: {
                     flex: 1,
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "center",
-                    padding: "32px 48px",
                   },
-                  children: contentChildren,
+                  children: {
+                    type: "div",
+                    key: CONTENT_KEY,
+                    props: {
+                      style: {
+                        display: "flex",
+                        flexDirection: "column",
+                        // 縮まない指定がないと、はみ出す分だけ行が潰されて重なる
+                        flexShrink: 0,
+                        padding: "32px 48px",
+                      },
+                      children: contentChildren,
+                    },
+                  },
                 },
               },
               // 署名エリア（右下）
@@ -218,6 +241,45 @@ const buildLayout = (title, subtitle, blogTitle, authorLabel, avatarSrc) => {
   };
 };
 
+const FONT_SIZE_STEP = 2;
+const MIN_TITLE_FONT_SIZE = 32;
+
+// 長いタイトルはコンテンツエリアに収まらないため、収まるまで字を小さくする
+const renderSvg = async (title, subtitle, authorLabel, avatarSrc) => {
+  let fontSize = TITLE_FONT_SIZE;
+
+  for (;;) {
+    let areaHeight = 0;
+    let contentHeight = 0;
+
+    const svg = await satori(
+      buildLayout(
+        title,
+        subtitle,
+        hexo.config.title,
+        authorLabel,
+        avatarSrc,
+        fontSize,
+      ),
+      {
+        width: 1200,
+        height: 630,
+        fonts,
+        onNodeDetected: (node) => {
+          if (node.key === AREA_KEY) areaHeight = node.height;
+          if (node.key === CONTENT_KEY) contentHeight = node.height;
+        },
+      },
+    );
+
+    if (contentHeight <= areaHeight || fontSize <= MIN_TITLE_FONT_SIZE) {
+      return svg;
+    }
+
+    fontSize -= FONT_SIZE_STEP;
+  }
+};
+
 hexo.extend.generator.register("ogimage", async (locals) => {
   const avatarSrc = hexo.config.avatar
     ? await fetchAvatar(hexo.config.avatar)
@@ -235,15 +297,11 @@ hexo.extend.generator.register("ogimage", async (locals) => {
         ? `${displayName} / @${hexo.config.author}`
         : hexo.config.author;
 
-      const svg = await satori(
-        buildLayout(
-          post.title,
-          post.subtitle,
-          hexo.config.title,
-          authorLabel,
-          avatarSrc,
-        ),
-        { width: 1200, height: 630, fonts },
+      const svg = await renderSvg(
+        post.title,
+        post.subtitle,
+        authorLabel,
+        avatarSrc,
       );
 
       const png = await sharp(Buffer.from(svg)).png().toBuffer();
