@@ -29,7 +29,8 @@ hexo.extend.filter.register("before_generate", async () => {
   const posts = hexo.locals
     .get("posts")
     .toArray()
-    .filter((p) => p.published !== false);
+    .filter((p) => p.published !== false)
+    .sort((a, b) => b.date - a.date || (a.path < b.path ? -1 : 1));
 
   if (posts.length === 0) {
     return;
