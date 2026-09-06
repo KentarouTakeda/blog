@@ -9,6 +9,7 @@
   const PHRASE_TITLE_WEIGHT = 3;
   const PHRASE_SUBTITLE_WEIGHT = 1;
   const MIN_FIELD_MATCH_LENGTH = 2;
+  const MIN_KEYWORD_COVERAGE = 0.3;
   const MIN_PHRASE_KEYWORDS = 2;
   const MAX_RESULTS = 10;
 
@@ -26,6 +27,38 @@
   ];
 
   /**
+   * @param {string} keyword
+   * @param {string[]} terms
+   * @returns {[string, number][]}
+   */
+  const termMatches = (keyword, terms) => {
+    const forward = terms.filter((term) =>
+      term.toLowerCase().includes(keyword),
+    );
+
+    if (forward.length) {
+      return forward.map((term) => [term, 1]);
+    }
+
+    /** @type {[string, number][]} */
+    const matched = [];
+
+    // 索引は1語単位なので逆向きの部分一致で複合語もヒットさせる
+    for (const term of terms) {
+      const coverage = term.length / keyword.length;
+
+      if (
+        coverage >= MIN_KEYWORD_COVERAGE &&
+        keyword.includes(term.toLowerCase())
+      ) {
+        matched.push([term, coverage]);
+      }
+    }
+
+    return matched;
+  };
+
+  /**
    * 転置インデックスによる順位ベーススコアリング。
    *
    * @param {string[]} keywords
@@ -33,14 +66,15 @@
    * @param {Map<number, number>} scores
    */
   const addIndexScores = (keywords, index, scores) => {
+    const terms = Object.keys(index);
+
     for (const keyword of keywords) {
-      for (const term of Object.keys(index)) {
-        if (term.toLowerCase().includes(keyword)) {
-          const postIndices = index[term];
-          for (let rank = 0; rank < postIndices.length; rank++) {
-            const idx = postIndices[rank];
-            scores.set(idx, (scores.get(idx) || 0) + 1 / (rank + 1));
-          }
+      for (const [term, factor] of termMatches(keyword, terms)) {
+        const postIndices = index[term];
+
+        for (let rank = 0; rank < postIndices.length; rank++) {
+          const idx = postIndices[rank];
+          scores.set(idx, (scores.get(idx) || 0) + factor / (rank + 1));
         }
       }
     }
@@ -91,6 +125,13 @@
   };
 
   /**
+   * @param {{ d: string }} a
+   * @param {{ d: string }} b
+   * @returns {number}
+   */
+  const compareByRecency = (a, b) => (a.d < b.d ? 1 : a.d > b.d ? -1 : 0);
+
+  /**
    * 検索クエリに基づく記事のスコアリングとランキング。
    *
    * @param {string} query
@@ -115,7 +156,9 @@
     }
 
     return [...scores.entries()]
-      .sort((a, b) => b[1] - a[1])
+      .sort(
+        (a, b) => b[1] - a[1] || compareByRecency(data.posts[a[0]], data.posts[b[0]]),
+      )
       .slice(0, MAX_RESULTS)
       .map(([idx]) => data.posts[idx]);
   };

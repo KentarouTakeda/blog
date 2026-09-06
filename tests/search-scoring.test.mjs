@@ -102,7 +102,7 @@ describe("search", () => {
       index: { テスト: manyPosts.map((_, i) => i) },
     };
     const results = search("テスト", manyData);
-    assert.ok(results.length <= 10);
+    assert.strictEqual(results.length, 10);
   });
 
   it("1 文字キーワードでフィールド一致を適用しない", () => {
@@ -113,6 +113,92 @@ describe("search", () => {
     // Single char keyword 'A' should not get field match bonus
     const results = search("A", data);
     assert.strictEqual(results.length, 0);
+  });
+
+  it("前方一致が無いとき複合語クエリを索引の単語で拾う", () => {
+    const data = {
+      posts: [
+        { t: "TS解説", s: "", e: "", p: "ts", d: "2025-01-01" },
+        { t: "Py解説", s: "", e: "", p: "py", d: "2025-01-01" },
+      ],
+      index: { typescript: [0], 入門: [0, 1], python: [1] },
+    };
+    // typescript は 10/12 で拾い、入門 は 2/12 で下限に満たない
+    assert.deepStrictEqual(
+      search("typescript入門", data).map((r) => r.p),
+      ["ts"],
+    );
+  });
+
+  it("前方一致があるときは逆向きの一致を使わない", () => {
+    const data = {
+      posts: [
+        { t: "A", s: "", e: "", p: "fwd", d: "2024-01-01" },
+        { t: "B", s: "", e: "", p: "rev", d: "2026-01-01" },
+      ],
+      index: { hexo: [0], he: [1] },
+    };
+    assert.deepStrictEqual(
+      search("hexo", data).map((r) => r.p),
+      ["fwd"],
+    );
+  });
+
+  it("逆向きの一致はクエリを覆う割合が下限未満なら捨てる", () => {
+    const data = {
+      posts: [{ t: "SQL", s: "", e: "", p: "sql", d: "2025-01-01" }],
+      index: { sql: [0] },
+    };
+    // 3/10 は下限ちょうど、3/11 は下限未満
+    assert.deepStrictEqual(
+      search("postgresql", data).map((r) => r.p),
+      ["sql"],
+    );
+    assert.deepStrictEqual(search("postgresqlx", data), []);
+  });
+
+  it("逆向きの一致はクエリを覆う割合だけ減衰する", () => {
+    const data = {
+      posts: [
+        { t: "A", s: "", e: "", p: "short", d: "2026-01-01" },
+        { t: "B", s: "", e: "", p: "long", d: "2024-01-01" },
+      ],
+      index: { abcde: [0], abcdefgh: [1] },
+    };
+    // 減衰が無いと同点になり、日付降順で short が先に来る
+    assert.deepStrictEqual(
+      search("abcdefghij", data).map((r) => r.p),
+      ["long", "short"],
+    );
+  });
+
+  it("同スコアなら新しい記事を先に返す", () => {
+    const data = {
+      posts: [
+        { t: "テスト", s: "", e: "", p: "old", d: "2024-01-01" },
+        { t: "テスト", s: "", e: "", p: "new", d: "2026-01-01" },
+        { t: "テスト", s: "", e: "", p: "mid", d: "2025-01-01" },
+      ],
+      index: {},
+    };
+    assert.deepStrictEqual(
+      search("テスト", data).map((r) => r.p),
+      ["new", "mid", "old"],
+    );
+  });
+
+  it("日付が空の記事は同スコア内で最後に来る", () => {
+    const data = {
+      posts: [
+        { t: "テスト", s: "", e: "", p: "dated", d: "2025-01-01" },
+        { t: "テスト", s: "", e: "", p: "undated", d: "" },
+      ],
+      index: {},
+    };
+    assert.deepStrictEqual(
+      search("テスト", data).map((r) => r.p),
+      ["dated", "undated"],
+    );
   });
 
   it("不正なデータでエラーを伝播する", () => {
