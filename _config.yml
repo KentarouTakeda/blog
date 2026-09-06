@@ -55,11 +55,13 @@ pagination_dir: page
 
 theme: default
 
-avatar: https://secure.gravatar.com/avatar/da5f6aeb65f2675dd9ec5928baf22c56
+avatar: &avatar https://secure.gravatar.com/avatar/da5f6aeb65f2675dd9ec5928baf22c56
 
 google_analytics: G-5EDRXYWF4R
 
 feed:
+  limit: 0
+  icon: *avatar
   type:
     - atom
     - rss2
