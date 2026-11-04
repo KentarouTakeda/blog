@@ -9,7 +9,7 @@ user-invocable: false
 ### test.yml（CI）
 
 - トリガー: push / pull_request
-- Node v24
+- Node v26
 - 手順:
   1. `npm i`
   2. `npm run lint`（textlint）
