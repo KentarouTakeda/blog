@@ -164,6 +164,7 @@ const buildLayout = (
           props: {
             style: {
               flex: 1,
+              minHeight: 0,
               margin: `0 ${FRAME_WIDTH}px ${FRAME_WIDTH}px ${FRAME_WIDTH}px`,
               display: "flex",
               flexDirection: "column",
@@ -178,6 +179,7 @@ const buildLayout = (
                 props: {
                   style: {
                     flex: 1,
+                    minHeight: 0,
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "center",
